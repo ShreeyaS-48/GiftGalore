@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+
 const userSchema = mongoose.Schema(
   {
     name: {
@@ -18,7 +19,7 @@ const userSchema = mongoose.Schema(
 
     address: {
       type: String,
-      require : true
+      require: true,
     },
 
     phone: {
@@ -26,15 +27,20 @@ const userSchema = mongoose.Schema(
       require: true,
     },
 
-    role: {
-      type: String,
-      default: "user",
+    roles: {
+      User: {
+        type: Number,
+        default: 2001,
+      },
+      Editor: Number,
+      Admin: Number,
     },
 
     status: {
       type: Number,
       default: 0,
     },
+    refreshToken : String
   },
   {
     timestamps: true,
@@ -42,5 +48,4 @@ const userSchema = mongoose.Schema(
 );
 
 const User = mongoose.model("User", userSchema);
-
 export default User;
