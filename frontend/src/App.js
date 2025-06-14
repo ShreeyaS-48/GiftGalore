@@ -15,7 +15,9 @@ import RequireAuth from "./components/RequireAuth";
 import { AuthProvider } from "./context/AuthProvider";
 import Cart from "./components/Cart";
 import { CartProvider } from "./context/CartContext";
-
+import Admin from "./components/Admin";
+import { AdminProvider } from "./context/AdminContext";
+import Users from "./components/Users";
 const ROLES = {
   'User': 2001,
   'Editor': 1984,
@@ -27,6 +29,7 @@ function App() {
       <AuthProvider>      
       <DataProvider>
       <CartProvider>
+      <AdminProvider>
       <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
@@ -39,12 +42,17 @@ function App() {
             <Route path="products/chocolates" element={<Chocolates />} />
             <Route path="products/combos" element={<Combos />} />
             <Route path=":id" element={<ItemDetails />} />
+            <Route path="unauthorized" element={<Unauthorized/>}></Route>
             <Route element={<RequireAuth allowedRoles={[ROLES.User]} />}>
             <Route path="cart" element={<Cart />} />
             </Route>
+            <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
+            <Route path="admin" element={<Admin />} />
+            <Route path="admin/users" element={<Users />} />
+            </Route>
           </Route>
         </Routes>
-        
+        </AdminProvider>
         </CartProvider>
         
       </DataProvider>

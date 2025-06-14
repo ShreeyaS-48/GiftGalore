@@ -46,6 +46,7 @@ const Login = () => {
             console.log(JSON.stringify(response));
             const accessToken = response?.data?.accessToken;
             const roles = response?.data?.roles;
+            console.log(roles);
             setAuth({ name, roles, accessToken });
             setName('');
             setPwd('');
@@ -81,7 +82,8 @@ const Login = () => {
             return;
         try{
             setIsLoading(true)
-            const response = await axiosPrivate.get(`/users/${auth.name}`);
+            console.log(auth);
+            const response = await axiosPrivate.get(`/admin/${auth.name}`);
             console.log("fetching user:", response.data)
             setUser(response.data);
             setFetchError(null);
@@ -144,6 +146,12 @@ const Login = () => {
         <p style={{minHeight:"30px"}}><span style={{fontWeight:"bold"}}>Number:</span> {user.phone}</p>
         <p style={{minHeight:"30px"}}><span style={{fontWeight:"bold"}}>Address:</span> {user.address}</p>
         <button style={{width:"100px", backgroundColor:"#82853e", color:"white", border:"none", outline:"none", padding: "5px", borderRadius:"3px", margin:"10px auto", textDecoration:"none", cursor:"pointer"}} type="button" onClick={handleLogout}>Logout</button>
+        <p>
+                        <span className="line">
+                            <Link to = "/admin"> Go to admin dashboard
+                            </Link>
+                        </span>
+                        </p>
     </div>
                 }
                 </main>

@@ -134,7 +134,7 @@
     font-weight: bold;
 }
 
-.cart,.item-details, .login-page{
+.cart,.item-details, .login-page, .admin{
     margin-top: max(calc(12vh + 5vh), (48px + 30px));
 }
 .cart-headers{
@@ -148,7 +148,7 @@
 .add-ons, .cart-items{
     position: relative;
 }
-.items-page, .home{
+.items-page, .home,  .unauthorized {
     margin-top: calc(max(calc(12vh + 5vh), (48px + 30px)) + 35px);
 }
 .items-display{
@@ -201,15 +201,16 @@
     }
 }
 
-.cart{
+.cart, .unauthorized, .admin{
    min-height: 85vh;
    width: 100%;
    padding: 0 15px;
 }
+
 .cart-item-li:hover, .item:hover, .addon:hover{
     box-shadow: 1px 1px  3px#aaa;
 }
-.cart h2, .home h2{
+.cart h2, .home h2,  .unauthorized h2,.admin h2{
     font-family:"Playwrite FR Moderne", cursive; 
 }
 .footer{
@@ -570,3 +571,18 @@
 .line {
     display: inline-block;
 }
+
+.users{
+    margin: auto;
+    width: 90%;
+    
+    box-shadow: 1px 1px 5px #82853e;
+    border-collapse: collapse;
+}
+
+.users th, .users td{
+    border: 1px solid #82853e;
+    text-align: left;
+    padding: 10px;
+}
+

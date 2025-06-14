@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from 'react'
 import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from '../api/axios';
-import {Link} from 'react-router-dom'
+import {Link , useNavigate} from 'react-router-dom'
 const REGISTER_URL = '/register';
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,24}$/;
@@ -28,7 +28,7 @@ const Register = () => {
     const [numberFocus, setNumberFocus] = useState(false);
     const [address, setAddress] = useState("");
     const [AddressFocus, setAddressFocus] = useState(false);
-    
+    const navigate = useNavigate();
     useEffect(() => {
         userRef.current.focus();
     }, [])
@@ -80,6 +80,7 @@ const Register = () => {
             setEmail('');
             setAddress('');
             setNumber('');
+            navigate("/auth")
         } catch (err) {
             if (!err?.response) {
                 setErrMsg('No Server Response');

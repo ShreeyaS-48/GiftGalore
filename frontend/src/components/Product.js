@@ -2,7 +2,7 @@ import React, { use } from 'react'
 import {FaStar, FaTrashAlt} from 'react-icons/fa';
 import {Link} from 'react-router-dom';
 import AddToCartButton from './AddToCartButton';
-import { useContext, useEffect, useState } from 'react';
+import { useContext} from 'react';
 import CartContext from '../context/CartContext';
 import useAuth from '../hooks/useAuth';
 const Product = ({product}) => {
