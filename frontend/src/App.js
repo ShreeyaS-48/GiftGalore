@@ -18,6 +18,8 @@ import { CartProvider } from "./context/CartContext";
 import Admin from "./components/Admin";
 import { AdminProvider } from "./context/AdminContext";
 import Users from "./components/Users";
+import Admins from "./components/Admins";
+import Orders from "./components/Orders";
 const ROLES = {
   'User': 2001,
   'Editor': 1984,
@@ -28,8 +30,8 @@ function App() {
     <main className="App">
       <AuthProvider>      
       <DataProvider>
+        <AdminProvider>
       <CartProvider>
-      <AdminProvider>
       <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
@@ -49,12 +51,14 @@ function App() {
             <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
             <Route path="admin" element={<Admin />} />
             <Route path="admin/users" element={<Users />} />
+            <Route path="admin/admins" element={<Admins />} />
+            <Route path="admin/orders" element={<Orders />} />
             </Route>
           </Route>
         </Routes>
-        </AdminProvider>
-        </CartProvider>
         
+        </CartProvider>
+        </AdminProvider>
       </DataProvider>
       
       </AuthProvider>

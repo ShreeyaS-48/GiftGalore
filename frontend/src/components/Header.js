@@ -11,21 +11,25 @@ const Header = () => {
     const {search, setSearch} = useContext(DataContext);
     const {cartItems, setCartItems} = useContext(CartContext);
     const [userName, setUserName] = useState('Guest');
-
+    const [cartItemsLength, setCartItemsLength] = useState(0);
 useEffect(() => {
     if (auth?.name) {
+        setCartItemsLength(cartItems.length);
         setUserName(auth.name);
     } else {
         setUserName('Guest');
+        setCartItemsLength(0);
         setCartItems([]);
     }
 }, [auth]);
-
+    useEffect(()=>{
+        setCartItemsLength(cartItems.length)
+    },[cartItems])
      return (
         <header className='header'>
           <Link to="/">
             <figure>
-                <img src="../../public/favicon.png" alt="Ferns n Petals Logo" />
+                <img src="/favicon.png" alt="Ferns n Petals Logo" />
             </figure>
           </Link>
             <div className='header-forms'>
@@ -51,7 +55,7 @@ useEffect(() => {
             <div className='cart-and-user'>
                 <Link to ="/cart" style={{color:"white", textDecoration:"none"}}>
                     <FaShoppingCart/>
-                    {<p>{cartItems.length} {cartItems.length === 1 ? "Item": "Items"}</p>}
+                    {<p>{cartItemsLength} {cartItemsLength === 1 ? "Item": "Items"}</p>}
                 </Link> 
                 <div>
                     <Link to="/auth" style={{color:"white", textDecoration:"none"}}>

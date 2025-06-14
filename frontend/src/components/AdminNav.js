@@ -5,13 +5,13 @@ const AdminNav = () => {
         <nav className='Nav'>
             <ul className="Nav-list">
                 <li>
-                    <Link to="/orders">Orders</Link>
+                    <Link to="/admin/orders">Orders</Link>
                 </li>
                 <li>
                     <Link to="/admin/users">Users</Link>
                 </li>
                 <li>
-                    <Link to="/admins">Admins</Link>
+                    <Link to="/admin/admins">Admins</Link>
                 </li>
             </ul>
         </nav>

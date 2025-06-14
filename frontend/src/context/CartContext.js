@@ -1,14 +1,15 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useContext } from "react";
 import useAxiosPrivate from '../hooks/useAxiosPrivate';
 import useAuth from "../hooks/useAuth";
 import { useLocation, useNavigate } from "react-router-dom";
-
+import AdminContext from "./AdminContext";
 const CartContext = createContext({});
 
 
 export const CartProvider = ({children})=>{
     const { auth } = useAuth();
     const location = useLocation();
+    const {fetchOrders} = useContext(AdminContext);
     const navigate = useNavigate();
     const axiosPrivate = useAxiosPrivate();
     const [cartItems, setCartItems] = useState([]);
@@ -42,7 +43,7 @@ export const CartProvider = ({children})=>{
     useEffect(() => {
         console.log("fetching cartItems")
         getCartItems();
-    }, [auth, axiosPrivate]);
+    }, [auth]);
       const handleAddToCart = async (id)=>{
         if (!auth?.accessToken) {
           navigate("/auth", { state: { from: location }, replace: true });
@@ -96,7 +97,7 @@ export const CartProvider = ({children})=>{
         }
       }
       const handleDelete = async (id) =>{
-        console.log(id)
+
         try {
           await axiosPrivate.delete("/cart", {
             data: { productId: id },
@@ -124,9 +125,23 @@ export const CartProvider = ({children})=>{
           console.error("Failed to delete all items:", err);
         }
       }
+      const placeOrder = async () =>{
+          try{
+            await axiosPrivate.post("/orders", {
+                items: cartItems,
+                totalAmount
+            });
+            console.log("placed order")
+            handleDeleteAllItems();
+            fetchOrders();
+          }
+          catch (err) {
+            setFetchError(err.message);
+          }
+      }
     return(
         <CartContext.Provider value={{
-           fetchError, isLoading,  totalAmount,handleDeleteAllItems,
+           fetchError, isLoading,  totalAmount,handleDeleteAllItems, placeOrder,
           cartItems ,setCartItems,handleAddToCart, handleDecreaseItemQty, handleIncreaseItemQty, handleDelete
         }}>
             {children}

@@ -184,7 +184,7 @@
     margin: 8px;
     height: 65px
 }
-.item-details-div h3{
+.item-details-div h3, .admin h3{
     font-family: "Playwrite FR Moderne", cursive;
     font-size: 18px;
 }
@@ -509,8 +509,8 @@
     width:100%;
 }
 .form{
-    width: 50%;
     min-width: 400px;
+    width: 90%;
     border: 1px solid #82853e;
     box-shadow: 1px 1px 5px #82853e;
     padding: 10px;
@@ -527,7 +527,7 @@
     margin: 5px auto;
     text-align: center;
 }
-.form input, .form textarea{
+.form input, .form textarea, .form select{
     display:block;
     width: 90%;
     margin: 3px auto;
@@ -572,15 +572,16 @@
     display: inline-block;
 }
 
-.users{
+.users, .orders{
     margin: auto;
     width: 90%;
     
     box-shadow: 1px 1px 5px #82853e;
     border-collapse: collapse;
+    margin-bottom: 20px;
 }
 
-.users th, .users td{
+.users th, .users td, .orders td, .orders th{
     border: 1px solid #82853e;
     text-align: left;
     padding: 10px;

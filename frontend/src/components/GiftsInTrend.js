@@ -10,13 +10,14 @@ const GiftsInTrend = () => {
     const [giftItems, setGiftItems] = useState([])
     const {isLoading, fetchError, products}  = useContext(DataContext)
     useEffect(()=>{
-        if (!isLoading && products.length) {
+      console.log("gifts reload")
+        if ( products.length) {
             // Shuffle the array and pick first N items (e.g., 6)
             const shuffled = [...products].sort(() => 0.5 - Math.random());
             const selected = shuffled.slice(0, 10); // Select 6 random items
             setGiftItems(selected);
           }
-        }, [isLoading, products]);
+        }, [products]);
     var settings = {
         dots: false,
         infinite: true,

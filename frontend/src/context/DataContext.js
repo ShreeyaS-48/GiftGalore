@@ -21,21 +21,21 @@ export const DataProvider = ({children})=>{
     const [priceRange, setPriceRange]= useState(0);
     const [ratingRange, setRatingRange] = useState(0);
     const [reviewRange, setReviewRange] = useState(0);
+    const fetchProducts = async () => {
+      setIsLoading(true)
+        try {
+            const response = await axiosPrivate.get("/products");
+            setProducts(response.data);
+            setFetchError(null);
+          } catch (err) {
+            setFetchError(err.message);
+          } finally {
+            setIsLoading(false);
+          }
+    };
     useEffect(() => {
-        const fetchProducts = async () => {
-          setIsLoading(true)
-            try {
-                const response = await axiosPrivate.get("/products");
-                setProducts(response.data);
-                setFetchError(null);
-              } catch (err) {
-                setFetchError(err.message);
-              } finally {
-                setIsLoading(false);
-              }
-        };
         fetchProducts();
-      }, [auth, axiosPrivate]);
+      }, [auth]);
       useEffect(() => {
         const filterItems = () => {
         console.log(products);
@@ -98,6 +98,7 @@ export const DataProvider = ({children})=>{
      }
     return(
         <DataContext.Provider value={{
+          fetchProducts,
            search, products, setProducts, fetchError, isLoading, handlePriceFilter, handleRatingFilter, handleReviewsFilter
            ,setSearch ,searchResults, searchedCakes, searchedChocolates, searchedPlants, searchedBouquets, searchedCombos}}>
             {children}

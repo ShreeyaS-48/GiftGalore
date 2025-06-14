@@ -7,7 +7,7 @@ import { Outlet, useLocation } from 'react-router-dom';
 
 const Layout = () => {
   const location = useLocation();
-  const hideNavPaths = ['/admin', '/admin/users']; // you can add more paths here if needed
+  const hideNavPaths = ['/admin', '/admin/users', '/admin/admins', '/admin/orders']; // you can add more paths here if needed
 
   const shouldHideNav = hideNavPaths.includes(location.pathname);
 
