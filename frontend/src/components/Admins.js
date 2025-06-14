@@ -3,17 +3,17 @@ import { useContext } from 'react';
 import AdminContext from '../context/AdminContext';
 import { FaTrashAlt} from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-const Users = () => { 
-    const {users, handleDeleteUser} = useContext(AdminContext);
+const Admins = () => { 
+    const {admins, handleDeleteUser} = useContext(AdminContext);
     const navigate = useNavigate();
 
     const goBack = () => navigate("/admin");
   return (
    <main className ="admin">
-    <h2>Users</h2>
-    { users.length > 0 ?
+    <h2>Admins</h2>
+    { admins.length > 0 ?
     <table className="users">
-        <thead>
+        <thead className>
             <tr>
                 <th>Username</th>
                 <th>Phone</th>
@@ -23,7 +23,7 @@ const Users = () => {
             </tr>
         </thead>
         <tbody>
-            {users.map((user) =>
+            {admins.map((user) =>
             <tr key={user._id}>
                 <td>
                     {user.name}
@@ -50,14 +50,14 @@ const Users = () => {
             </tr> )}
         </tbody>
     </table> :
-    <p>No Users</p>
+        <p>No Admins</p>
     }
     <div>
-                <button onClick={goBack} style={{display:"block", backgroundColor:"#82853e", color:"white", border:"none", outline:"none", padding: "7px", borderRadius:"3px", margin:"10px 0", textDecoration:"none"}}>Go Back</button>
-        </div>
+            <button onClick={goBack} style={{display:"block", backgroundColor:"#82853e", color:"white", border:"none", outline:"none", padding: "7px", borderRadius:"3px", margin:"10px 0", textDecoration:"none"}}>Go Back</button>
+    </div>
    </main>
-   
+
   )
 }
 
-export default Users
+export default Admins

@@ -22,7 +22,7 @@ const useAxiosPrivate = () => {
             response => response,
             async (error) => {
                 const prevRequest = error?.config;
-                console.log("Retrying request", prevRequest);
+                console.log("Retrying request in axios private", prevRequest);
                 console.log("Error in interceptor:", error?.response?.status);
                 if ((error?.response?.status === 401||error?.response?.status === 403 )&& !prevRequest?.sent) {
                     prevRequest.sent = true;
@@ -38,7 +38,7 @@ const useAxiosPrivate = () => {
             axiosPrivate.interceptors.request.eject(requestIntercept);
             axiosPrivate.interceptors.response.eject(responseIntercept);
         }
-    }, [auth, refresh])
+    }, [auth?.accessToken]) //[auth?.accessToken, refresh]
 
     return axiosPrivate;
 }

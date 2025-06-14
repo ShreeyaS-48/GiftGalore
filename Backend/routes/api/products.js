@@ -15,7 +15,8 @@ const router = express.Router();
 // Product routes
 router.route('/')
   .get(getAllProducts)
-  .post(verifyJWT,verifyRoles(ROLES_LIST.Admin), handleNewProduct)
+  router.route('/')
+    .post(verifyJWT, verifyRoles(ROLES_LIST.Admin), handleNewProduct)
 
 router.route('/:id')
   .get(getProduct)

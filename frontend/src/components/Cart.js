@@ -4,7 +4,7 @@ import CartContext from '../context/CartContext'
 import CartItem from './CartItem'
 import useAuth from '../hooks/useAuth'
 const Cart = () => {
-    const { totalAmount, cartItems, handleDeleteAllItems} = useContext(CartContext);
+    const { totalAmount, cartItems, handleDeleteAllItems, placeOrder} = useContext(CartContext);
     const {auth} = useAuth();
 
     
@@ -28,7 +28,8 @@ const Cart = () => {
                     <aside className='cart-aside'>
                         <div className="purchase">
                             <p style={{textAlign:"center", fontSize:"1.2rem", fontWeight:"bold", margin:"5px auto"}}>Total Amount: <span style={{whiteSpace:"nowrap"}}>&#8377; {totalAmount}</span></p>
-                            <button style={{backgroundColor:"#82853e", color:"white", minHeight:"35px", display:"block", fontSize:"1rem", margin:"5px auto", border:"none", outline:"none", padding:"5px"}}>
+                            <button style={{backgroundColor:"#82853e", color:"white", minHeight:"35px", display:"block", fontSize:"1rem", margin:"5px auto", border:"none", outline:"none", padding:"5px"}}
+                            onClick = {placeOrder}>
                                 Proceed to Purchase
                             </button>
                             <button 

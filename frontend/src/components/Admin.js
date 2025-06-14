@@ -1,15 +1,47 @@
 import React from 'react'
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import AdminContext from '../context/AdminContext'
+import DataContext from "../context/DataContext"
+import AddProductForm from './AddProductForm'
 const Admin = () => {
-    const {users, admins} = useContext(AdminContext)
+    const {users, admins, orders} = useContext(AdminContext)
+    const [undelivered, setUndelivered] = useState(0);
+    const [productsLen, setProductsLen] = useState(0);
+    const {products} = useContext(DataContext);
+    useEffect(() => {
+    const pending = orders.filter(order => order.status !== 1).length;
+    setUndelivered(pending);
+  }, [orders]);
+  useEffect(() => {
+    setProductsLen(products.length);
+  }, [products]);
   return (
-    <main className='admin'>
+    <main className='admin' style={{width:"100%", display:"flex", flexDirection:"column", alignItems:"center", marginBottom:"20px"}}>
         <h2>Admin Dashboard</h2>
-        <ul>
-            <li>{`Total Users: ${users.length} `}</li>
-            <li>{`Total Admins: ${admins.length} `}</li>
-        </ul>
+        <table className="users">
+          <tbody>
+          <tr>
+            <td>Total Users</td>
+            <td>{users.length}</td>
+          </tr>
+          <tr>
+            <td>Total Admins</td>
+            <td>{admins.length}</td>
+          </tr>
+          <tr>
+            <td>Pending Orders</td>
+            <td>{undelivered}</td>
+          </tr>
+          <tr>
+            <td>Total Products</td>
+            <td>{productsLen}</td>
+          </tr>
+          </tbody>
+        </table>
+
+          <AddProductForm/>
+          
+        
     </main>
   )
 }

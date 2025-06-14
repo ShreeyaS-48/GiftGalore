@@ -10,6 +10,7 @@ import verifyJWT from "./Middleware/verifyJwt.js";
 import usersApiRouter from "./routes/api/users.js";
 import productsApiRouter from "./routes/api/products.js";
 import cartApiRouter from "./routes/api/cart.js"
+import orderApiRouter from "./routes/api/orders.js"
 
 const app = express();
 
@@ -34,6 +35,7 @@ app.use('/products', productsApiRouter);
 app.use(verifyJWT) // below routes are verified
 app.use('/logout', logoutRouter);
 app.use('/cart', cartApiRouter);
+app.use('/orders', orderApiRouter);
 app.use('/admin', usersApiRouter);
 
 

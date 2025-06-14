@@ -4,7 +4,7 @@ import AddToCartButton from './AddToCartButton';
 import { FaStar, FaTrashAlt } from 'react-icons/fa';
 import DataContext from '../context/DataContext';
 import CartContext from '../context/CartContext';
-
+import ReviewForm from './ReviewForm';
 const ItemDetails = () => {
     const { id } = useParams();
     const { products } = useContext(DataContext);
@@ -55,6 +55,7 @@ const ItemDetails = () => {
                                 />
                             </button>
                         </div>}
+                        <ReviewForm/>
                     </div>
                 </div>
             </div>

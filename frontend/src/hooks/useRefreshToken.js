@@ -2,9 +2,11 @@ import axios from '../api/axios';
 import useAuth from './useAuth';
 
 const useRefreshToken = () => {
-    const { setAuth } = useAuth();
+    const { setAuth, auth } = useAuth();
 
     const refresh = async () => {
+        console.log(auth)
+        if(auth?.name){
         const response = await axios.get('/refresh', {
             withCredentials: true
         });
@@ -15,6 +17,10 @@ const useRefreshToken = () => {
             return { ...prev, accessToken: response.data.accessToken }
         });
         return response.data.accessToken;
+        }
+        else{
+            console.log("Not authorised")
+        }
     }
     return refresh;
 };
