@@ -34,7 +34,7 @@ app.use('/products', productsApiRouter);
 app.use(verifyJWT) // below routes are verified
 app.use('/logout', logoutRouter);
 app.use('/cart', cartApiRouter);
-app.use('/users', usersApiRouter);
+app.use('/admin', usersApiRouter);
 
 
 //error handler middleware

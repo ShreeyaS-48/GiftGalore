@@ -12,7 +12,7 @@ const Cart = () => {
          
         <div className='cart'>
         <h2 style={{textAlign:"center", paddingTop:"5px", fontSize:"1.8rem"}}>Shopping Cart</h2>
-      { auth?.accessToken ? <div className='cart-inside'>
+      { cartItems.length > 0? <div className='cart-inside'>
                     <div className='cart-items'>
                         
                     <ul style={{padding:"10px"}} >

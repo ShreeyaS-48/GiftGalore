@@ -2,11 +2,21 @@ import User from "../models/user.model.js";
 
 
 const getAllUsers = async (req, res) =>{
-    const users = await User.find()
-    if(!users) return res.status(204).json({'message': 'No users found'}) // no content
-    res.json(users)
+    const users = await User.find({ 'roles.Admin': { $exists: false } });
+    if (!users.length) {
+        return res.status(204).json({ message: 'No non-admin users found' });
+    }
+    
+    res.json(users);
 }
-
+const getAllAdmins = async (req, res) =>{
+    const users = await User.find({ 'roles.Admin': { $exists: true } });
+    if (!users.length) {
+        return res.status(204).json({ message: 'No non-admin users found' });
+    }
+    
+    res.json(users);
+}
 
 const deleteUser = async (req, res)=>{
     if(!req?.body?.id){
@@ -34,5 +44,5 @@ const getUser = async (req, res)=>{
 export {
     getAllUsers,
     deleteUser,
-    getUser
+    getUser, getAllAdmins
 }
