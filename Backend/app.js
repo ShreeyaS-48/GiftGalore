@@ -6,7 +6,7 @@ import registerRouter from "./routes/register.js";
 import loginRouter from "./routes/auth.js"; 
 import refreshRouter from "./routes/refresh.js"; 
 import logoutRouter from "./routes/logout.js"
-import verifyJWT from "./Middleware/verifyJwt.js";
+import verifyJWT from "./Middleware/verifyJWT.js";
 import usersApiRouter from "./routes/api/users.js";
 import productsApiRouter from "./routes/api/products.js";
 import cartApiRouter from "./routes/api/cart.js"
