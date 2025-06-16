@@ -8,7 +8,7 @@ import {
 
 import ROLES_LIST from '../../util/roles_list.js';
 import verifyRoles from '../../Middleware/verifyRoles.js';
-import verifyJWT from "../../Middleware/verifyJwt.js";
+import verifyJWT from "../../Middleware/verifyJWT.js";
 
 const router = express.Router();
 
