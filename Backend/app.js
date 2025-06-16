@@ -21,7 +21,8 @@ app.use(express.json());
 //cors
 app.use(cors(
     {
-        origin: 'http://localhost:3000', // 👈 Your frontend's exact origin
+        origin: 'https://giftgalore.netlify.app', // 👈 Your frontend's exact origin
+
         credentials: true  
     }
 ));
