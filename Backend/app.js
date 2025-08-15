@@ -25,15 +25,7 @@ app.use(cookieParser())
 app.use(cors({
     origin: "https://giftgalore.netlify.app",
     credentials: true,
-    methods: ["GET","POST","PUT","DELETE","OPTIONS"],
-    allowedHeaders: ["Content-Type","Authorization"]
 }));
-
-app.options("*", (req, res) => {
-    console.log("Preflight request received:", req.path);
-    res.sendStatus(200);
-});
-
 
 //routes
 app.use('/register', registerRouter);
