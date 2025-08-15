@@ -1,6 +1,7 @@
 import Groq from "groq-sdk";
 import dotenv from "dotenv";
 import fs from "fs";
+import path from "path";
 import { encode } from "gpt-tokenizer"; // npm install gpt-tokenizer
 
 dotenv.config();
