@@ -8,7 +8,7 @@ dotenv.config();
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
 // --- Load App Documentation ---
-const APP_DOCS = fs.readFileSync("./data/app-docs.txt", "utf-8");
+const APP_DOCS = fs.readFileSync(path.resolve("data/app-docs.txt"), "utf-8");
 
 // --- Config ---
 const MAX_CONTEXT_TOKENS = 8192; // llama3-8b limit
