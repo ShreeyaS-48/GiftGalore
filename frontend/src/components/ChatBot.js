@@ -27,7 +27,7 @@ const ChatBot = () => {
         { sender: "bot", text: "Error: Could not reach chatbot." }
     ]);
     }
-
+    
     setInput("");
   };
 
