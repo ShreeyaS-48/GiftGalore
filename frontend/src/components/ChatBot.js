@@ -17,10 +17,15 @@ const ChatBot = () => {
     try {
       const res = await axiosPrivate.post(`/chat`, {message:input});
       //= await axios.post("http://localhost:5000/chat", { message: input });
+      console.log(res);
       const botMessage = { sender: "bot", text: res.data.reply };
       setMessages((prev) => [...prev, botMessage]);
     } catch (err) {
-      console.error(err);
+      console.error("Chat request failed:", err);
+      setMessages((prev) => [
+        ...prev,
+        { sender: "bot", text: "Error: Could not reach chatbot." }
+    ]);
     }
 
     setInput("");
