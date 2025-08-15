@@ -25,7 +25,7 @@ app.use(cors(
     {
         origin: [
             "http://localhost:3000",
-            "https://giftgalore.netlify.app'"
+            "https://giftgalore.netlify.app"
           ],
         credentials: true  
     }
