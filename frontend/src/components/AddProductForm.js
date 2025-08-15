@@ -31,7 +31,7 @@ const AddProductForm = () => {
       const productData = {
         ...formData,
         price: Number(formData.price),
-        reviews:  0,
+        reviews:  [],
         ratings:  0,
       };
       await axiosPrivate.post('/products', productData);

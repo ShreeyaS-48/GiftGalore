@@ -84,7 +84,7 @@ const GiftsInTrend = () => {
     return (
         <main className="gifts" style={{padding:"10px 0", display:"flex", alignItems:"center", justifyContent:"space-between", margin:"auto 15px", border:"1px solid #cfcfcf"}}>
             <article className='gifts-in-trend'>
-                <h2>Gifts In Trend</h2>
+                <h2 style={{textAlign:"center"}}>Gifts In Trend</h2>
                 <div className='gifts-slider'>
                         {isLoading && <p style={{margin: "5px"}}>Loading Gifts..</p>}
                         {!isLoading && fetchError && <p style={{margin: "5px", color: "Red"}}>Network Error</p>}

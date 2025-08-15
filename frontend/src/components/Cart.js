@@ -2,11 +2,10 @@ import React from 'react'
 import { useContext, useEffect} from 'react'
 import CartContext from '../context/CartContext'
 import CartItem from './CartItem'
-import useAuth from '../hooks/useAuth'
+
 const Cart = () => {
     const { totalAmount, cartItems, handleDeleteAllItems, placeOrder} = useContext(CartContext);
-    const {auth} = useAuth();
-
+    
     
   return (
          

@@ -5,8 +5,14 @@ import { Link } from 'react-router-dom';
 import Product from './Product.js';
 import BestSellers from './BestSellers.js';
 import GiftsInTrend from './GiftsInTrend.js';
+import RecommendedItems from './RecommendedItems.js';
+import Cookies from "js-cookie";
+import useAuth from '../hooks/useAuth'
+
 const Home = () => {
   const {search ,products, searchResults} = useContext(DataContext);
+  const {auth} = useAuth();
+  const viewed = Cookies.get("viewedProducts");
     var settings ={
             dots:true,
             infinite:true,
@@ -28,10 +34,15 @@ const Home = () => {
               }
           </ul> 
           <GiftsInTrend/>
-          {searchResults.length === 0 && <p style={{textAlign:"center", width:"100%", height:"100px"}}>No items to display</p>}
+          {auth?.accessToken && viewed && viewed.length > 0 ? (
+            <RecommendedItems
+                products={products.filter(p => viewed.includes(p._id))}
+            />
+            ) : null}
+          {searchResults.length === 0 && search.length!== 0 && <p style={{textAlign:"center", width:"100%", height:"100px", marginTop:"15px"}}>No items match search</p>}
           <article className='products' style={{padding:"10px 0", margin:"15px auto 20px auto"}}>
-                <h2>Our Products</h2>
-                <div className='products-display' style={{display:"flex", alignItems:"center", justifyContent:"space-evenly"}}>
+                <h2 style={{textAlign:"center"}}>Our Products</h2>
+                <div className='products-display' >
                     <figure>
                         <Link to="/products/cakes" style={{color: "black", textDecoration:"none"}}>
                             <img src="https://www.fnp.com/images/pr/l/v200/chocolate-trio-cake-half-kg_1.jpg" alt="cakes" />
@@ -65,7 +76,7 @@ const Home = () => {
                 </div>
             </article>
           <BestSellers
-                products={products.filter(item => parseInt(item.reviews) >= 80)}
+                products={products.filter(item => parseInt(item.ratings) >= 4)}
             />
       </main>
   )

@@ -134,7 +134,7 @@
     font-weight: bold;
 }
 
-.cart,.item-details, .login-page, .admin{
+.cart,.item-details, .login-page, .admin, .chat{
     margin-top: max(calc(12vh + 5vh), (48px + 30px));
 }
 .cart-headers{
@@ -201,7 +201,7 @@
     }
 }
 
-.cart, .unauthorized, .admin{
+.cart, .unauthorized, .admin, .chat{
    min-height: 85vh;
    width: 100%;
    padding: 0 15px;
@@ -210,7 +210,7 @@
 .cart-item-li:hover, .item:hover, .addon:hover{
     box-shadow: 1px 1px  3px#aaa;
 }
-.cart h2, .home h2,  .unauthorized h2,.admin h2{
+.cart h2, .home h2,  .unauthorized h2,.admin h2, .chat h2{
     font-family:"Playwrite FR Moderne", cursive; 
 }
 .footer{
@@ -372,7 +372,7 @@
     background: #cfcfcf;
 }
 
-.home{
+.home , .chat{
     min-height: 85vh;
 }
 @media screen and (max-width: 1050px){
@@ -409,7 +409,7 @@
     width: 100%;
     height: 350px;
 }
-.gifts h2, .home h2{
+.gifts h2, .recommendedItems h2, .home h2{
     font-size: 1.2rem;
     font-weight: normal;
     font-family: "Playwrite FR Moderne", cursive;
@@ -445,7 +445,7 @@
     right : -45px;
     top: calc(50% - 25px);
 }
-.gifts{
+.gifts {
     box-shadow: 2px 2px #ccc;
 }
 
@@ -474,22 +474,7 @@
 .trend-item:hover .title{
     text-decoration: underline;
 }
-.products figure{
-    width: 200px;
-    height: 250px;
-    flex-shrink: 1;
-    font-size: 1.2rem;
-    font-family: "Playwrite FR Moderne", cursive;
-    text-align: center;
-    margin-top: 10px;
-    cursor: pointer
-}
-.products figure:hover{
-    text-decoration: underline;
-}
-.products img{
-    width: 100%;
-}
+
 
 
 .offers-slider-container{
@@ -587,3 +572,116 @@
     padding: 10px;
 }
 
+
+
+
+.products-display, .recommendations-display{
+width: 100%;
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: center; 
+  gap: 1.5rem; 
+  padding: 1rem;
+}
+
+.products-display figure {
+  flex: 1 1 150px; /* grow/shrink with a minimum width */
+   max-width: 200px;
+   max-height: 250px;
+  text-align: center;
+  font-size: 1.2rem;
+  margin-top: 10px;
+  
+    font-family: "Playwrite FR Moderne", cursive;
+cursor: pointer
+
+}
+
+.products-display img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
+.products-display figure:hover {
+    text-decoration: underline;
+}
+
+
+@media (max-width: 768px) {
+  .products-display, .recommendations-display{
+    justify-content: space-around;
+  }
+  .products-display figure  ,.recommendations-display figure {
+    flex: 1 1 120px;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .products-display, .recommendations-display {
+    gap: 1rem;
+  }
+  .products-display figure , .recommendations-display-figure{
+    flex: 1 1 100px;
+  }
+}
+.chat-window {
+    min-width: 400px;
+    min-height : 400px;
+    width: 90%;
+    border: 1px solid #82853e;
+    box-shadow: 1px 1px 5px #82853e;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+  .chat-messages {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    display: flex;          /* Add this */
+    flex-direction: column; /* Add this */
+  }
+
+  .chat-input {
+    display: flex;
+    border: 1px solid #82853e;
+  }
+  
+  .chat-input input {
+    outline: none;
+    flex: 1;
+    padding: 10px;
+    border: none;
+  }
+  
+  .chat-input button {
+    background: #82853e;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+  }
+
+  .chat-msg {
+    margin: 5px 0;
+    padding: 8px;
+    border-radius: 8px;
+    max-width: 80%;
+  }
+  
+  .chat-msg.user {
+    background: #f1f0f0;
+    align-self: flex-end;
+  }
+  
+  .chat-msg.bot {
+    align-self: flex-start;
+  }
+
+  @media screen  and (max-width:480px){
+    .chat-window{
+        min-width : 200px;
+    }
+}

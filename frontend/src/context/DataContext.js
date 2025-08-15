@@ -46,12 +46,12 @@ export const DataProvider = ({children})=>{
             (priceRange === 1 ? item.price < 700 : 
             priceRange === 2 ? (item.price >= 700 && parseInt(item.price) < 1200) : 
             priceRange === 3 ?item.price >= 1200 : item.price > 0) &&
-            (reviewRange === 1 ? item.reviews < 25 : 
-            reviewRange === 2 ? (item.reviews >= 25 && item.reviews < 75) : 
-            reviewRange === 3 ? item.reviews >= 75  : item.reviews > 0) &&
+            (reviewRange === 1 ? item.reviews.length < 25 : 
+            reviewRange === 2 ? (item.reviews.length >= 25 && item.reviews.length < 75) : 
+            reviewRange === 3 ? item.reviews.length >= 75  : item.reviews.length >= 0) &&
             (ratingRange === 1 ? item.ratings < 4.6 : 
             ratingRange === 2 ? (item.ratings >= 4.6 && item.ratings < 4.8) : 
-            ratingRange === 3 ? item.ratings >= 4.8  : item.ratings > 0)
+            ratingRange === 3 ? item.ratings >= 4.8  : item.ratings >= 0)
           );
           setSearchResults(filteredResults);
           setSearchedCakes(filteredResults.filter(item => item.type === "cake"));
@@ -59,6 +59,7 @@ export const DataProvider = ({children})=>{
           setSearchedPlants(filteredResults.filter(item => item.type === "plant"));
           setSearchedChocolates(filteredResults.filter(item => item.type === "chocolate"));
           setSearchedCombos(filteredResults.filter(item => item.type === "combo"));
+          setSearch('');
         };
     
         filterItems();

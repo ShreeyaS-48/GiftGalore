@@ -51,8 +51,8 @@ const Product = ({product}) => {
                 <div className='details'>
                     <p style={{fontWeight:"bold", fontSize:"1.2rem"}}>&#8377; {product.price}</p>
                     <p style={{textAlign:"right"}}>{product.details}</p>
-                    <p style={{fontSize:"1.2rem", color:"#82853e", display:"flex", alignItems:"center"}}>{product.ratings}<FaStar style={{fontSize:"1rem"}}/>{parseInt(product.reviews) >= 80 ? <span style={{marginLeft:"3px", backgroundColor:"dodgerblue", color:"white", fontSize:"0.8rem",fontWeight:"bold", padding:"3px"}}>BEST SELLER</span> : null}</p>
-                    <p style={{textAlign:"right"}}>{product.reviews} Reviews</p>
+                    <p style={{fontSize:"1.2rem", color:"#82853e", display:"flex", alignItems:"center"}}>{product.ratings}<FaStar style={{fontSize:"1rem"}}/>{parseInt(product.reviews.length) >= 80 ? <span style={{marginLeft:"3px", backgroundColor:"dodgerblue", color:"white", fontSize:"0.8rem",fontWeight:"bold", padding:"3px"}}>BEST SELLER</span> : null}</p>
+                    <p style={{textAlign:"right"}}>{product.reviews.length === 0 ? "No Reviews" : `${product.reviews.length} ${product.reviews.length === 1 ? "Review" : "Reviews"}`}</p>
                 </div>
                 <div style={{display:"flex", justifyContent:"space-between", alignItems:"center", width:"100%"}}>
                 <AddToCartButton

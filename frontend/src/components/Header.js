@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useContext } from 'react';
 import DataContext from '../context/DataContext';
-import {FaShoppingCart, FaUserCircle, FaSearch, FaMapMarker, FaArrowRight} 
+import {FaShoppingCart, FaUserCircle, FaSearch,FaComment} 
 from 'react-icons/fa';
 import{ Link } from 'react-router-dom';
 import AuthContext from '../context/AuthProvider';
@@ -53,6 +53,10 @@ useEffect(() => {
                 
             </div>
             <div className='cart-and-user'>
+            <Link to ="/chat" style={{color:"white", textDecoration:"none"}}>
+                    <FaComment/>
+                    {<p>Chat</p>}
+                </Link> 
                 <Link to ="/cart" style={{color:"white", textDecoration:"none"}}>
                     <FaShoppingCart/>
                     {<p>{cartItemsLength} {cartItemsLength === 1 ? "Item": "Items"}</p>}

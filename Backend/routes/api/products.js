@@ -2,7 +2,9 @@ import express from "express";
 import {
     getAllProducts,
     handleNewProduct,
-    getProduct
+    getProduct,
+    addProductReview,
+    getAllProductReviews
     
 } from "../../controllers/productsController.js";
 
@@ -15,10 +17,13 @@ const router = express.Router();
 // Product routes
 router.route('/')
   .get(getAllProducts)
-  router.route('/')
-    .post(verifyJWT, verifyRoles(ROLES_LIST.Admin), handleNewProduct)
+  .post(verifyJWT, verifyRoles(ROLES_LIST.Admin), handleNewProduct)
 
 router.route('/:id')
   .get(getProduct)
+
+router.route('/:id/reviews')
+  .post(verifyJWT, addProductReview)
+  .get(getAllProductReviews)
 
 export default router;
