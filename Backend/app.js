@@ -25,6 +25,8 @@ app.use(cookieParser())
 app.use(cors({
     origin: "https://giftgalore.netlify.app",
     credentials: true,
+    allowedHeaders: ["Content-Type", "Authorization"], // headers allowed from frontend
+    methods: ["GET","POST","PUT","PATCH","DELETE","OPTIONS"] // allowed HTTP methods
 }));
 
 //routes
