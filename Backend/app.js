@@ -19,8 +19,9 @@ const app = express();
 app.use(express.json());
 
 //cookie-parser
-
+app.use(cookieParser())
 //cors
+
 app.use(cors({
     origin: "https://giftgalore.netlify.app",
     credentials: true,
@@ -33,7 +34,7 @@ app.options("*", (req, res) => {
     res.sendStatus(200);
 });
 
-app.use(cookieParser())
+
 //routes
 app.use('/register', registerRouter);
 app.use('/auth', loginRouter);
