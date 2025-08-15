@@ -13,10 +13,9 @@ const ChatBot = () => {
     if (!input.trim()) return;
     const userMessage = { sender: "user", text: input };
     setMessages([...messages, userMessage]);
-
+    
     try {
       const res = await axiosPrivate.post(`/chat`, {message:input});
-      //= await axios.post("http://localhost:5000/chat", { message: input });
       console.log(res);
       const botMessage = { sender: "bot", text: res.data.reply };
       setMessages((prev) => [...prev, botMessage]);
@@ -27,7 +26,7 @@ const ChatBot = () => {
         { sender: "bot", text: "Error: Could not reach chatbot." }
     ]);
     }
-    
+
     setInput("");
   };
 

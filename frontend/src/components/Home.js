@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import Product from './Product.js';
 import BestSellers from './BestSellers.js';
 import GiftsInTrend from './GiftsInTrend.js';
-import RecommendedItems from './RecommendedItems.js';
 import Cookies from "js-cookie";
 import useAuth from '../hooks/useAuth'
 
@@ -34,11 +33,6 @@ const Home = () => {
               }
           </ul> 
           <GiftsInTrend/>
-          {auth?.accessToken && viewed && viewed.length > 0 ? (
-            <RecommendedItems
-                products={products.filter(p => viewed.includes(p._id))}
-            />
-            ) : null}
           {searchResults.length === 0 && search.length!== 0 && <p style={{textAlign:"center", width:"100%", height:"100px", marginTop:"15px"}}>No items match search</p>}
           <article className='products' style={{padding:"10px 0", margin:"15px auto 20px auto"}}>
                 <h2 style={{textAlign:"center"}}>Our Products</h2>

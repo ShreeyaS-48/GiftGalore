@@ -5,6 +5,7 @@ export const getResponse =  async (req, res) => {
       const { message } = req.body;
       console.log(message);
       const reply = await getChatResponse(message);
+      console.log(reply);
       res.json({ reply });
     } catch (error) {
       console.error(error);

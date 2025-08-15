@@ -12,23 +12,36 @@ import productsApiRouter from "./routes/api/products.js";
 import cartApiRouter from "./routes/api/cart.js";
 import orderApiRouter from "./routes/api/orders.js";
 import chatApiRouter from "./routes/api/chat.js";
+const allowedOrigins = [
+    "http://localhost:3000",
+    "https://giftgalore.netlify.app",
+]
 
 const app = express();
 
 //json body
-app.use(express.json());
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }));;
 
 //cookie-parser
 app.use(cookieParser())
 //cors
 
 app.use(cors({
-    origin: "https://giftgalore.netlify.app",
+    origin: function (origin, callback) {
+      // Allow requests with no origin (like mobile apps or curl requests)
+      if (!origin) return callback(null, true);
+  
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      } else {
+        return callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
-    allowedHeaders: ["Content-Type", "Authorization"], // headers allowed from frontend
-    methods: ["GET","POST","PUT","PATCH","DELETE","OPTIONS"] // allowed HTTP methods
-}));
-
+    allowedHeaders: ["Content-Type","Authorization"],
+    methods: ["GET","POST","PUT","PATCH","DELETE","OPTIONS"]
+  }));
 //routes
 app.use('/register', registerRouter);
 app.use('/auth', loginRouter);
