@@ -10,7 +10,7 @@ const verifyJWT = (req, res, next) =>{
         process.env.ACCESS_TOKEN_SECRET, //verify with middleware
         (err, decoded) => { //decoded info from jwt
             if(err) return res.sendStatus(401) // invalid token (forbidden -> token tampered)
-            req.user = decoded.UserInfo.name
+            req.user = decoded.UserInfo.user
             console.log(req.user)
             req.roles = decoded.UserInfo.roles
             next()
