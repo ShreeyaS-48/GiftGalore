@@ -24,7 +24,7 @@ const Cart = () => {
         }
         const res = await axiosPrivate.post("/cart/create-checkout-session", body);
         const session = res.data;
-        const result = stripe.redirectToCheckout({
+        const result = await stripe.redirectToCheckout({
             sessionId: session.id
         })
         if (result.error) {
