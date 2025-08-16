@@ -16,12 +16,15 @@ export const placeOrder = async (req, res) =>{
         const user = await User.findOne({_id: session.metadata.userId})
 
 
-        const cartItemIds = JSON.parse(session.metadata.cartItemIds); 
+        const cartItems = JSON.parse(session.metadata.cartItems); 
         const items = await Promise.all(
-                cartItemIds.map(async (id) => {
-            const product = await Product.findOne({_id: id});
-            return product;
-            }));
+            cartItems.map(async (item) => {
+                const product = await Product.findOne({ _id: item.productId });
+                return {
+                    product,
+                    quantity: item.quantity
+                };
+            }))
             console.log(items);
         const order = new Order({
             user: session.metadata.userId,
@@ -65,13 +68,16 @@ export const makePayment = async (req, res) =>{
             payment_method_types:["card"],
             line_items:lineItems,
             mode:"payment",
-            success_url:`${BASE_URL}/cart/payment-success`,
+            success_url:`${BASE_URL}/cart/payment-success?session_id={CHECKOUT_SESSION_ID}`,
             cancel_url:`${BASE_URL}/cart`,
             metadata: {
                 userId: userId.toString(),
-                address,
-                totalAmount:totalAmount.toString(),
-                cartItems: JSON.stringify(items.map(i => i.product._id)) ,
+                address: JSON.stringify(address),   // stringify objects too
+                totalAmount: totalAmount.toString(),
+                cartItems: JSON.stringify(items.map(i => ({
+                    productId: i.product._id,
+                    quantity: i.quantity
+                }))), 
               },
         })
         res.json({id: session.id});

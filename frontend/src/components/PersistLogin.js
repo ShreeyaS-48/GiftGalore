@@ -9,6 +9,7 @@ const PersistLogin = () => {
   const { auth } = useAuth();
 
   useEffect(() => {
+    console.log("persis login mounted")
     const verifyRefreshToken = async () => {
       try {
         await refresh(); // ask backend for new token
@@ -19,8 +20,12 @@ const PersistLogin = () => {
       }
     };
 
-    !auth?.accessToken ? verifyRefreshToken() : setLoading(false);
-  }, []);
+    if (!auth?.accessToken) {
+      verifyRefreshToken();
+    } else {
+      setLoading(false);
+    }
+  }, []); 
 
   return loading ? <p>Loading...</p> : <Outlet />;
 };

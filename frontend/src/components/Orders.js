@@ -1,12 +1,17 @@
 import React from 'react'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import AdminContext from '../context/AdminContext'
 import { useNavigate } from 'react-router-dom'
-const Orders = () => {
-  const navigate = useNavigate();
 
+const Orders = () => {
+  useEffect(()=>{
+    fetchOrders()
+  }, []);
+  const navigate = useNavigate();
+const {fetchOrders} = useContext(AdminContext);
     const goBack = () => navigate("/admin");
   const {orders, handleDelivery} = useContext(AdminContext);
+  console.log(orders);
   return (
     <main className='admin'>
         <h2>Orders</h2>

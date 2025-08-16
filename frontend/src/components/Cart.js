@@ -7,7 +7,7 @@ import {loadStripe} from '@stripe/stripe-js';
 const PUBLISHABLE_KEY = process.env.REACT_APP_PUBLISHABLE_KEY;
 
 const Cart = () => {
-    const { totalAmount, cartItems, handleDeleteAllItems, fetchOrders} = useContext(CartContext);
+    const { totalAmount, cartItems, handleDeleteAllItems} = useContext(CartContext);
     const [deliveryAddress, setDeliveryAddress] = useState("");
     const axiosPrivate = useAxiosPrivate();
     const [fetchError, setFetchError] = useState(null);
@@ -24,6 +24,7 @@ const Cart = () => {
         }
         const res = await axiosPrivate.post("/cart/create-checkout-session", body);
         const session = res.data;
+
         const result = await stripe.redirectToCheckout({
             sessionId: session.id
         })

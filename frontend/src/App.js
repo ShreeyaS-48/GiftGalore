@@ -36,34 +36,38 @@ function App() {
         <AdminProvider>
       <CartProvider>
       <Routes>
-          <Route path="/" element={<Layout />}>
-              <Route index element={<Home />} />
-              <Route path="auth" element={<Login />} />
-              <Route path="register" element={<Register />} />
-              <Route path="products/cakes" element={<Cakes />} />
-              <Route path="products/bouquets" element={<Bouquets />} />
-              <Route path="products/plants" element={<Plants />} />
-              <Route path="products/chocolates" element={<Chocolates />} />
-              <Route path="products/combos" element={<Combos />} />
-              <Route path=":id" element={<ItemDetails />} />
-              <Route path="unauthorized" element={<Unauthorized/>}>
-            </Route>
-            <Route element={<PersistLogin />}>
-              <Route element={<RequireAuth allowedRoles={[ROLES.User]} />}>
+      
+  <Route path="/" element={<Layout />}>
+    {/* public routes */}
+    <Route element={<PersistLogin />}>
+    <Route index element={<Home />} />
+    <Route path="auth" element={<Login />} />
+    <Route path="register" element={<Register />} />
+    <Route path="unauthorized" element={<Unauthorized />} />
+    <Route path="products/cakes" element={<Cakes />} />
+    <Route path="products/bouquets" element={<Bouquets />} />
+    <Route path="products/plants" element={<Plants />} />
+    <Route path="products/chocolates" element={<Chocolates />} />
+    <Route path="products/combos" element={<Combos />} />
+    <Route path=":id" element={<ItemDetails />} />
 
-              <Route path="cart" element={<Cart />} />
-              <Route path="cart/payment-success" element={<PaymentSuccess />} />
-              <Route path="chat" element={<ChatBot />} />
-            </Route>
-            <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
-            <Route path="admin" element={<Admin />} />
-            <Route path="admin/users" element={<Users />} />
-            <Route path="admin/admins" element={<Admins />} />
-            <Route path="admin/orders" element={<Orders />} />
-            </Route>
-            </Route>
-          </Route>
-        </Routes>
+    {/* protected routes (wrapped in PersistLogin) */}
+    
+      <Route element={<RequireAuth allowedRoles={[ROLES.User]} />}>
+        <Route path="cart" element={<Cart />} />
+        <Route path="cart/payment-success" element={<PaymentSuccess />} />
+        <Route path="chat" element={<ChatBot />} />
+      </Route>
+
+      <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
+        <Route path="admin" element={<Admin />} />
+        <Route path="admin/users" element={<Users />} />
+        <Route path="admin/admins" element={<Admins />} />
+        <Route path="admin/orders" element={<Orders />} />
+      </Route>
+    </Route>
+  </Route>
+</Routes>
         
         </CartProvider>
         </AdminProvider>

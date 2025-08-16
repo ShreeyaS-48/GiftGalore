@@ -13,9 +13,9 @@ const Header = () => {
     const [userName, setUserName] = useState('Guest');
     const [cartItemsLength, setCartItemsLength] = useState(0);
 useEffect(() => {
-    if (auth?.name) {
+    if (auth?.user) {
         setCartItemsLength(cartItems.length);
-        setUserName(auth.name);
+        setUserName(auth.user);
     } else {
         setUserName('Guest');
         setCartItemsLength(0);

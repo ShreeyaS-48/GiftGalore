@@ -7,8 +7,8 @@ const PaymentSuccess = () => {
     const navigate = useNavigate();
     const goHome = () => navigate("/");
     const axiosPrivate = useAxiosPrivate();
-    const {handleDeleteAllItems, fetchOrders} = useContext(CartContext);
-
+    const {handleDeleteAllItems} = useContext(CartContext);
+    
     useEffect(() => {
         const query = new URLSearchParams(window.location.search);
         const sessionId = query.get("session_id");
@@ -19,7 +19,7 @@ const PaymentSuccess = () => {
               await axiosPrivate.post("/cart/payment-success", { sessionId });
               console.log("Payment confirmed & order updated");
                 handleDeleteAllItems();
-                fetchOrders();
+
             } catch (err) {
               console.error("Payment confirmation failed", err);
             }

@@ -78,12 +78,12 @@ const Login = () => {
 
     const getUser = async () =>{
         console.log("fetching user:")
-        if(!auth?.name)
+        if(!auth?.user)
             return;
         try{
             setIsLoading(true)
             console.log(auth);
-            const response = await axiosPrivate.get(`/admin/${auth.name}`);
+            const response = await axiosPrivate.get(`/admin/${auth.user}`);
             console.log("fetching user:", response.data)
             setUser(response.data);
             setFetchError(null);
@@ -95,14 +95,14 @@ const Login = () => {
         }
 
         useEffect(() => {
-            if (auth?.name) {
+            if (auth?.user) {
                 getUser();
             }
         }, [auth]);
     return (
                 <main className='login-page'>
                     <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
-                    {!auth?.name ? 
+                    {!auth?.user ? 
                     <form onSubmit={handleSubmit} className="form">
                         <h2>Sign In</h2>
                         <label htmlFor="name">Username:</label>

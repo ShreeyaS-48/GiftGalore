@@ -6,20 +6,19 @@ export const AuthProvider = ({ children }) => {
 
     const [auth, setAuth] = useState({});
     const axiosPrivate = useAxiosPrivate();
-    useEffect(()=>{
-        const logout= async() =>{
-        try {
-            await axiosPrivate.get("/logout", { withCredentials: true }); 
-        } catch (err) {
-            console.error("Logout error:", err);
-        } finally {
-            
-            setAuth({});
-        }}
-        logout();
-    },[])
+    
+    const logout= async() =>{
+    try {
+        await axiosPrivate.get("/logout", { withCredentials: true }); 
+    } catch (err) {
+        console.error("Logout error:", err);
+    } finally {
+        
+        setAuth({});
+    }}
+    
     return (
-        <AuthContext.Provider value={{ auth, setAuth }}>
+        <AuthContext.Provider value={{ auth, setAuth, logout }}>
             {children}
         </AuthContext.Provider>
     )
