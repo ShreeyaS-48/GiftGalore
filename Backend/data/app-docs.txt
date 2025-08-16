@@ -1,166 +1,63 @@
-## 1. Overview
-This project is a MERN stack e-commerce platform.
-It provides a smooth user experience for browsing products, viewing product details, reading reviews, and placing orders.
-The products are cakes, bouquets, plants, chocolates, combos including plants, chocolates, dry fruits.
-Price range of proucts is from Rs. 500 to 2000
-cakes of flavours - chocolate, vanila, mango
-bouquets of roses, jarbera, lily
-chocolates hampers of dairy milk, kitkat, ferrerro rocher
-plants - money plant, Aglaonem, jade, 
-
-The project supports:
-- Product categorisation
-- Product detail pages with reviews
-- User authentication (login/register)
-- Shopping cart & checkout
-- Order management
-- Responsive UI design
-
----
-
-## 2. Technology Stack
-**Frontend:**
-- React.js (Functional components + Hooks)
-- React Router (for navigation)
-- Axios (for API requests)
-- CSS Flexbox + Media Queries (for responsiveness)
-
-**Backend:**
-- Node.js + Express.js (API server)
-- MongoDB + Mongoose (Database)
-- bcrypt.js (password hashing)
-- JSON Web Token (JWT) for authentication
-
-**Other:**
-- Cookies for storing recently viewed products
-- Placeholder for chatbot integration
-
----
-
-## 3. Folder Structure
-
-```
-project-root/
-│
-├── backend/
-│   ├── models/
-│   │   ├── productModel.js
-│   │   ├── userModel.js
-│   │   ├── orderModel.js
-│   │
-│   ├── routes/
-│   │   ├── productRoutes.js
-│   │   ├── userRoutes.js
-│   │   ├── orderRoutes.js
-│   │
-│   ├── controllers/
-│   │   ├── productController.js
-│   │   ├── userController.js
-│   │   ├── orderController.js
-│   │
-│   ├── config/
-│   │   ├── db.js
-│   │
-│   ├── server.js
-│
-├── frontend/
-│   ├── src/
-│   │   ├── components/
-│   │   │   ├── ProductList.js
-│   │   │   ├── ProductDetails.js
-│   │   │   ├── Cart.js
-│   │   │   ├── Navbar.js
-│   │   │   ├── Footer.js
-│   │   │   ├── CategoryDisplay.js
-│   │   │
-│   │   ├── pages/
-│   │   │   ├── HomePage.js
-│   │   │   ├── LoginPage.js
-│   │   │   ├── RegisterPage.js
-│   │   │   ├── CheckoutPage.js
-│   │   │
-│   │   ├── App.js
-│   │   ├── index.js
-│   │   ├── App.css
-│
-└── README.md
-```
-
----
-
-## 4. Features
-
-### 4.1 Product Browsing
-- Homepage with category display (cakes, bouquets, plants, chocolates, combos)
-- Each category links to `/products/:category`
-- Product cards display image, name, price, and rating
-
-### 4.2 Product Details
-- Clicking on a product shows details (`/product/:id`)
-- Shows:
-  - Product image
-  - Name & description
-  - Price
-  - Reviews (user, comment, rating, createdAt)
-
-### 4.3 Reviews
-- Users can leave reviews (rating + comment)
-- Backend stores reviews in `product.reviews` array
-- Frontend displays reviews with user and date
-
-### 4.4 Cart & Checkout
-- Add products to cart
-- View cart, update quantities, remove items
-- Checkout process with address and payment simulation
-
-### 4.5 Recently Viewed Products
-- Products viewed are stored in browser cookies
-- Displayed in a "Recently Viewed" section on homepage
-- Filtered from full product list using `_id` matches
-
-### 4.6 Responsive Design
-- Flexbox layout with wrapping
-- Images adjust size on smaller screens
-- Full width display for small devices
-
----
-
-## 5. API Endpoints
-
-### **Product Routes**
-- `GET /api/products` → Get all products
-- `GET /api/products/:id` → Get single product by ID
-- `POST /api/products/:id/reviews` → Add review to a product
-
-### **User Routes**
-- `POST /api/users/login` → Login user
-- `POST /api/users/register` → Register user
-- `GET /api/users/profile` → Get user profile (auth required)
-
-### **Order Routes**
-- `POST /api/orders` → Create new order
-- `GET /api/orders/:id` → Get order details
-
----
-
-## 6. Chatbot Integration Plan
-The chatbot will:
-- Answer FAQs (delivery time, refund policy, payment methods)
-- Help users browse products by category or keyword
-- Track user queries for analytics
-- Integrate with existing API to fetch products dynamically
-
-The chatbot will use:
-- Backend API calls to `/api/products` for product search
-- Predefined FAQ database
-- AI integration for personalization
-
----
-
-## 7. Future Enhancements
-- AI-based recommendation system using TensorFlow.js
-- Advanced search & filtering
-- Wishlist functionality
-- Real payment gateway integration
-- Multi-language support
-
+GiftGalore is your one-stop shop for thoughtful gifts, delivered with care.
+1. Browsing Products
+You can shop by category (cakes, bouquets, plants, chocolates, combos).
+Click any product to see more details, reviews, and price.
+2. Product Details
+Each product page shows: image, name, description, price, and customer reviews.
+3. Adding to Cart
+Click “Add to Cart” to save items before checkout.
+You can change quantities or remove items in the cart.
+Placing an Order
+Add items to your cart and proceed to checkout.
+Once placed, you’ll see an order confirmation.
+Delivery Time
+Standard delivery: 2–5 days depending on location.
+Some cities may have same-day delivery for cakes and bouquets.
+Tracking Your Order
+Log in to your account and go to My Orders to check the status.
+Returns & Refunds
+Damaged or incorrect items are eligible for replacement or refund.
+Contact our support within 48 hours of delivery.
+1. What products do you sell?
+Cakes, bouquets, plants, chocolate hampers, and gift combos.
+2. What cake flavors are available?
+Chocolate, vanilla, and mango.
+3. What flowers are in your bouquets?
+Roses, gerbera, and lily.
+4. What brands are in chocolate hampers?
+Dairy Milk, KitKat, and Ferrero Rocher.
+5. What plants do you offer?
+Money plant, aglaonema, and jade plant.
+6. What is the price range?
+₹500 to ₹2000.
+7. How do I place an order?
+Add items to your cart, go to checkout, fill in your address, and confirm.
+8. How long is delivery?
+Usually 2–5 days, faster in some cities.
+9. Do you have same-day delivery?
+Yes, for select cakes and bouquets in some cities.
+10. Can I send gifts to another city?
+Yes, enter the recipient’s address at checkout.
+11. Do you deliver on Sundays?
+Yes, in most major cities.
+12. Can I customize my gift?
+Some products allow customization—check the product page.
+13. How do I track my order?
+Log in → My Orders → Track.
+14. Can I return or get a refund?
+Yes, for damaged or wrong items. Contact support within 48 hours.
+15. How do I leave a review?
+Log in, open the product page, click “Write a Review.”
+16. What payment methods do you accept?
+Currently secure simulated payment; real payment gateway coming soon.
+17. Can I schedule delivery for a specific date?
+Yes, for certain products—select the date at checkout if available.
+18. Do you have bulk order discounts?
+Yes, contact our support team for details.
+19. Can I order without an account?
+Currently, you need to register to place an order.
+20. What’s coming next to GiftGalore?
+Wishlist, AI gift suggestions, real payment gateway.
+Coming Soon
+Wishlist feature to save your favorite items.
+AI gift suggestions based on your preferences.

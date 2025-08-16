@@ -1,6 +1,7 @@
 import Cart from '../models/cart.model.js';
 import User from '../models/user.model.js';
 import Product from '../models/product.model.js';
+
 export const getCartItems = async (req, res) => {
     try {
       const userName = req.user; // from middleware that verifies token
@@ -129,3 +130,5 @@ export const getCartItems = async (req, res) => {
       res.status(500).json({ message: "Server error" });
     }
   }
+
+
