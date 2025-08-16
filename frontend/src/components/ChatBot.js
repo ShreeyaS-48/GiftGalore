@@ -33,6 +33,7 @@ const ChatBot = () => {
   return (
     <div className = 'chat' style={{display:"flex", flexFlow:"column", alignItems:"center"}}>
         <h2 style={{textAlign:"center", paddingTop:"5px", fontSize:"1.8rem"}}>Chat With Our Bot</h2>
+        <p style={{ textAlign:"center", paddingBottom:"10px"}}>I'm your GiftGalore chatbot. I'm here to help you with any questions or concerns you may have about GiftGalore's features, usage, and troubleshooting. </p>
         <div className = "chat-window" style ={{overflowY: "auto"}}>
             <div className="chat-messages" style={{width:"100%"}}>
                 {messages.map((m, i) => (

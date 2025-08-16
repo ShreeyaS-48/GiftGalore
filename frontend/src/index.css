@@ -245,13 +245,13 @@
 }
 .purchase{
     border: 1px solid #ccc;
-    min-height:150px;
+    min-height:200px;
     display: grid;
     place-content: center;
     box-shadow: 2px 2px 2px #aaa;
     flex-grow: 1;
     padding:5px;
-    max-height: 200px;
+    max-height: 300px;
 }
 .cart-aside{
     display:flex;
@@ -259,7 +259,7 @@
     justify-content: space-between;
     flex-grow: 1;
     
-    height: 70vh;
+    min-height: 70vh;
     gap: 10px;
     flex-shrink: 1;
 }
@@ -702,7 +702,7 @@ cursor: pointer
 }
 
 @media screen and (max-width: 480px) {
-    .chat-window {
+    .chat-window , .review-form{
         min-width: 250px;
     }
 

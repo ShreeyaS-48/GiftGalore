@@ -20,6 +20,7 @@ import { AdminProvider } from "./context/AdminContext";
 import Users from "./components/Users";
 import Admins from "./components/Admins";
 import Orders from "./components/Orders";
+import PaymentSuccess from "./components/PaymentSuccess";
 import ChatBot from "./components/ChatBot";
 const ROLES = {
   'User': 2001,
@@ -48,6 +49,7 @@ function App() {
             <Route path="unauthorized" element={<Unauthorized/>}></Route>
             <Route element={<RequireAuth allowedRoles={[ROLES.User]} />}>
             <Route path="cart" element={<Cart />} />
+            <Route path="cart/payment-success" element={<PaymentSuccess />} />
             <Route path="chat" element={<ChatBot />} />
             </Route>
             <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>

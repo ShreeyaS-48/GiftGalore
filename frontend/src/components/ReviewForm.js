@@ -35,7 +35,7 @@ const ReviewForm = () => {
   }
     
   return (
-    <form  onSubmit={handleSubmit} className='form' style={{width:"90%"}}>
+    <form  onSubmit={handleSubmit} className='review-form form' style={{width:"90%"}}>
         <h2>Share Your Review</h2>
         <label>Rate the product:</label>
             <input
