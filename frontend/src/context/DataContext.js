@@ -59,7 +59,7 @@ export const DataProvider = ({children})=>{
           setSearchedPlants(filteredResults.filter(item => item.type === "plant"));
           setSearchedChocolates(filteredResults.filter(item => item.type === "chocolate"));
           setSearchedCombos(filteredResults.filter(item => item.type === "combo"));
-          setSearch('');
+          //setSearch('');
         };
     
         filterItems();

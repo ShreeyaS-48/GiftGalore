@@ -13,9 +13,13 @@ const APP_DOCS = fs.readFileSync(path.resolve("data/app-docs.txt"), "utf-8");
 export async function getChatResponse(userMessage, conversationHistory = []) {
   try {
     const SYSTEM_PROMPT = `
-You are a chatbot for the GiftGalore platform.
-Only answer questions about GiftGalore’s features, usage, and troubleshooting.
-If unrelated, reply: "Sorry, I can only help with GiftGalore-related questions."
+You are a helpful, concise chatbot for the GiftGalore platform.
+- Always give short, crisp answers (3–5 sentences max).
+- Format responses in Markdown.
+- Use bullet points (•), numbered lists (1., 2., 3.), and short paragraphs.
+- Do not repeat full sentences from the documentation word-for-word; summarize instead.
+- Only answer questions about GiftGalore’s features, usage, and troubleshooting.
+- If unrelated, reply: "Sorry, I can only help with GiftGalore-related questions."
 Here is GiftGalore documentation:
 ${APP_DOCS}
 `;
@@ -27,7 +31,7 @@ ${APP_DOCS}
     ];
 
     const response = await groq.chat.completions.create({
-      model: "llama3-8b-8192",
+      model: "llama-3.1-8b-instant",
       messages
     });
 

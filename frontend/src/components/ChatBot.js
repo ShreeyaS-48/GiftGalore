@@ -1,5 +1,9 @@
 import { useState} from "react";
 import useAxiosPrivate from '../hooks/useAxiosPrivate';
+import ReactMarkdown from "react-markdown";
+function formatBotResponse(text) {
+  return text.replace(/(\d+\.)/g, "\n$1"); // ensures lists start on new lines
+}
 
 
 const ChatBot = () => {
@@ -17,7 +21,7 @@ const ChatBot = () => {
     try {
       const res = await axiosPrivate.post(`/chat`, {message:input});
       console.log(res);
-      const botMessage = { sender: "bot", text: res.data.reply };
+      const botMessage =  { sender: "bot", text: formatBotResponse(res.data.reply) };
       setMessages((prev) => [...prev, botMessage]);
     } catch (err) {
       console.error("Chat request failed:", err);
@@ -38,7 +42,7 @@ const ChatBot = () => {
             <div className="chat-messages" style={{width:"100%"}}>
                 {messages.map((m, i) => (
                 <div key={i} className={`chat-msg ${m.sender}`}>
-                    {m.text}
+                    <ReactMarkdown>{m.text}</ReactMarkdown>
                 </div>
                 ))}
             </div>
