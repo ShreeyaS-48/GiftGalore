@@ -714,3 +714,45 @@ cursor: pointer
         font-size: 0.9rem;
     }
 }
+
+
+.pagination {
+    margin: auto;
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    padding: 12px;
+  }
+  
+  .page-btn {
+    border: 1px solid #82853e;
+    background: #fff;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  
+  .page-btn:hover:not(:disabled) {
+    background: #f0f0f0;
+    border-color: #999;
+  }
+  
+  .page-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  .page-btn.active {
+    background: #82853e;
+    color: white;
+  }
+  
+  .dots {
+    padding: 6px 10px;
+    color: #666;
+    font-size: 14px;
+  }

@@ -79,7 +79,8 @@ const Cart = () => {
                             />
                             <button
                                 type="submit" onClick={makePayment}
-                                style={{backgroundColor:"#82853e", color:"white", minHeight:"35px", display:"block", fontSize:"1rem", margin:"10px auto", border:"none", outline:"none", padding:"5px"}}>
+                                style={{backgroundColor:"#82853e", color:"white", minHeight:"35px", display:"block", fontSize:"1rem", margin:"10px auto", border:"none", outline:"none", padding:"5px"}}
+                                disabled= {deliveryAddress == ""}>
                                 Proceed to Pay
                             </button>
                             </form>

@@ -2,15 +2,16 @@ import React from 'react'
 import { useContext, useEffect } from 'react'
 import AdminContext from '../context/AdminContext'
 import { useNavigate } from 'react-router-dom'
+import Pagination from './Pagination'
 
 const Orders = () => {
+  const navigate = useNavigate();
+  const {fetchOrders, ordersPage, setOrdersPage, totalOrdersPages} = useContext(AdminContext);
+  const goBack = () => navigate("/admin");
+  const {orders, handleDelivery} = useContext(AdminContext);
   useEffect(()=>{
     fetchOrders()
-  }, []);
-  const navigate = useNavigate();
-const {fetchOrders} = useContext(AdminContext);
-    const goBack = () => navigate("/admin");
-  const {orders, handleDelivery} = useContext(AdminContext);
+  }, [ordersPage]);
   console.log(orders);
   return (
     <main className='admin'>
@@ -75,6 +76,11 @@ const {fetchOrders} = useContext(AdminContext);
             </tr> )}
         </tbody>
         </table>
+        <Pagination
+  currentPage={ordersPage}
+  totalPages={totalOrdersPages}
+  onPageChange={(page) => setOrdersPage(page)}
+/>
         <div>
                 <button onClick={goBack} style={{display:"block", backgroundColor:"#82853e", color:"white", border:"none", outline:"none", padding: "7px", borderRadius:"3px", margin:"10px 0", textDecoration:"none"}}>Go Back</button>
         </div>

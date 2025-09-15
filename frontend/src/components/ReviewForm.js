@@ -9,9 +9,13 @@ const ReviewForm = () => {
   const location = useLocation();
   const [rating, setRating] = useState('');
   const [comment, setComment] = useState('');
+  const [attachments, setAttachments] = useState([]);
   const {auth} = useAuth();
   const { id } = useParams();
   const axiosPrivate = useAxiosPrivate();
+  const handleFileChange = (e) => {
+    setAttachments([...e.target.files]); // store selected files
+  };
   const handleSubmit = async (e) => {
       e.preventDefault();
       if (!auth?.accessToken) {

@@ -92,9 +92,17 @@ export const makePayment = async (req, res) =>{
 }
 
 export const getAllOrders = async (req, res) =>{
-    const orders = await Order.find();   
-    console.log(orders);
-    res.json(orders);
+    let { page, limit } = req.query;
+    page = parseInt(page) || 1;   // default page = 1
+    limit = parseInt(limit) || 5;
+    const skip = (page - 1) * limit;
+    const orders = await Order.find().skip(skip).limit(limit);   
+    const total = await Order.countDocuments();
+    res.json({page,
+        totalPages: 
+        Math.ceil(total / limit),
+        totalOrders: 
+        total ,orders});
 }
 
 export const orderDelivered = async(req, res) =>{

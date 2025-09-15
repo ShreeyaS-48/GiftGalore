@@ -11,14 +11,33 @@ export const AdminProvider = ({ children }) => {
     const [orders, setOrders] = useState([]);
     const [fetchError, setFetchError] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
+    const [ordersPage, setOrdersPage] = useState(1);
+    const [totalOrdersPages, setTotalOrdersPages] = useState(1);
+    const [usersPage, setUsersPage] = useState(1);
+    const [totalUsersPages, setTotalUsersPages] = useState(1);
     const fetchOrders = async () => {
       if (!auth?.accessToken) 
         return;
       setIsLoading(true)
         try {
-            const response = await axiosPrivate.get("/orders");
-            console.log("orders:" , response.data)
-            setOrders(response.data);
+            const response = await axiosPrivate.get(`/orders?page=${ordersPage}&limit=5`);
+            setOrders(response.data.orders);
+            setTotalOrdersPages(response.data.totalPages);
+            setFetchError(null);
+          } catch (err) {
+            setFetchError(err.message);
+          } finally {
+            setIsLoading(false);
+          }
+    };
+    const fetchUsers = async () => {
+      if (!auth?.accessToken) 
+        return;
+      setIsLoading(true)
+        try {
+            const response = await axiosPrivate.get(`/admin/users?page=${usersPage}&limit=5`);
+            setUsers(response.data.users);
+            setTotalUsersPages(response.data.totalPages);
             setFetchError(null);
           } catch (err) {
             setFetchError(err.message);
@@ -29,19 +48,7 @@ export const AdminProvider = ({ children }) => {
     useEffect(() => {
       if (!auth?.accessToken) 
         return;
-        const fetchUsers = async () => {
-          setIsLoading(true)
-            try {
-                const response = await axiosPrivate.get("/admin/users");
-                setUsers(response.data);
-                setFetchError(null);
-              } catch (err) {
-                setFetchError(err.message);
-              } finally {
-                setIsLoading(false);
-              }
-        };
-        
+
         const fetchAdmins = async () => {
           if (!auth?.accessToken) 
             return;
@@ -97,7 +104,8 @@ export const AdminProvider = ({ children }) => {
       }
     return (
         <AdminContext.Provider value={{ 
-           users, admins, handleDeleteUser, orders, fetchOrders, handleDelivery
+           users, admins, handleDeleteUser, orders, fetchOrders, handleDelivery, ordersPage, setOrdersPage, totalOrdersPages,
+           usersPage, setUsersPage, totalUsersPages, fetchUsers
              }}>
             {children}
         </AdminContext.Provider>

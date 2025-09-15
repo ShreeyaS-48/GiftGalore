@@ -1,12 +1,18 @@
 import React from 'react'
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import AdminContext from '../context/AdminContext';
 import { FaTrashAlt} from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-const Users = () => { 
-    const {users, handleDeleteUser} = useContext(AdminContext);
-    const navigate = useNavigate();
+import Pagination from './Pagination';
 
+const Users = () => { 
+
+    const {fetchUsers, users, handleDeleteUser, usersPage, setUsersPage, totalUsersPages} = useContext(AdminContext);
+    const navigate = useNavigate();
+    useEffect(()=>{
+        fetchUsers()
+      }, [usersPage]);
+      
     const goBack = () => navigate("/admin");
   return (
    <main className ="admin">
@@ -52,8 +58,13 @@ const Users = () => {
     </table> :
     <p>No Users</p>
     }
+    <Pagination
+    currentPage={usersPage}
+    totalPages={totalUsersPages}
+    onPageChange={(page) => setUsersPage(page)}
+    />
     <div>
-                <button onClick={goBack} style={{display:"block", backgroundColor:"#82853e", color:"white", border:"none", outline:"none", padding: "7px", borderRadius:"3px", margin:"10px 0", textDecoration:"none"}}>Go Back</button>
+        <button onClick={goBack} style={{display:"block", backgroundColor:"#82853e", color:"white", border:"none", outline:"none", padding: "7px", borderRadius:"3px", margin:"10px 0", textDecoration:"none"}}>Go Back</button>
         </div>
    </main>
    

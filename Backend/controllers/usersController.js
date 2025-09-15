@@ -2,13 +2,26 @@ import User from "../models/user.model.js";
 
 
 const getAllUsers = async (req, res) =>{
-    const users = await User.find({ 'roles.Admin': { $exists: false } });
+    let { page, limit } = req.query;
+    page = parseInt(page) || 1;   // default page = 1
+    limit = parseInt(limit) || 5;
+    const skip = (page - 1) * limit;
+    const users = await User.find({ 'roles.Admin': { $exists: false } }).skip(skip).limit(limit);
+    const total = await User.countDocuments({ 'roles.Admin': { $exists: false } });
     if (!users.length) {
         return res.status(204).json({ message: 'No non-admin users found' });
     }
-    
-    res.json(users);
+    res.json({page,
+        totalPages: 
+        Math.ceil(total / limit),
+        totalUsers: 
+        total,
+        users});
 }
+
+
+
+
 const getAllAdmins = async (req, res) =>{
     const users = await User.find({ 'roles.Admin': { $exists: true } });
     if (!users.length) {
