@@ -512,7 +512,7 @@
     margin: 5px auto;
     text-align: center;
 }
-.form input, .form textarea, .form select{
+.form input, .form textarea, .form select {
     display:block;
     width: 90%;
     margin: 3px auto;
@@ -524,7 +524,16 @@
     letter-spacing: 1px;
 }
 
-
+.reviewFiles {
+    list-style-type: none;
+    display:block;
+    width: 90%;
+    margin: 3px auto;
+    line-height: 1.5rem;
+    outline: none;
+    padding: 3px;
+    font-size: 1rem;
+}
 
 .offscreen {
     position: absolute;

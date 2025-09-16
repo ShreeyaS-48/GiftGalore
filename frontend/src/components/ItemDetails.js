@@ -101,15 +101,60 @@ const ItemDetails = () => {
                 </div>
             </div>
 
-            <div style={{ margin:"15px",display: "flex", alignItems: "center", flexDirection:"column", justifyItems:"center" ,width:"100%"}}>
+            <div style={{ margin:"15px 0",display: "flex", alignItems: "center", flexDirection:"column", justifyItems:"center" ,width:"100%"}}>
+            <h3 style={{ fontSize: "1.5rem" , width:"100%"}} >Customer Reviews</h3>
+                <div style={{width:"100%",display: "flex", flexDirection:"column"}}>
                 {reviews.length > 0 ? (
                     <div style = {{width:"100%"}}>
-                        <h3 style={{ fontSize: "1.5rem" }} >Customer Reviews</h3>
                         <ul style={{ listStyleType:"none"}}>
                             {reviews.map((review) => (
-                            <li key={review._id} style={{ marginBottom: "1rem" }}>
+                            <li key={review._id} style={{ marginBottom: "1rem", borderBottom:"1px solid #ccc" }}>
                                 <strong>Rating:</strong> {review.rating} <FaStar style={{ color: "#82853e" }} /> <br />
                                 <strong>Comment:</strong> {review.comment} <br />
+                                {review.attachments && review.attachments.length > 0 && (
+            <div
+              style={{
+                marginTop: "0.5rem",
+                display: "flex",
+                flexWrap: "wrap",
+                gap: "10px",
+              }}
+            >
+              {review.attachments.map((file, i) => (
+                <div key={i} style={{ maxWidth: "150px" }}>
+                  {file.mimetype.startsWith("image/") ? (
+                    <img
+                      src={file.url}
+                      alt="review attachment"
+                      style={{
+                        width: "100%",
+                        height: "auto",
+                        borderRadius: "5px",
+                      }}
+                    />
+                  ) : file.mimetype.startsWith("video/") ? (
+                    <video
+                      src={file.url}
+                      controls
+                      style={{
+                        width: "100%",
+                        borderRadius: "5px",
+                      }}
+                    />
+                  ) : (
+                    <a
+                      href={file.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      📎 Attachment
+                    </a>
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
+
                                 <small>
                                 Posted on {new Date(review.createdAt).toLocaleDateString()}
                                 </small>
@@ -118,8 +163,9 @@ const ItemDetails = () => {
                         </ul>
                     </div>
                     ) : (
-                    <p>No reviews yet.</p>
+                    <p style={{margin:"20px 0", paddingBottom: "10px", width:"100%", borderBottom:"1px solid #ccc"}}>No reviews yet.</p>
                 )}
+              </div>
                 <ReviewForm/>
             </div>
             

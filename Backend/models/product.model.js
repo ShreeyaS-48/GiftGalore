@@ -1,4 +1,11 @@
 import mongoose from "mongoose";
+const attachmentSchema = new mongoose.Schema({
+  url: String,
+  public_id: String,
+  mimetype: String,
+  size: Number
+}, { _id: false });
+
 const reviewSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
@@ -15,6 +22,7 @@ const reviewSchema = new mongoose.Schema({
     type: String,
     trim: true,
   },
+  attachments: [attachmentSchema],
   createdAt: {
     type: Date,
     default: Date.now,

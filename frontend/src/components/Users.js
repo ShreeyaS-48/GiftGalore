@@ -12,7 +12,7 @@ const Users = () => {
     useEffect(()=>{
         fetchUsers()
       }, [usersPage]);
-      
+
     const goBack = () => navigate("/admin");
   return (
    <main className ="admin">

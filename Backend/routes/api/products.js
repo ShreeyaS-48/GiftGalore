@@ -1,4 +1,5 @@
 import express from "express";
+import upload from "../../Middleware/upload.js";
 import {
     getAllProducts,
     handleNewProduct,
@@ -23,7 +24,7 @@ router.route('/:id')
   .get(getProduct)
 
 router.route('/:id/reviews')
-  .post(verifyJWT, addProductReview)
+  .post(verifyJWT, upload.array("attachments", 3),addProductReview)
   .get(getAllProductReviews)
 
 export default router;

@@ -1,5 +1,7 @@
 import Product from "../models/product.model.js";
 import User from "../models/user.model.js";
+import streamifier from "streamifier";
+import cloudinary from "../util/cloudinary.js"; 
 
 const handleNewProduct = async (req, res) => {
     const { type, title, price, details, reviews, ratings, imgURL, img2, img3, img4 } = req.body;
@@ -65,11 +67,39 @@ const addProductReview = async (req, res) => {
     }
 
     const { rating, comment } = req.body;
+    console.log("Files received:", req.files);
+    const attachments = [];
+    if (req.files && req.files.length > 0) {
+      for (const file of req.files) {
+        // use upload_stream to upload buffer
+        const result = await new Promise((resolve, reject) => {
+          const stream = cloudinary.uploader.upload_stream(
+            { folder: "reviews" },
+            (error, result) => {
+              if (error) return reject(error);
+              resolve(result);
+            }
+          );
+          streamifier.createReadStream(file.buffer).pipe(stream);
+        });
+
+        attachments.push({
+          url: result.secure_url,
+          public_id: result.public_id,
+          mimetype: file.mimetype,
+          size: file.size
+        });
+      }
+    }
+
     const review = {
-        user: userId,
-        rating: Number(rating),
-        comment,
-      };
+      user: user._id,
+      rating: Number(rating),
+      comment,
+      attachments
+    };
+    
+    
 
     product.reviews.push(review);
     
