@@ -9,7 +9,7 @@ export const AuthProvider = ({ children }) => {
     
     const logout= async() =>{
     try {
-        await axiosPrivate.get("/logout", { withCredentials: true }); 
+        await axiosPrivate.post("/logout", { withCredentials: true }); 
     } catch (err) {
         console.error("Logout error:", err);
     } finally {
