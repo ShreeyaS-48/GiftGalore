@@ -47,8 +47,10 @@ const getAllProductReviews = async (req, res)=>{
     if (!product) {
         return res.status(204).json({ "message": `No product matches ${req.params.id}` });
     }
-    console.log(product.reviews);
-    res.json(product.reviews);
+    const firstFiveReviews = product.reviews.slice(0, 5);
+
+    console.log(product.firstFiveReviews);
+    res.json(product.firstFiveReviews);
 }
 
 const addProductReview = async (req, res) => {

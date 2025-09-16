@@ -24,6 +24,7 @@ function saveViewedProduct(productId) {
 
 
 const ItemDetails = () => {
+  const {fetchProducts }= useContext(DataContext);
     const { id } = useParams();
     const axiosPrivate = useAxiosPrivate();
     const { products } = useContext(DataContext);
@@ -40,6 +41,7 @@ const ItemDetails = () => {
               const response = await axiosPrivate.get(`/products/${id}/reviews`);
               console.log(response);
               setReviews(response.data);
+              fetchProducts();
               setFetchError(null);
             } catch (err) {
               setFetchError(err.message);
