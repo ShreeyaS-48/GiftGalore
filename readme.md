@@ -96,13 +96,13 @@ This project is developed to showcase how **cutting-edge technology** can transf
 
 ### Demo Video
 
-- **Link to Demo:** (https://www.youtube.com/watch?v=Pyq0wUSaLoE)
+- **Link to Demo:** https://www.youtube.com/watch?v=Pyq0wUSaLoE
 
 ### Live Deployment
 
 - **Frontend:** Netlify
 - **Backend:** Render
-- **Link to Website:** (https://giftgalore.netlify.app/)
+- **Link to Website:** https://giftgalore.netlify.app/
 
 ### Demo accounts
 
