@@ -10,7 +10,7 @@ This project is developed to showcase how **cutting-edge technology** can transf
 
 ## Features
 
-### Core E-Commerce
+### Core E-Commerce Features
 
 - Category-wise product browsing (Cakes, Chocolates, Bouquets, Plants, Combos).
 - Role-based access for **admins** and **users**.
@@ -43,12 +43,18 @@ This project is developed to showcase how **cutting-edge technology** can transf
 
 - **Frontend:** React.js, CSS, HTML5
 - **Backend:** Node.js, Express.js
-- **Database:** MongoDB (Mongoose models for Users, Products, Orders, Reviews, Carts)
+- **Database:** MongoDB , Mongoose models
 - **Authentication:** JSON Web Tokens (JWT)
 - **Payments:** Stripe API
 - **Machine Learning:** Python
 - **Chatbot:** Groq’s LLaMA 3 integrated with Node backend
 - **Other:** Node-Cron for scheduled tasks
+
+## Screenshots
+
+### Home Page
+
+![alt text](Screenshots/HomePage.png)
 
 ## Demo
 
@@ -58,4 +64,4 @@ This project is developed to showcase how **cutting-edge technology** can transf
 
 - **Frontend:** Netlify
 - **Backend:** Render
-- **Link to Website:** https://giftgalore.netlify.app/
+- **Link to Website:** (https://giftgalore.netlify.app/)
