@@ -9,7 +9,6 @@ const PersistLogin = () => {
   const { auth } = useAuth();
 
   useEffect(() => {
-    console.log("persis login mounted")
     const verifyRefreshToken = async () => {
       try {
         await refresh(); // ask backend for new token

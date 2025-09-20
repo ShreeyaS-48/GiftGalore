@@ -566,7 +566,7 @@
     display: inline-block;
 }
 
-.users, .orders{
+.users, .orders, .association-rules{
     margin: auto;
     width: 90%;
     
@@ -575,7 +575,7 @@
     margin-bottom: 20px;
 }
 
-.users th, .users td, .orders td, .orders th{
+.users th, .users td, .orders td, .orders th, .association-rules td, .association-rules th{
     border: 1px solid #82853e;
     text-align: left;
     padding: 10px;
@@ -764,4 +764,22 @@ cursor: pointer
     padding: 6px 10px;
     color: #666;
     font-size: 14px;
+  }
+
+  .recommended-grid {
+    display: grid;
+    gap: 10px; /* small gap */
+    grid-template-columns: repeat(3, 300px); /* 3 columns by default */
+  }
+  
+  @media (max-width: 768px) {
+    .recommended-grid {
+      grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .recommended-grid {
+      grid-template-columns: 1fr; /* 1 column on phones */
+    }
   }

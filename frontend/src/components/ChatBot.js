@@ -20,7 +20,6 @@ const ChatBot = () => {
     
     try {
       const res = await axiosPrivate.post(`/chat`, {message:input});
-      console.log(res);
       const botMessage =  { sender: "bot", text: formatBotResponse(res.data.reply) };
       setMessages((prev) => [...prev, botMessage]);
     } catch (err) {

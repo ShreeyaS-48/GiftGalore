@@ -3,6 +3,7 @@ import User from "../models/user.model.js";
 import dotenv from "dotenv";
 import Stripe from "stripe";
 import Product from "../models/product.model.js";
+import Recommendation from "../models/recommendation.model.js";
 dotenv.config();
 
 
@@ -25,7 +26,6 @@ export const placeOrder = async (req, res) =>{
                     quantity: item.quantity
                 };
             }))
-            console.log(items);
         const order = new Order({
             user: session.metadata.userId,
             items,
@@ -36,7 +36,6 @@ export const placeOrder = async (req, res) =>{
             name: user.name
           });
           await order.save();
-            console.log(order);
             res.status(200).json({ message: "Order Placed" });
       } else {
         res.status(400).json({ message: "Payment not completed" });
@@ -63,7 +62,6 @@ export const makePayment = async (req, res) =>{
             },
             quantity: item.quantity,
           }));
-          console.log(lineItems);
         const session = await stripe.checkout.sessions.create({
             payment_method_types:["card"],
             line_items:lineItems,
@@ -105,6 +103,12 @@ export const getAllOrders = async (req, res) =>{
         total ,orders});
 }
 
+export const getAllAssociations = async (req, res)=>{
+    const rules = await Recommendation.find()
+    if(!rules) return res.status(204).json({'message': 'No rules found'}) // no content
+    res.json(rules)
+  }
+
 export const orderDelivered = async(req, res) =>{
     try{    
         const {orderId} = req.body;
@@ -112,7 +116,7 @@ export const orderDelivered = async(req, res) =>{
     if(!order){
         return res.status(404).json({ message: "Order not found" });
     }
-    order.status = 1;
+    order.status = 3;
     await order.save();
     res.status(200).json({ message: "Order Delivered" });
     }
@@ -120,3 +124,4 @@ export const orderDelivered = async(req, res) =>{
         res.status(500).json({ message: "Server error" });
     }
 }
+

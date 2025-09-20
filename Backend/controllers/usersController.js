@@ -54,8 +54,38 @@ const getUser = async (req, res)=>{
     res.json(user);
 }
 
+const updateUserHistory = async (req, res)=>{
+    if(!req?.params?.name){
+        return res.status(400).json({ "message": 'ID parameter is required' });
+    }
+    const { productId } = req.body;
+    if (!productId) {
+        return res.status(400).json({ message: "Product ID is required" });
+      }
+    
+    const user = await User.findOne({ name : req.params.name}).exec();
+    if (!user) {
+        return res.status(204).json({ "message": `No user matches ${req.param.name}` });
+    }
+    user.recentProducts = [
+        ...user.recentProducts.filter(
+          (p) => p.toString() !== productId.toString()
+        ),
+        productId,
+      ];
+  
+      // Keep only the last 5
+      if (user.recentProducts.length > 5) {
+        user.recentProducts = user.recentProducts.slice(-5);
+      }
+  
+      await user.save();
+      res.status(200).json(user.recentProducts);
+}
+
 export {
     getAllUsers,
     deleteUser,
-    getUser, getAllAdmins
+    getUser, getAllAdmins,
+    updateUserHistory
 }

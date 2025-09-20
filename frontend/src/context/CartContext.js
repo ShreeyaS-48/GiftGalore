@@ -22,13 +22,8 @@ export const CartProvider = ({children})=>{
           return;
           setIsLoading(true)
           const response = await axiosPrivate.get("/cart");
-          console.log("cart data", response.data);
-          console.log(response.data.items)
           setTotalAmount(response.data.totalAmount);
-          
-
           setCartItems( response.data.items );
-
           setFetchError(null);
         } catch (err) {
           setFetchError(err.message);
@@ -38,10 +33,8 @@ export const CartProvider = ({children})=>{
         }
       };
       useEffect(() => {
-        console.log("cartItems updated", cartItems);
       }, [cartItems]);
     useEffect(() => {
-        console.log("fetching cartItems")
         getCartItems();
     }, [auth]);
       const handleAddToCart = async (id)=>{
@@ -59,7 +52,6 @@ export const CartProvider = ({children})=>{
           
 
           setCartItems( response.data.items );
-          console.log("Added to cart");
         } catch (err) {
           setFetchError(err.message);
         }
@@ -72,10 +64,7 @@ export const CartProvider = ({children})=>{
           });
           const response = await axiosPrivate.get("/cart");
           setTotalAmount(response.data.totalAmount);
-          
-
           setCartItems( response.data.items );
-          console.log("Decreased quantity");
         } catch (err) {
           setFetchError(err.message);
         }
@@ -88,10 +77,7 @@ export const CartProvider = ({children})=>{
           });
           const response = await axiosPrivate.get("/cart");
           setTotalAmount(response.data.totalAmount);
-          
-
           setCartItems( response.data.items );
-          console.log("Increased quantity");
         } catch (err) {
           setFetchError(err.message);
         }
@@ -104,10 +90,7 @@ export const CartProvider = ({children})=>{
           });
           const response = await axiosPrivate.get("/cart");
           setTotalAmount(response.data.totalAmount);
-          
-
           setCartItems( response.data.items );
-          console.log("Product Deleted");
 
         } catch (err) {
           setFetchError(err.message);
@@ -131,7 +114,6 @@ export const CartProvider = ({children})=>{
                 items: cartItems,
                 totalAmount
             });
-            console.log("placed order")
             handleDeleteAllItems();
             fetchOrders();
           }

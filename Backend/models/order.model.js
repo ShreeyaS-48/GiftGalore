@@ -28,7 +28,7 @@ const OrderSchema = mongoose.Schema(
       type: String,
     },
     status: {
-      type: Number,
+      type: Number, // 0 -> placed 1->processing 2->dispatched 3-> delivered
       default: 0,
     },
   },

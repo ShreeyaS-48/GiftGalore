@@ -17,7 +17,6 @@ const PaymentSuccess = () => {
           const confirmPayment = async () => {
             try {
               await axiosPrivate.post("/cart/payment-success", { sessionId });
-              console.log("Payment confirmed & order updated");
                 handleDeleteAllItems();
 
             } catch (err) {

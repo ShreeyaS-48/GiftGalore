@@ -13,8 +13,7 @@ const Cart = () => {
     const [fetchError, setFetchError] = useState(null);
     
     const makePayment = async (e) =>{
-        e.preventDefault();        //console.log(PUBLISHABLE_KEY);
-       // console.log(cartItems);
+        e.preventDefault();        
         try{
         const stripe = await loadStripe(PUBLISHABLE_KEY);
         const body = {

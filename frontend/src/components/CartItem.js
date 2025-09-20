@@ -3,7 +3,6 @@ import { FaPlus, FaMinus } from 'react-icons/fa'
 import { useContext } from 'react'
 import CartContext from '../context/CartContext'
 const CartItem = ({item, quantity}) => {
-        console.log(item)
       const {handleDecreaseItemQty, handleIncreaseItemQty, handleDelete} = useContext(CartContext);
       return (
         

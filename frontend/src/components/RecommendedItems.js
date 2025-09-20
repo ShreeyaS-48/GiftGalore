@@ -1,10 +1,10 @@
 import React from 'react'
 import BestSellerItem from './BestSellerItem';
+import { useContext } from 'react';
+import DataContext from '../context/DataContext';
 
-const RecommendedItems = ({products, isLoading, fetchError}) => {    
-    // frontend example\
-
-  
+const RecommendedItems = () => {    
+    const {products} = useContext(DataContext);
     return (
         <main className="recommendedItems" style={{padding:"30px 0 10px 0", margin:"auto 15px"}}>
             <article className='products'>

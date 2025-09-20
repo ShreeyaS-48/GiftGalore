@@ -1,6 +1,7 @@
 import Product from "../models/product.model.js";
 import User from "../models/user.model.js";
 import streamifier from "streamifier";
+import Recommendation from "../models/recommendation.model.js";
 import cloudinary from "../util/cloudinary.js"; 
 
 const handleNewProduct = async (req, res) => {
@@ -49,8 +50,8 @@ const getAllProductReviews = async (req, res)=>{
     }
     const firstFiveReviews = product.reviews.slice(0, 5);
 
-    console.log(product.firstFiveReviews);
-    res.json(product.firstFiveReviews);
+    
+    res.json(firstFiveReviews);
 }
 
 const addProductReview = async (req, res) => {
@@ -69,7 +70,6 @@ const addProductReview = async (req, res) => {
     }
 
     const { rating, comment } = req.body;
-    console.log("Files received:", req.files);
     const attachments = [];
     if (req.files && req.files.length > 0) {
       for (const file of req.files) {
@@ -112,4 +112,23 @@ const addProductReview = async (req, res) => {
 
 };
 
-export  {handleNewProduct, getAllProducts, getProduct, getAllProductReviews, addProductReview}
+const getRecommendations = async (req, res) => {
+  if (!req?.params?.id) {
+    return res.status(400).json({ message: 'ID parameter is required' });
+  }
+
+  try {
+    const recommendations = await Recommendation.find({ lhs: req.params.id })
+      .sort({ confidence: -1 })
+      .exec();
+
+    res.status(200).json(recommendations || []);
+  } catch (err) {
+    console.error("Error fetching recommendations:", err);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+
+
+export  {getRecommendations ,handleNewProduct, getAllProducts, getProduct, getAllProductReviews, addProductReview}

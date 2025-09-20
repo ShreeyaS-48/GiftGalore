@@ -1,5 +1,5 @@
 import express from "express"
-import {getAllUsers, getUser, deleteUser, getAllAdmins} from "../../controllers/usersController.js";
+import {getAllUsers, getUser, deleteUser, getAllAdmins, updateUserHistory} from "../../controllers/usersController.js";
 import ROLES_LIST from '../../util/roles_list.js';
 import verifyRoles from '../../Middleware/verifyRoles.js';
 const router = express.Router()
@@ -13,5 +13,6 @@ router.route('/')
 
 router.route('/:name')
     .get(getUser)
+    .patch(updateUserHistory)
 
 export default router;

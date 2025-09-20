@@ -38,7 +38,6 @@ export const DataProvider = ({children})=>{
       }, [auth]);
       useEffect(() => {
         const filterItems = () => {
-        console.log(products);
           const filteredResults = products.filter(
             item => 
               ((item.title).toLowerCase().includes(search.toLowerCase()) || 

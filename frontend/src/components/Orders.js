@@ -3,6 +3,7 @@ import { useContext, useEffect } from 'react'
 import AdminContext from '../context/AdminContext'
 import { useNavigate } from 'react-router-dom'
 import Pagination from './Pagination'
+import AssociationRules from './AssociationRules'
 
 const Orders = () => {
   const navigate = useNavigate();
@@ -12,7 +13,6 @@ const Orders = () => {
   useEffect(()=>{
     fetchOrders()
   }, [ordersPage]);
-  console.log(orders);
   return (
     <main className='admin'>
         <h2>Orders</h2>
@@ -57,30 +57,29 @@ const Orders = () => {
                 <td>
                   {order.totalAmount}
                 </td>
-                <td style={{ textAlign: 'left', verticalAlign: 'middle' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                    <input
-                      type="checkbox"
-                      checked={order.status === 1}
-                      disabled={order.status === 1}
-                      onChange={() => handleDelivery(order._id)}
-                      style={{
-                        cursor: order.status === 1 ? 'not-allowed' : 'pointer'
-                      }}
-                    />
-                    {order.status === 1 && (
+                <td>
+                    {order.status === 3 && (
                       <span style={{ color: 'green', fontWeight: 'bold' }}>Delivered</span>
                     )}
-                  </div>
+                    {order.status === 2 && (
+                      <span style={{ color: 'amber', fontWeight: 'bold' }}>Dispatched</span>
+                    )}
+                    {order.status === 1 && (
+                      <span style={{ color: 'Blue', fontWeight: 'bold' }}>Processing</span>
+                    )}
+                    {order.status === 0 && (
+                      <span style={{ color: 'Gray', fontWeight: 'bold' }}>Placed</span>
+                    )}
                 </td>
             </tr> )}
         </tbody>
         </table>
         <Pagination
-  currentPage={ordersPage}
-  totalPages={totalOrdersPages}
-  onPageChange={(page) => setOrdersPage(page)}
-/>
+      currentPage={ordersPage}
+      totalPages={totalOrdersPages}
+      onPageChange={(page) => setOrdersPage(page)}
+      />
+        <AssociationRules/>
         <div>
                 <button onClick={goBack} style={{display:"block", backgroundColor:"#82853e", color:"white", border:"none", outline:"none", padding: "7px", borderRadius:"3px", margin:"10px 0", textDecoration:"none"}}>Go Back</button>
         </div>

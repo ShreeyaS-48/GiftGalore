@@ -6,25 +6,12 @@ import DataContext from '../context/DataContext';
 import CartContext from '../context/CartContext';
 import ReviewForm from './ReviewForm';
 import useAxiosPrivate from '../hooks/useAxiosPrivate';
-import Cookies from "js-cookie";
-
-function saveViewedProduct(productId) {
-  let viewedProducts = Cookies.get("viewedProducts");
-  if (viewedProducts) {
-    viewedProducts = JSON.parse(viewedProducts);
-  } else {
-    viewedProducts = [];
-  }
-  if (!viewedProducts.includes(productId)) {
-    viewedProducts.unshift(productId);
-  }
-  viewedProducts = viewedProducts.slice(0, 5);
-  Cookies.set("viewedProducts", JSON.stringify(viewedProducts), { expires: 7 }); // 7 days
-}
-
+import useAuth from "../hooks/useAuth";
+import BestSellerItem from './BestSellerItem';
 
 const ItemDetails = () => {
-  const {fetchProducts }= useContext(DataContext);
+    const { auth } = useAuth();
+    const {fetchProducts }= useContext(DataContext);
     const { id } = useParams();
     const axiosPrivate = useAxiosPrivate();
     const { products } = useContext(DataContext);
@@ -34,12 +21,11 @@ const ItemDetails = () => {
     const [isLoading , setIsLoading] = useState(false);
     const [reviews, setReviews] = useState([]);
     const [fetchError, setFetchError] = useState(null);
-    
+    const [recommendedProducts, setRecommendedProducts] = useState([]);
     const fetchProductReviews = async () => {
         setIsLoading(true)
           try {
               const response = await axiosPrivate.get(`/products/${id}/reviews`);
-              console.log(response);
               setReviews(response.data);
               fetchProducts();
               setFetchError(null);
@@ -50,11 +36,34 @@ const ItemDetails = () => {
             }
             
       };
-
+      const fetchProductRecommendations = async () => {
+        setIsLoading(true)
+          try {
+              const response = await axiosPrivate.get(`/products/${id}/recommendations`);
+              setRecommendedProducts(response.data);
+              setFetchError(null);
+            } catch (err) {
+              setFetchError(err.message);
+            } finally {
+              setIsLoading(false);
+            }
+            
+      };
+      const saveViewedProduct = async(productID)=> {
+        try {
+          const response = await axiosPrivate.patch(`/admin/${auth.user}`, {
+            productId: id,
+          });
+          console.log(response);
+        } catch (err) {
+          setFetchError(err.message);
+        }
+      }
     useEffect(() => {
         fetchProductReviews();
+        fetchProductRecommendations();
         saveViewedProduct(id);
-    }, []);
+    }, [id]);
     return (
         <main className='item-details'>
             <div className="details-containder" style={{ display: "flex", alignItems: "start", gap: "15px", borderBottom:"1px solid #ccc"}}>
@@ -102,6 +111,32 @@ const ItemDetails = () => {
                     </div>
                 </div>
             </div>
+
+            
+            {recommendedProducts.length > 0 && (
+  <div style={{ margin: "15px 0", width: "100%" }}>
+    <h3 style={{ fontSize: "1.5rem", marginBottom: "10px" }}>
+      Frequently Brought Together
+    </h3>
+
+    <div
+      className='recommended-grid'
+    >
+      {[...new Set(recommendedProducts.flatMap((p) => p.rhs))]
+        .map((pid) => products.find((item) => item._id.toString() === pid))
+        .filter(Boolean)
+        .slice(0, 3)
+        .map((matchedProduct) => (
+          <div key={matchedProduct._id}>
+            <BestSellerItem item={matchedProduct} />
+          </div>
+        ))}
+    </div>
+  </div>
+)}
+
+          
+
 
             <div style={{ margin:"15px 0",display: "flex", alignItems: "center", flexDirection:"column", justifyItems:"center" ,width:"100%"}}>
             <h3 style={{ fontSize: "1.5rem" , width:"100%"}} >Customer Reviews</h3>

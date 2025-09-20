@@ -8,7 +8,7 @@ export const getCartItems = async (req, res) => {
       
       const user = await User.findOne({name: userName})
       const userId = user._id
-      console.log(userId)
+      
       const cart = await Cart.findOne({ user: userId }).populate("items.product");
   
       if (!cart) return res.status(404).json({ message: "Cart not found" });
@@ -22,8 +22,7 @@ export const getCartItems = async (req, res) => {
   export const addToCart = async (req, res) => {
 
     try {
-      const userName = req.user; // assuming `req.user` is already decoded from JWT
-      console.log("adding to ",req.user);
+      const userName = req.user; 
       const user = await User.findOne({ name: userName });
       if (!user) return res.status(404).json({ message: "User not found" });
   
@@ -94,7 +93,6 @@ export const getCartItems = async (req, res) => {
   export const updateQauntity = async(req, res) => {
     try {
       const userName = req.user; 
-      console.log("adding to ",req.user);
       const user = await User.findOne({ name: userName });
       if (!user) return res.status(404).json({ message: "User not found" });
   

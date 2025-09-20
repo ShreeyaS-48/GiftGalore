@@ -5,7 +5,8 @@ import {
     handleNewProduct,
     getProduct,
     addProductReview,
-    getAllProductReviews
+    getAllProductReviews,
+    getRecommendations
     
 } from "../../controllers/productsController.js";
 
@@ -22,6 +23,9 @@ router.route('/')
 
 router.route('/:id')
   .get(getProduct)
+
+router.route('/:id/recommendations')
+.get(getRecommendations)
 
 router.route('/:id/reviews')
   .post(verifyJWT, upload.array("attachments", 3),addProductReview)
