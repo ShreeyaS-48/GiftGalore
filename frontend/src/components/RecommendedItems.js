@@ -38,7 +38,7 @@ const RecommendedItems = () => {
       <article className="products">
         <h2 style={{ textAlign: "center" }}>Pick Up Where You Left Off</h2>
         <div className="recommendations-display">
-          {isLoading && <p style={{ margin: "5px" }}>Loading Cakes...</p>}
+          {isLoading && <p style={{ margin: "5px" }}>Loading Gifts...</p>}
           {!isLoading && fetchError && (
             <p style={{ margin: "5px", color: "Red" }}>Network Error</p>
           )}
