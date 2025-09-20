@@ -20,13 +20,15 @@ const ItemDetails = () => {
     const itemInCart = cartItems.find(cartItem => cartItem.product._id === id);
     const [isLoading , setIsLoading] = useState(false);
     const [reviews, setReviews] = useState([]);
+    const [sentiment, setSentiment] = useState([]);
     const [fetchError, setFetchError] = useState(null);
     const [recommendedProducts, setRecommendedProducts] = useState([]);
     const fetchProductReviews = async () => {
         setIsLoading(true)
           try {
               const response = await axiosPrivate.get(`/products/${id}/reviews`);
-              setReviews(response.data);
+              setReviews(response.data.reviews);
+              setSentiment(response.data.reviewSentiment);
               fetchProducts();
               setFetchError(null);
             } catch (err) {
@@ -136,9 +138,13 @@ const ItemDetails = () => {
 )}
 
           
-
-
-            <div style={{ margin:"15px 0",display: "flex", alignItems: "center", flexDirection:"column", justifyItems:"center" ,width:"100%"}}>
+            {reviews.length > 0 ? (
+              <div>
+                <h3 style={{ margin:"15px 0",fontSize: "1.5rem" , width:"100%"}} >Overall Customer Sentiment</h3>
+                <p>{sentiment}</p>
+              </div>
+            ) : <></>}
+            <div className ="reviews" style={{ margin:"15px 0",display: "flex", alignItems: "center", flexDirection:"column", justifyItems:"center" ,width:"100%"}}>
             <h3 style={{ fontSize: "1.5rem" , width:"100%"}} >Customer Reviews</h3>
                 <div style={{width:"100%",display: "flex", flexDirection:"column"}}>
                 {reviews.length > 0 ? (

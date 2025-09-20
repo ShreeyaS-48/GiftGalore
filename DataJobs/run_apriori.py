@@ -16,8 +16,6 @@ TOP_K_PER_ANTECEDENT = 5
 
 client = MongoClient(MONGO_URI)
 db = client[DB_NAME]
-orders = list(db.orders.find({}, {"items": 1}))
-transactions = []
 
 orders = list(db.orders.find({}, {"items": 1}))
 transactions = []

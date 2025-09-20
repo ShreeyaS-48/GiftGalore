@@ -62,7 +62,10 @@ const ProductSchema = mongoose.Schema({
   },
   img4: {
     type: String,
-  }
+  },
+  reviewSentiment: {
+    type: String,
+  },
 });
 
 const Product = mongoose.model("Product", ProductSchema);

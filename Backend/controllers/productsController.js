@@ -3,6 +3,8 @@ import User from "../models/user.model.js";
 import streamifier from "streamifier";
 import Recommendation from "../models/recommendation.model.js";
 import cloudinary from "../util/cloudinary.js"; 
+import Sentiment from "sentiment";
+const sentiment = new Sentiment();
 
 const handleNewProduct = async (req, res) => {
     const { type, title, price, details, reviews, ratings, imgURL, img2, img3, img4 } = req.body;
@@ -48,10 +50,32 @@ const getAllProductReviews = async (req, res)=>{
     if (!product) {
         return res.status(204).json({ "message": `No product matches ${req.params.id}` });
     }
+    const sentiments = product.reviews.map((review) => {
+      const text = review.comment || "";
+      const result = sentiment.analyze(text);
+      const score = result.score; // >0 positive, <0 negative, 0 neutral
+      if (score > 0) return "positive";
+      else if (score < 0) return "negative";
+      else return "neutral";
+    });
+    const counts = sentiments.reduce((acc, s) => {
+      acc[s] = (acc[s] ? acc[s] + 1 : 1);
+      return acc;
+    }, {});
+    const majoritySentiment = Object.keys(counts).reduce((a, b) =>
+      counts[a] > counts[b] ? a : b
+    );
+    const summary = majoritySentiment == "positive" ?  "Most customers are happy with this product.":
+    majoritySentiment == "negative" ?  "Most customers are dissatisfied with this product.": "Customer opinions are mixed or neutral."
+    product.reviewSentiment = summary;
+    await product.save();
     const firstFiveReviews = product.reviews.slice(0, 5);
-
+    const response = {
+      reviewSentiment: product.reviewSentiment || "not analyzed",
+      reviews: firstFiveReviews,
+    };
     
-    res.json(firstFiveReviews);
+    res.json(response);
 }
 
 const addProductReview = async (req, res) => {
@@ -105,8 +129,8 @@ const addProductReview = async (req, res) => {
 
     product.reviews.push(review);
     
+    
     product.ratings = product.reviews.reduce((acc, r) => acc + r.rating, 0) / product.reviews.length;
-
     await product.save();
     res.status(201).json({ message: "Review added" });
 
