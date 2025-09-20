@@ -27,12 +27,12 @@ ${APP_DOCS}
     const messages = [
       { role: "system", content: SYSTEM_PROMPT },
       ...conversationHistory,
-      { role: "user", content: userMessage }
+      { role: "user", content: userMessage },
     ];
 
     const response = await groq.chat.completions.create({
       model: "llama-3.1-8b-instant",
-      messages
+      messages,
     });
 
     return response.choices[0].message.content;

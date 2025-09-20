@@ -40,13 +40,13 @@ const userSchema = mongoose.Schema(
       type: Number,
       default: 0,
     },
-    refreshToken : String,
+    refreshToken: String,
     recentProducts: [
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Product",
       },
-    ]
+    ],
   },
   {
     timestamps: true,

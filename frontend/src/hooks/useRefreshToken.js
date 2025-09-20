@@ -1,32 +1,25 @@
-import axios from '../api/axios';
-import useAuth from './useAuth';
+import axios from "../api/axios";
+import useAuth from "./useAuth";
 
 const useRefreshToken = () => {
-    const { setAuth, auth } = useAuth();
+  const { setAuth, auth } = useAuth();
 
-    const refresh = async () => {
-        console.log("In useRereshtoken")
-        console.log(auth)
-       // if(auth?.name){
-        const response = await axios.get('/refresh', {
-            withCredentials: true
-        });
-        console.log("resfreshtoken")
-        console.log(response);
-        console.log("Retrying request")
-        setAuth(prev => {
-            console.log(JSON.stringify(prev));
-            console.log(response.data.accessToken);
-            return { ...prev, user: response.data.user,
-                roles: response.data.roles,accessToken: response.data.accessToken }
-        });
-        return response.data.accessToken;
-        //}
-        /*else{
-            console.log("Not authorised")
-        }*/
-    }
-    return refresh;
+  const refresh = async () => {
+    const response = await axios.get("/refresh", {
+      withCredentials: true,
+    });
+
+    setAuth((prev) => {
+      return {
+        ...prev,
+        user: response.data.user,
+        roles: response.data.roles,
+        accessToken: response.data.accessToken,
+      };
+    });
+    return response.data.accessToken;
+  };
+  return refresh;
 };
 
 export default useRefreshToken;

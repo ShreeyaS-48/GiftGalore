@@ -7,7 +7,6 @@ const app = express();
 const services = () => {
   cron.schedule("* * * * * *", () => {
     sendWelcomeEmail();
-    
   });
 };
 services();

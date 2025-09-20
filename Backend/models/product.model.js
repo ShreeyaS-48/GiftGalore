@@ -1,22 +1,25 @@
 import mongoose from "mongoose";
-const attachmentSchema = new mongoose.Schema({
-  url: String,
-  public_id: String,
-  mimetype: String,
-  size: Number
-}, { _id: false });
+const attachmentSchema = new mongoose.Schema(
+  {
+    url: String,
+    public_id: String,
+    mimetype: String,
+    size: Number,
+  },
+  { _id: false }
+);
 
 const reviewSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User", 
+    ref: "User",
     required: true,
   },
   rating: {
     type: Number,
     required: true,
     min: 0,
-    max: 5, 
+    max: 5,
   },
   comment: {
     type: String,
@@ -26,10 +29,10 @@ const reviewSchema = new mongoose.Schema({
   createdAt: {
     type: Date,
     default: Date.now,
-  }
+  },
 });
 const ProductSchema = mongoose.Schema({
-  type :{
+  type: {
     type: String,
     require: true,
   },
@@ -45,10 +48,10 @@ const ProductSchema = mongoose.Schema({
     type: String,
     require: true,
   },
-  reviews: [reviewSchema], 
+  reviews: [reviewSchema],
   ratings: {
     type: Number,
-    default: 0, 
+    default: 0,
   },
   imgURL: {
     type: String,

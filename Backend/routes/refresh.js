@@ -3,6 +3,6 @@ import handleRefreshToken from "../controllers/refreshController.js";
 
 const router = express.Router();
 
-router.get('/', handleRefreshToken);
+router.get("/", handleRefreshToken);
 
 export default router;

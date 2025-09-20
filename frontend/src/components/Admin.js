@@ -1,26 +1,35 @@
-import React from 'react'
-import { useContext, useEffect, useState } from 'react'
-import AdminContext from '../context/AdminContext'
-import DataContext from "../context/DataContext"
-import AddProductForm from './AddProductForm'
-import SalesAnalytics from './SalesAnalytics'
+import React from "react";
+import { useContext, useEffect, useState } from "react";
+import AdminContext from "../context/AdminContext";
+import DataContext from "../context/DataContext";
+import AddProductForm from "./AddProductForm";
+import SalesAnalytics from "./SalesAnalytics";
 const Admin = () => {
-    const {users, admins, orders} = useContext(AdminContext)
-    const [undelivered, setUndelivered] = useState(0);
-    const [productsLen, setProductsLen] = useState(0);
-    const {products} = useContext(DataContext);
-    useEffect(() => {
-    const pending = orders.filter(order => order.status !== 1).length;
+  const { users, admins, orders } = useContext(AdminContext);
+  const [undelivered, setUndelivered] = useState(0);
+  const [productsLen, setProductsLen] = useState(0);
+  const { products } = useContext(DataContext);
+  useEffect(() => {
+    const pending = orders.filter((order) => order.status !== 1).length;
     setUndelivered(pending);
   }, [orders]);
   useEffect(() => {
     setProductsLen(products.length);
   }, [products]);
   return (
-    <main className='admin' style={{width:"100%", display:"flex", flexDirection:"column", alignItems:"center", marginBottom:"20px"}}>
-        <h2>Admin Dashboard</h2>
-        <table className="users">
-          <tbody>
+    <main
+      className="admin"
+      style={{
+        width: "100%",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        marginBottom: "20px",
+      }}
+    >
+      <h2>Admin Dashboard</h2>
+      <table className="users">
+        <tbody>
           <tr>
             <td>Total Users</td>
             <td>{users.length}</td>
@@ -37,14 +46,12 @@ const Admin = () => {
             <td>Total Products</td>
             <td>{productsLen}</td>
           </tr>
-          </tbody>
-        </table>
-          <SalesAnalytics/>
-          <AddProductForm/>
-          
-        
+        </tbody>
+      </table>
+      <SalesAnalytics />
+      <AddProductForm />
     </main>
-  )
-}
+  );
+};
 
-export default Admin
+export default Admin;

@@ -24,7 +24,7 @@ const PersistLogin = () => {
     } else {
       setLoading(false);
     }
-  }, []); 
+  }, []);
 
   return loading ? <p>Loading...</p> : <Outlet />;
 };

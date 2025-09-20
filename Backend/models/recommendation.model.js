@@ -2,7 +2,7 @@
 import mongoose from "mongoose";
 
 const recommendationSchema = new mongoose.Schema({
-  lhs: [{ type: String }],   // store product ids as strings for simplicity
+  lhs: [{ type: String }], // store product ids as strings for simplicity
   rhs: [{ type: String }],
   support: Number,
   confidence: Number,
