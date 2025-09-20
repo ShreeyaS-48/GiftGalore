@@ -54,7 +54,43 @@ This project is developed to showcase how **cutting-edge technology** can transf
 
 ### Home Page
 
-![alt text](Screenshots/HomePage.png)
+![Home Page](Screenshots/HomePage.png)
+
+### Login
+
+![Sign In](Screenshots/SignIn.png)
+
+### Browsing
+
+![Browsing](Screenshots/Browsing.png)
+
+### Shopping Cart
+
+![Cart](Screenshots/Cart.png)
+
+### Payment
+
+![Payment](Screenshots/Payment.png)
+
+### Order Tracking
+
+![Order Tracking](<Screenshots/Order Tracking.png>)
+
+### Admin Dashboard
+
+![Admin Dashboard](<Screenshots/Admin Dashboard.png>)
+
+### Order Analytics
+
+![Order Analytics](<Screenshots/Order Analytics.png>)
+
+### Market Basket Analysis
+
+![Market Basket Analysis](<Screenshots/Market Basket Analysis.png>)
+
+### Chat Bot
+
+![ChatBot](Screenshots/ChatBot.png)
 
 ## Demo
 
