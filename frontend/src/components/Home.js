@@ -7,7 +7,7 @@ import BestSellers from './BestSellers.js';
 import GiftsInTrend from './GiftsInTrend.js';
 import Cookies from "js-cookie";
 import useAuth from '../hooks/useAuth'
-//import RecommendedItems from './RecommendedItems.js';
+import RecommendedItems from './RecommendedItems.js';
 const Home = () => {
   const {search ,products, searchResults} = useContext(DataContext);
   const {auth} = useAuth();
@@ -34,7 +34,7 @@ const Home = () => {
           </ul> 
           <GiftsInTrend/>
           {searchResults.length === 0 && search.length!== 0 && <p style={{textAlign:"center", width:"100%", height:"100px", marginTop:"15px"}}>No items match search</p>}
-          {/*<RecommendedItems/>*/}
+          <RecommendedItems/>
           <article className='products' style={{padding:"10px 0", margin:"15px auto 20px auto"}}>
                 <h2 style={{textAlign:"center"}}>Our Products</h2>
                 <div className='products-display' >

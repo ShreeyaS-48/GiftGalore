@@ -54,34 +54,51 @@ const getUser = async (req, res)=>{
     res.json(user);
 }
 
-const updateUserHistory = async (req, res)=>{
-    if(!req?.params?.name){
-        return res.status(400).json({ "message": 'ID parameter is required' });
+const updateUserHistory = async (req, res) => {
+    if (!req?.params?.name) {
+      return res.status(400).json({ message: "User name parameter is required" });
     }
+  
     const { productId } = req.body;
     if (!productId) {
-        return res.status(400).json({ message: "Product ID is required" });
-      }
-    
-    const user = await User.findOne({ name : req.params.name}).exec();
-    if (!user) {
-        return res.status(204).json({ "message": `No user matches ${req.param.name}` });
+      return res.status(400).json({ message: "Product ID is required" });
     }
-    user.recentProducts = [
-        ...user.recentProducts.filter(
-          (p) => p.toString() !== productId.toString()
-        ),
-        productId,
-      ];
   
-      // Keep only the last 5
-      if (user.recentProducts.length > 5) {
-        user.recentProducts = user.recentProducts.slice(-5);
+    try {
+      const user = await User.findOne({ name: req.params.name }).exec();
+      if (!user) {
+        return res.status(404).json({ message: `No user matches ${req.params.name}` });
       }
   
-      await user.save();
-      res.status(200).json(user.recentProducts);
-}
+      let recent = user.recentProducts.map((p) => p.toString());
+  
+      // Only add if not already present
+      if (!recent.includes(productId.toString())) {
+        recent.push(productId);
+  
+        // Keep only last 5
+        if (recent.length > 5) {
+          recent = recent.slice(-5);
+        }
+  
+        // Atomic update
+        await User.findOneAndUpdate(
+          { name: req.params.name },
+          { recentProducts: recent },
+          { new: true }
+        ).populate("recentProducts");
+      }
+  
+      const updatedUser = await User.findOne({ name: req.params.name }).populate("recentProducts");
+      res.status(200).json(updatedUser.recentProducts);
+  
+    } catch (err) {
+      console.error("Error updating history:", err);
+      res.status(500).json({ message: "Server error updating history" });
+    }
+  };
+  
+  
 
 export {
     getAllUsers,

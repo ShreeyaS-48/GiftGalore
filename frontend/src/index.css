@@ -593,20 +593,21 @@ width: 100%;
   padding: 1rem;
 }
 
-.products-display figure {
-  flex: 1 1 150px; /* grow/shrink with a minimum width */
-   max-width: 200px;
-   max-height: 250px;
-  text-align: center;
-  font-size: 1.2rem;
-  margin-top: 10px;
-  
-    font-family: "Playwrite FR Moderne", cursive;
-cursor: pointer
+.products-display figure , .recommendations-display figure{
+    flex: 1 1 150px; /* grow/shrink with a minimum width */
+     max-width: 200px;
+     max-height: 250px;
+    text-align: center;
+    font-size: 1.2rem;
+    margin-top: 10px;
+    cursor: pointer
+  }
 
-}
+  .products-display figure {
+      font-family: "Playwrite FR Moderne", cursive;
+  }
 
-.products-display img {
+.products-display img , .recommendations-display img{
   width: 100%;
   height: auto;
   border-radius: 8px;
