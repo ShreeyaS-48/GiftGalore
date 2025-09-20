@@ -10,20 +10,25 @@
 - Groq API key (for chatbot)
 - Cloudinary API key (for images)
 
----
-
 ## Clone the Repository
 
-````bash
+```bash
 git clone https://github.com/ShreeyaS-48/GiftGalore.git
 cd GiftGalore
 
+```
+
 ## Backend Setup
+
 ```bash
 cd Backend
 npm install
 
+```
+
 Create a .env file in /Backend with:
+
+```bash
 
 PORT=8000
 MONGO_URI=your_mongo_connection_string
@@ -32,10 +37,11 @@ REFRESH_TOKEN_SECRET=your_refresh_jwt_secret
 STRIPE_SECRET_KEY=your_stripe_secret
 GROQ_API_KEY=your_groq_key
 
+```
+
 ## Run Backend
+
 ```bash
 npm start
 
-
-
-````
+```
