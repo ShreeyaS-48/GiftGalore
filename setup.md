@@ -45,3 +45,39 @@ GROQ_API_KEY=your_groq_key
 npm start
 
 ```
+
+### Frontend Setup
+
+```bash
+cd ../Frontend
+npm install
+```
+
+### Run Frontend
+
+```bash
+npm start
+```
+
+### ML Services
+
+```bash
+cd DataJobs
+pip install -r requirements.txt
+python app.py
+```
+
+### Demo Accounts
+
+- Admin login:
+- Username: ABCD
+- Password: abc123ABC
+- Test user:
+- Username: ABCDE
+- Password: abc123ABC
+
+### Stripe Test Payments
+
+- Card Number: 5555 5555 5555 5555
+- Expiry: Any date in future
+- CVC: Any 3 digit number

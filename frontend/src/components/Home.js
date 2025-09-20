@@ -1,12 +1,12 @@
 import React from "react";
 import { useContext } from "react";
-import DataContext from "../context/DataContext";
+import DataContext from "../context/DataContext.js";
 import { Link } from "react-router-dom";
 import Product from "./Product.js";
 import BestSellers from "./BestSellers.js";
 import GiftsInTrend from "./GiftsInTrend.js";
 import Cookies from "js-cookie";
-import useAuth from "../hooks/useAuth";
+import useAuth from "../hooks/useAuth.js";
 import RecommendedItems from "./RecommendedItems.js";
 const Home = () => {
   const { search, products, searchResults } = useContext(DataContext);
