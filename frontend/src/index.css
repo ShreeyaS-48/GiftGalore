@@ -134,7 +134,7 @@
     font-weight: bold;
 }
 
-.cart,.item-details, .login-page, .admin, .chat{
+.cart,.item-details, .login-page, .admin, .chat, .order-tracking{
     margin-top: max(calc(12vh + 5vh), (48px + 30px));
 }
 .cart-headers{
@@ -252,6 +252,14 @@
     flex-grow: 1;
     padding:5px;
     max-height: 300px;
+}
+.order-history{
+    border: 1px solid #ccc;
+    min-height:200px;
+    display: grid;
+    box-shadow: 2px 2px 2px #aaa;
+    flex-grow: 1;
+    padding:5px;
 }
 .cart-aside{
     display:flex;
@@ -391,7 +399,7 @@
     }
 }
 
-.item-details{
+.item-details, .order-tracking{
     min-height:85vh;
     padding:5px;
 }
@@ -409,7 +417,7 @@
     width: 100%;
     height: 350px;
 }
-.gifts h2, .recommendedItems h2, .home h2{
+.gifts h2, .recommendedItems h2, .home h2, .order-tracking h2{
     font-size: 1.2rem;
     font-weight: normal;
     font-family: "Playwrite FR Moderne", cursive;
@@ -784,3 +792,37 @@ width: 100%;
       grid-template-columns: 1fr; /* 1 column on phones */
     }
   }
+
+  .analytics-cards {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+    justify-content: center;
+  }
+  
+  .card {
+    flex: 1 1 250px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 1px 1px 8px rgba(0,0,0,0.1);
+    background-color: #fff;
+  }
+  
+  .card h4 {
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+  
+  .chart-container {
+    margin-bottom: 30px;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #fff;
+  }
+  
+  
+
+  

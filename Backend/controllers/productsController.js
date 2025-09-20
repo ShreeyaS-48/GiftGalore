@@ -50,6 +50,12 @@ const getAllProductReviews = async (req, res)=>{
     if (!product) {
         return res.status(204).json({ "message": `No product matches ${req.params.id}` });
     }
+    if (!product.reviews || product.reviews.length === 0) {
+      return res.json({
+        reviewSentiment: "No reviews yet",
+        reviews: [],
+      });
+    }
     const sentiments = product.reviews.map((review) => {
       const text = review.comment || "";
       const result = sentiment.analyze(text);
@@ -63,7 +69,8 @@ const getAllProductReviews = async (req, res)=>{
       return acc;
     }, {});
     const majoritySentiment = Object.keys(counts).reduce((a, b) =>
-      counts[a] > counts[b] ? a : b
+      counts[a] > counts[b] ? a : b,
+    null
     );
     const summary = majoritySentiment == "positive" ?  "Most customers are happy with this product.":
     majoritySentiment == "negative" ?  "Most customers are dissatisfied with this product.": "Customer opinions are mixed or neutral."

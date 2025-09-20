@@ -102,7 +102,37 @@ export const getAllOrders = async (req, res) =>{
         totalOrders: 
         total ,orders});
 }
+export const getOrderAnalytics = async (req, res) =>{
+  const statusCounts = await Order.aggregate([
+    {
+      $group: {
+        _id: "$status",
+        count: { $sum: 1 },            // for Pie chart
+        totalAmount: { $sum: "$totalAmount" } // for average
+      }
+    }
+  ]);
 
+  const statusMap = ["Placed", "Processing", "Dispatched", "Delivered"];
+  const formattedStatus = statusCounts.map(s => ({
+    name: statusMap[s._id] || "Unknown",
+    value: s.count
+  }));
+
+  // totalOrders is sum of counts
+  const totalOrders = statusCounts.reduce((acc, s) => acc + s.count, 0);
+
+  // average order value
+  const totalRevenue = statusCounts.reduce((acc, s) => acc + s.totalAmount, 0);
+  const avgOrderValue = totalOrders > 0 ? totalRevenue / totalOrders : 0;
+
+  res.json({
+    statusCounts: formattedStatus,
+    avgOrderValue: avgOrderValue.toFixed(2),
+    totalOrders
+  });
+
+}
 export const getAllAssociations = async (req, res)=>{
     const rules = await Recommendation.find()
     if(!rules) return res.status(204).json({'message': 'No rules found'}) // no content
@@ -125,3 +155,80 @@ export const orderDelivered = async(req, res) =>{
     }
 }
 
+export const getSalesAnalytics = async (req, res) => {
+    try {
+        const now = new Date();
+    
+        // 📌 Daily sales (today)
+        const daily = await Order.aggregate([
+          { $match: { createdAt: { $gte: new Date(new Date().setHours(0, 0, 0, 0)) } } },
+          { $group: { _id: null, total: { $sum: "$totalAmount" } } }
+        ]);
+    
+        // 📌 Weekly sales (last 7 days)
+        const weekly = await Order.aggregate([
+          { $match: { createdAt: { $gte: new Date(now.setDate(now.getDate() - 7)) } } },
+          { $group: { _id: null, total: { $sum: "$totalAmount" } } }
+        ]);
+    
+        // 📌 Monthly sales (from 1st of this month)
+        const monthly = await Order.aggregate([
+          { $match: { createdAt: { $gte: new Date(new Date().getFullYear(), new Date().getMonth(), 1) } } },
+          { $group: { _id: null, total: { $sum: "$totalAmount" } } }
+        ]);
+    
+        // 📌 Category-wise sales (if items contain category field)
+        const categorySales = await Order.aggregate([
+          { $unwind: "$items" },
+          {
+            $group: {
+              _id: "$items.product.type", // ⚠️ make sure items contain `category`
+              totalSales: { $sum: { $multiply: ["$items.product.price", "$items.quantity"] } }
+            }
+          }
+        ]);
+    
+        // 📌 Revenue growth over last 7 days
+        const revenueGrowth = await Order.aggregate([
+          {
+            $group: {
+              _id: { $dateToString: { format: "%Y-%m-%d", date: "$createdAt" } },
+              totalRevenue: { $sum: "$totalAmount" }
+            }
+          },
+          { $sort: { _id: 1 } }
+        ]);
+    
+        res.json({
+          daily: daily[0]?.total || 0,
+          weekly: weekly[0]?.total || 0,
+          monthly: monthly[0]?.total || 0,
+          categorySales,
+          revenueGrowth
+        });
+      } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: "Error fetching sales analytics" });
+      }
+}
+
+export const getOrdersForUser = async (req, res) => {
+  try {
+    const userName = req.user; // from auth middleware
+
+    const user = await User.findOne({ name: userName });
+    if (!user) return res.status(404).json({ message: "User not found" });
+
+    // Only select _id, totalAmount, and status
+    const orders = await Order.find({ user: user._id }).populate('items.product', 'title price imgURL')
+      .sort({ createdAt: -1 }); // optional: most recent orders first
+
+    if (!orders || orders.length === 0)
+      return res.status(404).json({ message: "Orders not found" });
+
+    res.json(orders);
+  } catch (err) {
+    console.error("Error fetching user orders:", err);
+    res.status(500).json({ message: "Server error" });
+  }
+};

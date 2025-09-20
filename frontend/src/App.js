@@ -23,6 +23,7 @@ import Orders from "./components/Orders";
 import PaymentSuccess from "./components/PaymentSuccess";
 import PersistLogin from "./components/PersistLogin";
 import ChatBot from "./components/ChatBot";
+import OrderTracking from "./components/OrderTracking";
 const ROLES = {
   'User': 2001,
   'Editor': 1984,
@@ -57,6 +58,7 @@ function App() {
         <Route path="cart" element={<Cart />} />
         <Route path="cart/payment-success" element={<PaymentSuccess />} />
         <Route path="chat" element={<ChatBot />} />
+        <Route path="/order/:id" element={<OrderTracking />} />
       </Route>
 
       <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>

@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from 'react'
 import AdminContext from '../context/AdminContext'
 import DataContext from "../context/DataContext"
 import AddProductForm from './AddProductForm'
+import SalesAnalytics from './SalesAnalytics'
 const Admin = () => {
     const {users, admins, orders} = useContext(AdminContext)
     const [undelivered, setUndelivered] = useState(0);
@@ -38,7 +39,7 @@ const Admin = () => {
           </tr>
           </tbody>
         </table>
-
+          <SalesAnalytics/>
           <AddProductForm/>
           
         
