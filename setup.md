@@ -70,11 +70,11 @@ python app.py
 ### Demo Accounts
 
 - Admin login:
-- Username: ABCD
-- Password: abc123ABC
+  - Username: ABCD
+  - Password: abc123ABC
 - Test user:
-- Username: ABCDE
-- Password: abc123ABC
+  - Username: ABCDE
+  - Password: abc123ABC
 
 ### Stripe Test Payments
 

@@ -101,3 +101,12 @@ This project is developed to showcase how **cutting-edge technology** can transf
 - **Frontend:** Netlify
 - **Backend:** Render
 - **Link to Website:** (https://giftgalore.netlify.app/)
+
+### Demo accounts
+
+- Admin login:
+- Username: ABCD
+- Password: abc123ABC
+- Test user:
+- Username: ABCDE
+- Password: abc123ABC
