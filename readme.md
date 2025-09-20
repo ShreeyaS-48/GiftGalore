@@ -96,6 +96,8 @@ This project is developed to showcase how **cutting-edge technology** can transf
 
 ### Demo Video
 
+- **Link to Website:** (https://www.youtube.com/watch?v=Pyq0wUSaLoE)
+
 ### Live Deployment
 
 - **Frontend:** Netlify
@@ -105,8 +107,14 @@ This project is developed to showcase how **cutting-edge technology** can transf
 ### Demo accounts
 
 - Admin login:
-- Username: ABCD
-- Password: abc123ABC
+  - Username: ABCD
+  - Password: abc123ABC
 - Test user:
-- Username: ABCDE
-- Password: abc123ABC
+  - Username: ABCDE
+  - Password: abc123ABC
+
+### Stripe Test Payments
+
+- Card Number: 5555 5555 5555 5555
+- Expiry: Any date in future
+- CVC: Any 3 digit number
