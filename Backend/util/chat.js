@@ -10,13 +10,20 @@ const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 // Load app documentation
 const APP_DOCS = fs.readFileSync(path.resolve("data/app-docs.txt"), "utf-8");
 
-export async function getChatResponse(userMessage, conversationHistory = []) {
+export async function getChatResponse(conversation = []) {
   try {
     const SYSTEM_PROMPT = `
 You are a helpful, concise chatbot for the GiftGalore platform.
 - Always give short, crisp answers (3–5 sentences max).
 - Format responses in Markdown.
-- Use bullet points (•), numbered lists (1., 2., 3.), and short paragraphs.
+- Use:
+  - Numbered lists for steps
+  - Bulleted lists for options
+  - Bold for emphasis
+  - Italics for secondary emphasis
+  - Inline code for code or commands
+  - Code blocks for examples
+  - Tables if necessary
 - Do not repeat full sentences from the documentation word-for-word; summarize instead.
 - Only answer questions about GiftGalore’s features, usage, and troubleshooting.
 - If unrelated, reply: "Sorry, I can only help with GiftGalore-related questions."
@@ -26,8 +33,7 @@ ${APP_DOCS}
 
     const messages = [
       { role: "system", content: SYSTEM_PROMPT },
-      ...conversationHistory,
-      { role: "user", content: userMessage },
+      ...conversation,
     ];
 
     const response = await groq.chat.completions.create({

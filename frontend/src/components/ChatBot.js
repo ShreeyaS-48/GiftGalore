@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import ReactMarkdown from "react-markdown";
 function formatBotResponse(text) {
@@ -8,25 +8,44 @@ function formatBotResponse(text) {
 const ChatBot = () => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
-
+  useEffect(() => {
+    // Load saved messages when component mounts
+    const saved = localStorage.getItem("chatMessages");
+    if (saved) setMessages(JSON.parse(saved));
+  }, []);
+  const saveMessages = (msgs) => {
+    setMessages(msgs);
+    localStorage.setItem("chatMessages", JSON.stringify(msgs));
+  };
   const axiosPrivate = useAxiosPrivate();
   const sendMessage = async () => {
     if (!input.trim()) return;
     const userMessage = { sender: "user", text: input };
-    setMessages([...messages, userMessage]);
-
+    const updatedMessages = [...messages, userMessage];
+    setMessages(updatedMessages);
+    saveMessages(updatedMessages);
     try {
-      const res = await axiosPrivate.post(`/chat`, { message: input });
+      const res = await axiosPrivate.post(`/chat`, {
+        messages: updatedMessages.map((msg) => ({
+          role: msg.sender === "user" ? "user" : "assistant",
+          content: String(msg.text ?? ""),
+        })),
+      });
       const botMessage = {
-        sender: "bot",
+        sender: "assistant",
         text: formatBotResponse(res.data.reply),
       };
       setMessages((prev) => [...prev, botMessage]);
+      saveMessages([...updatedMessages, botMessage]);
     } catch (err) {
       console.error("Chat request failed:", err);
       setMessages((prev) => [
         ...prev,
-        { sender: "bot", text: "Error: Could not reach chatbot." },
+        { sender: "assistant", text: "Error: Could not reach chatbot." },
+      ]);
+      saveMessages([
+        ...updatedMessages,
+        { sender: "assistant", text: "Error: Could not reach chatbot." },
       ]);
     }
 

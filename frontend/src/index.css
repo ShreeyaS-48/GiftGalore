@@ -712,13 +712,13 @@ width: 100%;
     text-align: right;
 }
 
-.chat-msg.bot {
+.chat-msg.assistant {
     background: #fdfdf6;
     align-self: flex-start;
     text-align: left;
 }
 
-.chat-msg.user:hover, .chat-msg.bot:hover {
+.chat-msg.user:hover, .chat-msg.assistant:hover {
     transform: scale(1.02);
 }
 

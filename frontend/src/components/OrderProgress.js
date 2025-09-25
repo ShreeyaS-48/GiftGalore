@@ -3,9 +3,9 @@ import React from "react";
 const OrderProgress = ({ status }) => {
   // status: 0 = pending, 1 = confirmed, 2 = shipped, 3 = delivered
   const steps = [
-    { label: "Order Confirmed" },
-    { label: "Order Shipped" },
-    { label: "Out for Delivery" },
+    { label: "Order Placed" },
+    { label: "Order Processing" },
+    { label: "Ordered Dispatched" },
     { label: "Order Delivered" },
   ];
 
