@@ -22,6 +22,7 @@ const Login = () => {
   const [user, setUser] = useState("Guest");
   const [isLoading, setIsLoading] = useState(false);
   const [fetchError, setFetchError] = useState(null);
+  const [orderHistory, setOrderHistory] = useState([]);
   useEffect(() => {
     if (userRef.current) userRef.current.focus();
   }, []);
@@ -70,7 +71,23 @@ const Login = () => {
       navigate("/");
     }
   };
-
+  const fetchOrderHistory = async () => {
+    try {
+      if (!auth?.accessToken) return;
+      setIsLoading(true);
+      const response = await axiosPrivate.get("/orders/order-history");
+      console.log(response.data);
+      setOrderHistory(response.data);
+      setFetchError(null);
+    } catch (err) {
+      setFetchError(err.message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+  useEffect(() => {
+    if (auth?.user) fetchOrderHistory();
+  }, []);
   const getUser = async () => {
     if (!auth?.user) return;
     try {
@@ -147,44 +164,98 @@ const Login = () => {
           </p>
         </form>
       ) : (
-        <div className="form">
-          <h2>Profile</h2>
+        <div className="userDashboard">
+          <div className="user-profile">
+            <h2>Profile</h2>
 
-          <p style={{ minHeight: "30px" }}>
-            <span style={{ fontWeight: "bold" }}>Name:</span> {user.name}
-          </p>
-          <p style={{ minHeight: "30px" }}>
-            <span style={{ fontWeight: "bold" }}>Email:</span> {user.email}
-          </p>
-          <p style={{ minHeight: "30px" }}>
-            <span style={{ fontWeight: "bold" }}>Number:</span> {user.phone}
-          </p>
-          <p style={{ minHeight: "30px" }}>
-            <span style={{ fontWeight: "bold" }}>Address:</span> {user.address}
-          </p>
-          <button
-            style={{
-              width: "100px",
-              backgroundColor: "#82853e",
-              color: "white",
-              border: "none",
-              outline: "none",
-              padding: "5px",
-              borderRadius: "3px",
-              margin: "10px auto",
-              textDecoration: "none",
-              cursor: "pointer",
-            }}
-            type="button"
-            onClick={handleLogout}
-          >
-            Logout
-          </button>
-          <p>
-            <span className="line">
-              <Link to="/admin"> Go to admin dashboard</Link>
-            </span>
-          </p>
+            <p style={{ minHeight: "30px" }}>
+              <span style={{ fontWeight: "bold" }}>Name:</span> {user.name}
+            </p>
+            <p style={{ minHeight: "30px" }}>
+              <span style={{ fontWeight: "bold" }}>Email:</span> {user.email}
+            </p>
+            <p style={{ minHeight: "30px" }}>
+              <span style={{ fontWeight: "bold" }}>Number:</span> {user.phone}
+            </p>
+            <p style={{ minHeight: "30px" }}>
+              <span style={{ fontWeight: "bold" }}>Address:</span>{" "}
+              {user.address}
+            </p>
+            <button
+              style={{
+                width: "100px",
+                backgroundColor: "#82853e",
+                color: "white",
+                border: "none",
+                outline: "none",
+                padding: "5px",
+                borderRadius: "3px",
+                margin: "10px auto",
+                textDecoration: "none",
+                cursor: "pointer",
+              }}
+              type="button"
+              onClick={handleLogout}
+            >
+              Logout
+            </button>
+            <p>
+              <span className="line">
+                <Link to="/admin"> Go to admin dashboard</Link>
+              </span>
+            </p>
+          </div>
+          <div className="order-history">
+            <h2 style={{ textAlign: "center" }}>Track Your Orders</h2>
+            {orderHistory.length > 0 ? (
+              <div>
+                {orderHistory.map((order) => (
+                  <Link
+                    to={`/order/${order._id}`}
+                    style={{ color: "black", textDecoration: "none" }}
+                  >
+                    <div
+                      className="order-card"
+                      style={{ borderBottom: "1px solid #82853e" }}
+                      key={order._id}
+                    >
+                      <p>
+                        <strong>Order ID:</strong> {order._id}
+                      </p>
+                      <p>
+                        <strong>Total Amount:</strong> ₹{order.totalAmount}
+                      </p>
+                      <p>
+                        <strong>Status:</strong>{" "}
+                        {order.status === 3 && (
+                          <span style={{ color: "green", fontWeight: "bold" }}>
+                            Delivered
+                          </span>
+                        )}
+                        {order.status === 2 && (
+                          <span style={{ color: "amber", fontWeight: "bold" }}>
+                            Dispatched
+                          </span>
+                        )}
+                        {order.status === 1 && (
+                          <span style={{ color: "Blue", fontWeight: "bold" }}>
+                            Processing
+                          </span>
+                        )}
+                        {order.status === 0 && (
+                          <span style={{ color: "Gray", fontWeight: "bold" }}>
+                            Placed
+                          </span>
+                        )}
+                      </p>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            ) : (
+              <p>No past orders</p>
+            )}
+          </div>
         </div>
       )}
     </main>

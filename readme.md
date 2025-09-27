@@ -25,6 +25,7 @@ This project is developed to showcase how **cutting-edge technology** can transf
 - **AI Chatbot** (Groq’s LLaMA 3) for personalized customer support.
 - **Market Basket Analysis (Apriori)** to recommend frequently bought-together items.
 - **Sentiment analysis** on product reviews to summarize customer feedback.
+- **Collaborative Filtering** to recommend products bought by similar users but not yet purchased by the target user.
 - **Sales analytics dashboard**:
 
   - Daily, monthly, yearly sales trends.

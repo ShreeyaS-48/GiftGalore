@@ -16,7 +16,6 @@ const Cart = () => {
   const axiosPrivate = useAxiosPrivate();
   const [fetchError, setFetchError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [orderHistory, setOrderHistory] = useState([]);
   const makePayment = async (e) => {
     e.preventDefault();
     try {
@@ -44,23 +43,6 @@ const Cart = () => {
       setFetchError(err.message);
     }
   };
-  const fetchOrderHistory = async () => {
-    try {
-      if (!auth?.accessToken) return;
-      setIsLoading(true);
-      const response = await axiosPrivate.get("/orders/order-history");
-      console.log(response.data);
-      setOrderHistory(response.data);
-      setFetchError(null);
-    } catch (err) {
-      setFetchError(err.message);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-  useEffect(() => {
-    fetchOrderHistory();
-  }, []);
   return (
     <div className="cart">
       <h2
@@ -157,57 +139,6 @@ const Cart = () => {
             >
               Delete All Items
             </button>
-          </div>
-          <div className="order-history">
-            <h3 style={{ textAlign: "center" }}>Track Your Orders</h3>
-            {orderHistory.length > 0 ? (
-              <div>
-                {orderHistory.slice(0, 4).map((order) => (
-                  <Link
-                    to={`/order/${order._id}`}
-                    style={{ color: "black", textDecoration: "none" }}
-                  >
-                    <div
-                      className="order-card"
-                      style={{ borderBottom: "1px solid #82853e" }}
-                      key={order._id}
-                    >
-                      <p>
-                        <strong>Order ID:</strong> {order._id}
-                      </p>
-                      <p>
-                        <strong>Total Amount:</strong> ₹{order.totalAmount}
-                      </p>
-                      <p>
-                        <strong>Status:</strong>{" "}
-                        {order.status === 3 && (
-                          <span style={{ color: "green", fontWeight: "bold" }}>
-                            Delivered
-                          </span>
-                        )}
-                        {order.status === 2 && (
-                          <span style={{ color: "amber", fontWeight: "bold" }}>
-                            Dispatched
-                          </span>
-                        )}
-                        {order.status === 1 && (
-                          <span style={{ color: "Blue", fontWeight: "bold" }}>
-                            Processing
-                          </span>
-                        )}
-                        {order.status === 0 && (
-                          <span style={{ color: "Gray", fontWeight: "bold" }}>
-                            Placed
-                          </span>
-                        )}
-                      </p>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            ) : (
-              <p>No past orders</p>
-            )}
           </div>
         </aside>
       </div>

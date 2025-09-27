@@ -1,5 +1,5 @@
 import User from "../models/user.model.js";
-
+import collaborative_filtering_recommendation from "../models/collaborative_filtering_recommendation.model.js";
 const getAllUsers = async (req, res) => {
   let { page, limit } = req.query;
   page = parseInt(page) || 1; // default page = 1
@@ -103,4 +103,24 @@ const updateUserHistory = async (req, res) => {
   }
 };
 
-export { getAllUsers, deleteUser, getUser, getAllAdmins, updateUserHistory };
+const getUserRecommendations = async (req, res) => {
+  const { id } = req.query;
+  if (!id) return res.status(400).json({ message: "User ID required" });
+
+  const recommendations = await collaborative_filtering_recommendation
+    .findOne({ user_id: id.toString() })
+    .populate("recommended_products");
+  if (!recommendations)
+    return res.status(204).json({ message: "No recommendations found" });
+
+  res.json(recommendations.recommended_products);
+};
+
+export {
+  getAllUsers,
+  deleteUser,
+  getUser,
+  getAllAdmins,
+  updateUserHistory,
+  getUserRecommendations,
+};
