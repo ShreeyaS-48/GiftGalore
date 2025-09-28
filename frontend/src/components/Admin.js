@@ -2,7 +2,6 @@ import React from "react";
 import { useContext, useEffect, useState } from "react";
 import AdminContext from "../context/AdminContext";
 import DataContext from "../context/DataContext";
-import AddProductForm from "./AddProductForm";
 import SalesAnalytics from "./SalesAnalytics";
 const Admin = () => {
   const { users, admins, orders } = useContext(AdminContext);
@@ -21,13 +20,10 @@ const Admin = () => {
       className="admin"
       style={{
         width: "100%",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
         marginBottom: "20px",
       }}
     >
-      <h2>Admin Dashboard</h2>
+      <h2 style={{ textAlign: "center" }}>Admin Dashboard</h2>
       <table className="users">
         <tbody>
           <tr>
@@ -49,7 +45,6 @@ const Admin = () => {
         </tbody>
       </table>
       <SalesAnalytics />
-      <AddProductForm />
     </main>
   );
 };

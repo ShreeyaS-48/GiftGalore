@@ -189,7 +189,20 @@ const getRecommendations = async (req, res) => {
     res.status(500).json({ message: "Internal server error" });
   }
 };
-
+export const getAllProductsSkipLimit = async (req, res) => {
+  let { page, limit } = req.query;
+  page = parseInt(page) || 1; // default page = 1
+  limit = parseInt(limit) || 5;
+  const skip = (page - 1) * limit;
+  const products = await Product.find().skip(skip).limit(limit);
+  const total = await Product.countDocuments();
+  res.json({
+    page,
+    totalPages: Math.ceil(total / limit),
+    totalProducts: total,
+    products,
+  });
+};
 export {
   getRecommendations,
   handleNewProduct,

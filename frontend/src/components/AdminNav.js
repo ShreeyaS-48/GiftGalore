@@ -5,6 +5,12 @@ const AdminNav = () => {
     <nav className="Nav">
       <ul className="Nav-list">
         <li>
+          <Link to="/admin">Dashboard</Link>
+        </li>
+        <li>
+          <Link to="/admin/products">Products</Link>
+        </li>
+        <li>
           <Link to="/admin/orders">Orders</Link>
         </li>
         <li>

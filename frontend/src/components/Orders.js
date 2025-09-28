@@ -59,8 +59,10 @@ const Orders = () => {
 
   useEffect(() => {
     fetchOrders();
-    fetchOrderAnalytics();
   }, [ordersPage]);
+  useEffect(() => {
+    fetchOrderAnalytics();
+  }, []);
   return (
     <main className="admin">
       <h2>Orders</h2>

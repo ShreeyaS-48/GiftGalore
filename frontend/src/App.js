@@ -24,6 +24,7 @@ import PaymentSuccess from "./components/PaymentSuccess";
 import PersistLogin from "./components/PersistLogin";
 import ChatBot from "./components/ChatBot";
 import OrderTracking from "./components/OrderTracking";
+import AdminProducts from "./components/AdminProducts";
 const ROLES = {
   User: 2001,
   Editor: 1984,
@@ -72,6 +73,10 @@ function App() {
                       element={<RequireAuth allowedRoles={[ROLES.Admin]} />}
                     >
                       <Route path="admin" element={<Admin />} />
+                      <Route
+                        path="admin/products"
+                        element={<AdminProducts />}
+                      />
                       <Route path="admin/users" element={<Users />} />
                       <Route path="admin/admins" element={<Admins />} />
                       <Route path="admin/orders" element={<Orders />} />

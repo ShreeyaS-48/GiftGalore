@@ -12,6 +12,7 @@ const Layout = () => {
     "/admin/users",
     "/admin/admins",
     "/admin/orders",
+    "/admin/products",
   ]; // you can add more paths here if needed
 
   const shouldHideNav = hideNavPaths.includes(location.pathname);

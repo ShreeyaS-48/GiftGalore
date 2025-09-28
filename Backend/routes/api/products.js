@@ -7,6 +7,7 @@ import {
   addProductReview,
   getAllProductReviews,
   getRecommendations,
+  getAllProductsSkipLimit,
 } from "../../controllers/productsController.js";
 
 import ROLES_LIST from "../../util/roles_list.js";
@@ -20,6 +21,10 @@ router
   .route("/")
   .get(getAllProducts)
   .post(verifyJWT, verifyRoles(ROLES_LIST.Admin), handleNewProduct);
+
+router
+  .route("/admin-products")
+  .get(verifyJWT, verifyRoles(ROLES_LIST.Admin), getAllProductsSkipLimit);
 
 router.route("/:id").get(getProduct);
 
