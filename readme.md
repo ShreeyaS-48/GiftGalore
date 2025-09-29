@@ -110,7 +110,7 @@ This project is developed to showcase how **cutting-edge technology** can transf
 
 ### Chat Bot
 
-![Chat Bot](Screenshots/Chatbot.png)
+![Chat Bot](Screenshots/ChatBot.png)
 
 ## Demo
 
