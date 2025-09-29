@@ -130,7 +130,7 @@ This project is developed to showcase how **cutting-edge technology** can transf
   - Username: ABCD
   - Password: abc123ABC
 - Test user:
-  - Username: ABCDE
+  - Username: Test
   - Password: abc123ABC
 
 ### Stripe Test Payments
