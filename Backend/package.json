@@ -26,7 +26,6 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.15.1",
     "multer": "^2.0.2",
-    "openai": "^5.23.1",
     "sentiment": "^5.0.2",
     "streamifier": "^0.1.1",
     "stripe": "^18.4.0"
