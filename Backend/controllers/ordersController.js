@@ -299,3 +299,99 @@ export const getUserActivityStats = async (req, res) => {
 
   res.json(trendData);
 };
+export const getRFMSegmentation = async (req, res) => {
+  try {
+    const now = new Date();
+
+    // 1️⃣ Fetch total users
+    const users = await User.find({}, "_id name");
+    const totalUsers = users.length;
+
+    // 2️⃣ Aggregate orders by user
+    const orders = await Order.aggregate([
+      {
+        $group: {
+          _id: "$user",
+          lastPurchase: { $max: "$createdAt" },
+          frequency: { $sum: 1 },
+          monetary: { $sum: "$totalAmount" },
+        },
+      },
+    ]);
+
+    const ordersMap = new Map();
+    orders.forEach((o) => ordersMap.set(o._id.toString(), o));
+
+    // 3️⃣ Prepare arrays for scoring
+    const recencyValues = [];
+    const freqValues = [];
+    const monetaryValues = [];
+
+    orders.forEach((o) => {
+      const recencyDays = Math.floor(
+        (now - o.lastPurchase) / (1000 * 60 * 60 * 24)
+      );
+      recencyValues.push(recencyDays);
+      freqValues.push(o.frequency);
+      monetaryValues.push(o.monetary);
+    });
+
+    const getScore = (value, values, reverse = false) => {
+      if (!values.length) return 1;
+      const sorted = [...values].sort((a, b) => a - b);
+      const idx = sorted.indexOf(value);
+      const quantile = Math.floor((idx / sorted.length) * 3);
+      const score = quantile + 1;
+      return reverse ? 4 - score : score;
+    };
+
+    // 4️⃣ Compute segments for users with orders
+    const usersWithOrders = users
+      .filter((u) => ordersMap.has(u._id.toString()))
+      .map((u) => {
+        const o = ordersMap.get(u._id.toString());
+        const recencyDays = Math.floor(
+          (now - o.lastPurchase) / (1000 * 60 * 60 * 24)
+        );
+        const R = getScore(recencyDays, recencyValues, true);
+        const F = getScore(o.frequency, freqValues);
+        const M = getScore(o.monetary, monetaryValues);
+
+        let segment = "Others";
+        if (R === 3 && F === 3 && M === 3) segment = "VIP";
+        else if (R === 1 && F === 1) segment = "Churned";
+        else if (F === 3 && M === 1) segment = "Bargain Hunter";
+        else if (R === 2 && F === 2 && M >= 2) segment = "Loyal";
+        else if (R === 3 && F <= 2) segment = "New Customer";
+
+        return {
+          userId: u._id,
+          name: u.name,
+          recencyDays,
+          frequency: o.frequency,
+          monetary: o.monetary,
+          R,
+          F,
+          M,
+          rfmCode: `${R}${F}${M}`,
+          segment,
+        };
+      });
+
+    // 5️⃣ Aggregate segment counts
+    const segmentStats = {};
+    usersWithOrders.forEach((u) => {
+      segmentStats[u.segment] = (segmentStats[u.segment] || 0) + 1;
+    });
+
+    // 6️⃣ Count users with no orders
+    const usersWithOrdersCount = usersWithOrders.length;
+    const noOrdersCount = totalUsers - usersWithOrdersCount;
+    if (noOrdersCount > 0) segmentStats["No Orders"] = noOrdersCount;
+
+    res.json({ totalUsers, segments: segmentStats, users: usersWithOrders });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Error computing RFM segmentation" });
+  }
+};

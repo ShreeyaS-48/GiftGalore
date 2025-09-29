@@ -9,7 +9,10 @@ import {
 } from "../../controllers/usersController.js";
 import ROLES_LIST from "../../util/roles_list.js";
 import verifyRoles from "../../Middleware/verifyRoles.js";
-import { getUserActivityStats } from "../../controllers/ordersController.js";
+import {
+  getRFMSegmentation,
+  getUserActivityStats,
+} from "../../controllers/ordersController.js";
 const router = express.Router();
 
 router.route("/users").get(verifyRoles(ROLES_LIST.Admin), getAllUsers);
@@ -19,6 +22,10 @@ router.route("/").delete(verifyRoles(ROLES_LIST.Admin), deleteUser);
 router
   .route("/userActivityStats")
   .get(verifyRoles(ROLES_LIST.Admin), getUserActivityStats);
+
+router
+  .route("/RFMSegmentation")
+  .get(verifyRoles(ROLES_LIST.Admin), getRFMSegmentation);
 
 router
   .route("/collaborative_filtering_recommendations")

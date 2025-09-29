@@ -65,7 +65,7 @@ const Orders = () => {
   }, []);
   return (
     <main className="admin">
-      <h2>Orders</h2>
+      <h2 style={{ textAlign: "center" }}>Orders</h2>
       <table className="orders">
         <thead>
           <tr>
@@ -145,7 +145,7 @@ const Orders = () => {
         onPageChange={(page) => setOrdersPage(page)}
       />
       <div>
-        <h3>Order Analytics</h3>
+        <h3 style={{ textAlign: "center" }}>Order Analytics</h3>
         <div
           style={{
             display: "flex",

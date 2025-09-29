@@ -15,6 +15,9 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
+  PieChart,
+  Pie,
+  Cell,
 } from "recharts";
 
 const Users = () => {
@@ -29,6 +32,8 @@ const Users = () => {
     totalUsersPages,
   } = useContext(AdminContext);
   const [userActivityStats, setUserActivityStats] = useState([]);
+  const [segments, setSegments] = useState([]);
+  const [userRFM, setUserRFM] = useState([]);
   const [fetchError, setFetchError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const fetchUserActivityStats = async () => {
@@ -37,7 +42,6 @@ const Users = () => {
     try {
       const response = await axiosPrivate.get(`/admin/userActivityStats`);
       setUserActivityStats(response.data);
-      console.log(response.data);
       setFetchError(null);
     } catch (err) {
       setFetchError(err.message);
@@ -45,12 +49,23 @@ const Users = () => {
       setIsLoading(false);
     }
   };
+  const COLORS = ["#4caf50", "#2196f3", "#ff9800", "#f44336", "#9c27b0"];
+  const fetchRFM = async () => {
+    const res = await axiosPrivate.get("/admin/RFMSegmentation");
+    const segData = Object.entries(res.data.segments).map(([name, value]) => ({
+      name,
+      value,
+    }));
+    setSegments(segData);
+    setUserRFM(res.data.users);
+  };
   const navigate = useNavigate();
   useEffect(() => {
     fetchUsers();
   }, [usersPage]);
   useEffect(() => {
     fetchUserActivityStats();
+    fetchRFM();
   }, []);
   const goBack = () => navigate("/admin");
   return (
@@ -108,7 +123,7 @@ const Users = () => {
         onPageChange={(page) => setUsersPage(page)}
       />
       <div>
-        <h3>Churn Trend (Last 6 Months)</h3>
+        <h3 style={{ textAlign: "center" }}>Churn Trend (Last 6 Months)</h3>
         <div className="chart-container" style={{ flex: 1, minWidth: "300px" }}>
           <ResponsiveContainer width="100%" height={300}>
             <AreaChart
@@ -158,6 +173,53 @@ const Users = () => {
             </AreaChart>
           </ResponsiveContainer>
         </div>
+
+        <h3 style={{ textAlign: "center" }}>Customer Segmentation (RFM)</h3>
+        <div className="chart-container" style={{ flex: 1, minWidth: "300px" }}>
+          <ResponsiveContainer width="100%" height={300}>
+            <PieChart>
+              <Pie
+                data={segments}
+                dataKey="value"
+                nameKey="name"
+                cx="50%"
+                cy="50%"
+                outerRadius={120}
+                label
+              >
+                {segments.map((_, index) => (
+                  <Cell key={index} fill={COLORS[index % COLORS.length]} />
+                ))}
+              </Pie>
+              <Tooltip />
+              <Legend />
+            </PieChart>
+          </ResponsiveContainer>
+        </div>
+        <table className="users">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>R</th>
+              <th>F</th>
+              <th>M</th>
+              <th>RFM Code</th>
+              <th>Segment</th>
+            </tr>
+          </thead>
+          <tbody>
+            {userRFM.map((u) => (
+              <tr key={u.userId}>
+                <td>{u.name}</td>
+                <td>{u.recencyDays}</td>
+                <td>{u.frequency}</td>
+                <td>{u.monetary}</td>
+                <td>{u.rfmCode}</td>
+                <td>{u.segment}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
       <div>
         <button

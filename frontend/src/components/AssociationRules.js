@@ -58,7 +58,7 @@ const AssociationRules = () => {
   });
   return (
     <section>
-      <h3>Market Basket Analysis Results</h3>
+      <h3 style={{ textAlign: "center" }}>Market Basket Analysis Results</h3>
       <div className="chart-container" style={{ flex: 1, minWidth: "300px" }}>
         <ResponsiveContainer width="100%" height={300}>
           <ScatterChart margin={{ top: 20, right: 30, bottom: 20, left: 20 }}>
