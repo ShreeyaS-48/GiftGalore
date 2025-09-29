@@ -6,50 +6,53 @@ MERN-based ML-Enhanced E-Commerce Platform for Gifting Products
 
 Gift Galore is a **full-stack e-commerce platform** built with the **MERN stack**, designed for a personalized and seamless gifting experience. The platform integrates **machine learning** and **AI-powered features** to enhance user experience, optimize business insights, and provide intelligent product recommendations.
 
-This project is developed to showcase how **cutting-edge technology** can transform traditional e-commerce into an **intelligent, user-focused marketplace**.
+This project is developed to showcase how **cutting-edge technology** can transform traditional e-commerce into an **intelligent, data-driven marketplace**.
 
 ## Features
 
 ### Core E-Commerce Features
 
-- Category-wise product browsing (Cakes, Chocolates, Bouquets, Plants, Combos).
-- Role-based access for **admins** and **users**.
-- Secure **JWT-based authentication & authorization**.
-- Cart management with dynamic total calculations.
-- Order tracking with status updates.
-- Automated **email notifications** (via Node Cron).
-- **Stripe integration** for secure payments.
+- **User Authentication & Authorization:** Secure login and registration with JWT-based authentication with role-based access for **admins** and **users**.
+- **Product Catalog:** Browse and search a wide range of gifting products.
+- **Shopping Cart:** Add, remove, and update products easliy.
+- **Order Management:** Place, track, and manage orders with real-time status updates
+- **Payment Integration:** Stripe integration for secure online payments.
+- **Automated email notifications:** Scheduled notifications using Node-Cron.
 
 ### AI & ML Enhancements
 
-- **AI Chatbot** (Groq’s LLaMA 3) for personalized customer support.
-- **Market Basket Analysis (Apriori)** to recommend frequently bought-together items.
-- **Sentiment analysis** on product reviews to summarize customer feedback.
-- **Collaborative Filtering** to recommend products bought by similar users but not yet purchased by the target user.
-- **Sales analytics dashboard**:
+- **AI Chatbot (Groq’s LLaMA 3 + RAG):** Personalized customer support powered by Retrieval-Augmented Generation.
+- **Market Basket Analysis (Apriori):** Recommends frequently bought-together items.
+- **Sentiment analysis:** Summarizes product reviews to highlight customer feedback.
+- **Collaborative Filtering:** Suggests products purchased by similar users.
 
-  - Daily, monthly, yearly sales trends.
-  - Category wise sales distribution.
-  - Revenue growth charts.
-  - Order status distribution (pie chart).
-  - Average order value tracking.
+### Admin dashboard
+
+- Visualizes daily, monthly, and yearly sales trends.
+- Displays category-wise sales distribution.
+- Shows revenue growth over time.
+- Provides order status breakdown with pie charts.
+- Tracks average order value.
+- Analyzes customer churn trends.
+- Highlights top products for the last 3 months and provides forecasts for the next month.
+- Performs customer segmentation using RFM (Recency, Frequency, Monetary) analysis.
 
 ### UI/UX
 
-- Responsive, mobile-first design.
-- Modern and intuitive user interface.
-- Best-seller tags based on product performance.
+- Fully Responsive, mobile-first design.
+- Clean, modern, and intuitive interface.
+- Best-seller tags based on product performance metrics.
 
 ## Tech Stack
 
-- **Frontend:** React.js, CSS, HTML5
+- **Frontend:** React.js, CSS3, HTML5
 - **Backend:** Node.js, Express.js
-- **Database:** MongoDB , Mongoose models
+- **Database:** MongoDB with Mongoose
 - **Authentication:** JSON Web Tokens (JWT)
 - **Payments:** Stripe API
 - **Machine Learning:** Python
 - **Chatbot:** Groq’s LLaMA 3 integrated with Node backend
-- **Other:** Node-Cron for scheduled tasks
+- **Other Tools:** Node-Cron for scheduled tasks
 
 ## Screenshots
 
@@ -97,15 +100,15 @@ This project is developed to showcase how **cutting-edge technology** can transf
 
 ### Demo Video
 
-- **Link to Demo:** https://www.youtube.com/watch?v=DMKccAk7M_k
+- **Watch Demo:** https://www.youtube.com/watch?v=DMKccAk7M_k
 
 ### Live Deployment
 
 - **Frontend:** Netlify
 - **Backend:** Render
-- **Link to Website:** https://giftgalore.netlify.app/
+- **Website:** https://giftgalore.netlify.app/
 
-### Demo accounts
+### Demo Accounts
 
 - Admin login:
   - Username: ABCD
@@ -116,6 +119,6 @@ This project is developed to showcase how **cutting-edge technology** can transf
 
 ### Stripe Test Payments
 
-- Card Number: 5555 5555 5555 5555
-- Expiry: Any date in future
-- CVC: Any 3 digit number
+- Card Number: 5555 5555 5555 4444
+- Expiry: Any future date
+- CVC: Any 3-digit number
