@@ -50,6 +50,7 @@ This project is developed to showcase how **cutting-edge technology** can transf
 - **Database:** MongoDB with Mongoose
 - **Authentication:** JSON Web Tokens (JWT)
 - **Payments:** Stripe API
+- **Media Storage:** Cloudinary for storing and serving user-uploaded images
 - **Machine Learning:** Python
 - **Chatbot:** Groq’s LLaMA 3 integrated with Node backend
 - **Other Tools:** Node-Cron for scheduled tasks
