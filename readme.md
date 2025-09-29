@@ -60,9 +60,9 @@ This project is developed to showcase how **cutting-edge technology** can transf
 
 ![Home Page](Screenshots/HomePage.png)
 
-### Login
+### Sign Up
 
-![Sign In](Screenshots/SignIn.png)
+![Sign In](Screenshots/SignUp.png)
 
 ### Browsing
 
@@ -76,25 +76,41 @@ This project is developed to showcase how **cutting-edge technology** can transf
 
 ![Payment](Screenshots/Payment.png)
 
+###
+
+![Profile](Screenshots/Profile.png)
+
 ### Order Tracking
 
-![Order Tracking](<Screenshots/Order Tracking.png>)
+![Order Tracking](Screenshots/OrderTracking.png)
+
+### Personalized Recommendations
+
+[!Personalized Recommendations](Screenshots/PersonalizedRecommendations.png)
 
 ### Admin Dashboard
 
-![Admin Dashboard](<Screenshots/Admin Dashboard.png>)
+![Admin Dashboard](Screenshots/AdminDashboard.png)
+
+### Product Analytics
+
+![Product Analytics](Screenshots/ProductAnalytics.png)
 
 ### Order Analytics
 
-![Order Analytics](<Screenshots/Order Analytics.png>)
+![Order Analytics](Screenshots/OrderAnalytics.png)
 
 ### Market Basket Analysis
 
-![Market Basket Analysis](<Screenshots/Market Basket Analysis.png>)
+![Market Basket Analysis](Screenshots/MBA.png)
+
+### Churn Trend & RFM Segmentation
+
+![Churn Trend & RFM Segmentation](Screenshots/Churn&RFM.png)
 
 ### Chat Bot
 
-![ChatBot](Screenshots/ChatBot.png)
+![Chat Bot](Screenshots/Chatbot.png)
 
 ## Demo
 
