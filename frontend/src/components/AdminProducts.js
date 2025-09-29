@@ -15,6 +15,7 @@ const AdminProducts = () => {
   const [productsPage, setProductsPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [topProducts, setTopProducts] = useState([]);
+  const [forcastedProducts, setForcastedProducts] = useState([]);
 
   const fetchProducts = async () => {
     if (!auth?.accessToken) return;
@@ -36,6 +37,30 @@ const AdminProducts = () => {
     try {
       const response = await axiosPrivate.get("/products/top-products");
       setTopProducts(response.data);
+      const productSalesMap = {};
+
+      response.data.forEach((monthData) => {
+        monthData.topProducts.forEach((p) => {
+          if (!productSalesMap[p.productId])
+            productSalesMap[p.productId] = { name: p.name, sales: [] };
+          productSalesMap[p.productId].sales.push(p.sales);
+        });
+      });
+      const forecast = Object.entries(productSalesMap).map(
+        ([productId, data]) => {
+          const salesArray = data.sales;
+          const avg = salesArray.reduce((a, b) => a + b, 0) / salesArray.length;
+          const trend =
+            (salesArray[salesArray.length - 1] - salesArray[0]) /
+            (salesArray.length - 1 || 1);
+          const forecast = Math.max(0, Math.round(avg + trend)); // no negative sales
+          return { productId, name: data.name, forecast };
+        }
+      );
+      const topForecasted = forecast
+        .sort((a, b) => b.forecast - a.forecast)
+        .slice(0, 3);
+      setForcastedProducts(topForecasted);
     } catch (err) {
       console.error(err);
     }
@@ -110,6 +135,15 @@ const AdminProducts = () => {
                   </>
                 )}
               </ol>
+            </div>
+          ))}
+        </div>
+        <h3 style={{ textAlign: "center" }}>Forecast for Next Month</h3>
+        <div className="analytics-cards">
+          {forcastedProducts.map((p) => (
+            <div className="card" key={p.productId}>
+              <h4>{p.name}</h4>
+              <p>Forecast: {p.forecast}</p>
             </div>
           ))}
         </div>

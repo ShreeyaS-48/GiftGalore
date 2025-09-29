@@ -25,7 +25,6 @@ const SalesAnalytics = () => {
     setIsLoading(true);
     try {
       const response = await axiosPrivate.get(`/orders/sales-analytics`);
-      console.log(response.data);
       setAnalytics(response.data);
       setFetchError(null);
     } catch (err) {
