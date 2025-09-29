@@ -721,12 +721,14 @@ width: 100%;
 }
 
 .chat-msg.user {
+    padding: 10px 25px;
     background: #e3ae01c9;
     align-self: flex-end;
     text-align: right;
 }
 
 .chat-msg.assistant {
+    padding: 10px 25px;
     background: #fdfdf6;
     align-self: flex-start;
     text-align: left;

@@ -2,6 +2,7 @@ import Groq from "groq-sdk";
 import dotenv from "dotenv";
 import fs from "fs";
 import path from "path";
+import { pipeline } from "@xenova/transformers";
 
 dotenv.config();
 
@@ -10,8 +11,85 @@ const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 // Load app documentation
 const APP_DOCS = fs.readFileSync(path.resolve("data/app-docs.txt"), "utf-8");
 
+// Split text into chunks
+function splitTextIntoChunks(text, chunkSize = 500) {
+  const sentences = text.split(/(?<=[.?!])\s+/);
+  const chunks = [];
+  let currentChunk = "";
+
+  for (let sentence of sentences) {
+    if ((currentChunk + sentence).length > chunkSize) {
+      chunks.push(currentChunk.trim());
+      currentChunk = sentence + " ";
+    } else {
+      currentChunk += sentence + " ";
+    }
+  }
+  if (currentChunk) chunks.push(currentChunk.trim());
+  return chunks;
+}
+
+const DOC_CHUNKS = splitTextIntoChunks(APP_DOCS);
+
+// Initialize embeddings pipeline
+let embedder;
+
+async function initEmbedder() {
+  embedder = await pipeline("feature-extraction", "Xenova/all-MiniLM-L6-v2");
+}
+
+// Generate embedding for text
+async function getEmbedding(text) {
+  const embeddingTensor = await embedder(text);
+
+  // Convert tensor to plain array
+  const array =
+    embeddingTensor.data instanceof Float32Array
+      ? Array.from(embeddingTensor.data)
+      : embeddingTensor.data.flat?.() || [];
+
+  if (array.length === 0) {
+    throw new Error("Failed to extract embedding array from tensor");
+  }
+
+  return array;
+}
+
+// Cosine similarity
+function cosineSimilarity(a, b) {
+  const dot = a.reduce((sum, val, i) => sum + val * b[i], 0);
+  const magA = Math.sqrt(a.reduce((sum, val) => sum + val * val, 0));
+  const magB = Math.sqrt(b.reduce((sum, val) => sum + val * val, 0));
+  return dot / (magA * magB);
+}
+
+// Store embedded docs
+let DOC_EMBEDDINGS = [];
+
+async function embedDocumentation() {
+  for (const chunk of DOC_CHUNKS) {
+    const vector = await getEmbedding(chunk);
+    DOC_EMBEDDINGS.push({ text: chunk, vector });
+  }
+}
+
+// Retrieve top relevant chunks
+function retrieveTopChunks(queryVector, topK = 3) {
+  return DOC_EMBEDDINGS.map((chunk) => ({
+    ...chunk,
+    score: cosineSimilarity(queryVector, chunk.vector),
+  }))
+    .sort((a, b) => b.score - a.score)
+    .slice(0, topK);
+}
+
+// Main chat function
 export async function getChatResponse(conversation = []) {
   try {
+    const userMessage = conversation[conversation.length - 1]?.content || "";
+    const queryVector = await getEmbedding(userMessage);
+    const topChunks = retrieveTopChunks(queryVector);
+
     const SYSTEM_PROMPT = `
 You are a helpful, concise chatbot for the GiftGalore platform.
 - Always give short, crisp answers (3–5 sentences max).
@@ -21,14 +99,12 @@ You are a helpful, concise chatbot for the GiftGalore platform.
   - Bulleted lists for options
   - Bold for emphasis
   - Italics for secondary emphasis
-  - Inline code for code or commands
-  - Code blocks for examples
   - Tables if necessary
 - Do not repeat full sentences from the documentation word-for-word; summarize instead.
 - Only answer questions about GiftGalore’s features, usage, and troubleshooting.
 - If unrelated, reply: "Sorry, I can only help with GiftGalore-related questions."
 Here is GiftGalore documentation:
-${APP_DOCS}
+${topChunks.map((c) => c.text).join("\n\n")}
 `;
 
     const messages = [
@@ -50,3 +126,7 @@ ${APP_DOCS}
     return "Sorry, I couldn't generate a response at this time.";
   }
 }
+
+// Initialize at startup
+await initEmbedder();
+await embedDocumentation();
