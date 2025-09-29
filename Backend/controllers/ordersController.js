@@ -248,3 +248,54 @@ export const getOrdersForUser = async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 };
+
+export const getUserActivityStats = async (req, res) => {
+  const now = new Date();
+  const months = [];
+
+  // last 6 months including current
+  for (let i = 5; i >= 0; i--) {
+    const d = new Date(now.getFullYear(), now.getMonth() - i, 1);
+    months.push(d.toISOString().slice(0, 7)); // YYYY-MM
+  }
+
+  const allUsers = await User.find({}, "_id");
+  const totalUsers = allUsers.length;
+
+  const trendData = [];
+
+  for (const month of months) {
+    const start = new Date(month + "-01");
+    const end = new Date(start);
+    end.setMonth(start.getMonth() + 1);
+
+    // Active: purchased in this month
+    const activeUsers = await Order.distinct("user", {
+      createdAt: { $gte: start, $lt: end },
+    });
+
+    // At Risk: purchased in previous month, but not this month
+    const prevMonthStart = new Date(start);
+    prevMonthStart.setMonth(prevMonthStart.getMonth() - 1);
+
+    const prevMonthEnd = new Date(start);
+
+    const prevMonthUsers = await Order.distinct("user", {
+      createdAt: { $gte: prevMonthStart, $lt: prevMonthEnd },
+    });
+
+    const atRiskUsers = prevMonthUsers.filter((u) => !activeUsers.includes(u));
+
+    // Churned = rest
+    const churned = totalUsers - (activeUsers.length + atRiskUsers.length);
+
+    trendData.push({
+      month,
+      active: activeUsers.length,
+      atRisk: atRiskUsers.length,
+      churned,
+    });
+  }
+
+  res.json(trendData);
+};

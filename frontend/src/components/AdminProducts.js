@@ -129,7 +129,13 @@ const AdminProducts = () => {
                   <>
                     {topProduct.topProducts.map((product) => (
                       <li key={product.productId} style={{ padding: "4px 0" }}>
-                        {product.name} - {product.sales}
+                        <Link
+                          to={`/${product.productId}`}
+                          style={{ textDecoration: "none", color: "black" }}
+                        >
+                          {product.name}
+                        </Link>{" "}
+                        - {product.sales}
                       </li>
                     ))}
                   </>
@@ -142,8 +148,13 @@ const AdminProducts = () => {
         <div className="analytics-cards">
           {forcastedProducts.map((p) => (
             <div className="card" key={p.productId}>
-              <h4>{p.name}</h4>
-              <p>Forecast: {p.forecast}</p>
+              <Link
+                to={`/${p.productId}`}
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                <h4>{p.name}</h4>
+                <p>Forecast: {p.forecast}</p>
+              </Link>
             </div>
           ))}
         </div>
