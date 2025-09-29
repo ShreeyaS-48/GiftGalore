@@ -85,27 +85,74 @@ const getAllProductReviews = async (req, res) => {
   }
   const sentiments = product.reviews.map((review) => {
     const text = review.comment || "";
-    const result = sentiment.analyze(text);
-    const score = result.score; // >0 positive, <0 negative, 0 neutral
-    if (score > 0) return "positive";
-    else if (score < 0) return "negative";
-    else return "neutral";
+    const result = sentiment.analyze(text); // { score, comparative }
+    return {
+      text,
+      score: result.score,
+      type:
+        result.score > 0
+          ? "positive"
+          : result.score < 0
+          ? "negative"
+          : "neutral",
+      intensity: Math.abs(result.score), // for adjective selection
+    };
   });
-  const counts = sentiments.reduce((acc, s) => {
-    acc[s] = acc[s] ? acc[s] + 1 : 1;
+  const counts = sentiments.reduce((acc, r) => {
+    acc[r.type] = (acc[r.type] || 0) + 1;
     return acc;
   }, {});
-  const majoritySentiment = Object.keys(counts).reduce(
-    (a, b) => (counts[a] > counts[b] ? a : b),
-    null
-  );
-  const summary =
-    majoritySentiment == "positive"
-      ? "Most customers are happy with this product."
-      : majoritySentiment == "negative"
-      ? "Most customers are dissatisfied with this product."
-      : "Customer opinions are mixed or neutral.";
-  product.reviewSentiment = summary;
+  const total = sentiments.length;
+  const percent = (type) => ((counts[type] || 0) / total) * 100;
+  const adjective = (type, intensity) => {
+    if (type === "positive") {
+      if (intensity > 3) return "thrilled";
+      if (intensity > 1.5) return "happy";
+      return "satisfied";
+    } else if (type === "negative") {
+      if (intensity > 3) return "frustrated";
+      if (intensity > 1.5) return "disappointed";
+      return "unsatisfied";
+    } else {
+      return "neutral";
+    }
+  };
+  const makePhrase = (type) => {
+    const p = percent(type).toFixed(0);
+    const adjList = sentiments
+      .filter((r) => r.type === type)
+      .map((r) => adjective(type, r.intensity));
+
+    // Pick the most common adjective for this sentiment
+    const freq = {};
+    adjList.forEach((a) => (freq[a] = (freq[a] || 0) + 1));
+    const commonAdj = Object.keys(freq).reduce((a, b) =>
+      freq[a] > freq[b] ? a : b
+    );
+
+    const templates = [
+      `${p}% of customers are ${commonAdj}.`,
+      `Based on reviews, ${p}% seem ${commonAdj}.`,
+      `Customer feedback indicates ${p}% are ${commonAdj}.`,
+    ];
+    return templates[Math.floor(Math.random() * templates.length)];
+  };
+
+  // --- Step 5: Combine phrases into a cohesive paragraph ---
+  const summaryParts = [];
+  if (percent("positive") > 5) summaryParts.push(makePhrase("positive"));
+  if (percent("negative") > 5) summaryParts.push(makePhrase("negative"));
+  if (percent("neutral") > 5) summaryParts.push(makePhrase("neutral"));
+  if (summaryParts.length === 0)
+    summaryParts.push("Customer opinions are varied.");
+
+  // Shuffle sentences randomly for natural feel
+  const shuffledSummary = summaryParts
+    .sort(() => Math.random() - 0.5)
+    .join(" ");
+
+  product.reviewSentiment = shuffledSummary;
+
   await product.save();
   const firstFiveReviews = product.reviews.slice(0, 5);
   const response = {

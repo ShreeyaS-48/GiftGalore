@@ -5,22 +5,9 @@ import { Link } from "react-router-dom";
 import Product from "./Product.js";
 import BestSellers from "./BestSellers.js";
 import GiftsInTrend from "./GiftsInTrend.js";
-import Cookies from "js-cookie";
-import useAuth from "../hooks/useAuth.js";
 import RecommendedItems from "./RecommendedItems.js";
 const Home = () => {
   const { search, products, searchResults } = useContext(DataContext);
-  const { auth } = useAuth();
-  const viewed = Cookies.get("viewedProducts");
-  var settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    nextArrow: null,
-    prevArrow: null,
-  };
   return (
     <main className="home">
       <ul className="home-items-display">
@@ -42,7 +29,6 @@ const Home = () => {
           No items match search
         </p>
       )}
-      <RecommendedItems />
       <article
         className="products"
         style={{ padding: "10px 0", margin: "15px auto 20px auto" }}
@@ -111,9 +97,50 @@ const Home = () => {
           </figure>
         </div>
       </article>
+      <RecommendedItems />
       <BestSellers
         products={products.filter((item) => parseInt(item.ratings) >= 4)}
       />
+      <article style={{ margin: "20px auto" }}>
+        <h2 style={{ textAlign: "center", margin: "20px" }}>
+          Joyful Gifting Stories
+        </h2>
+
+        <div
+          style={{
+            display: "flex",
+            gap: "20px",
+            justifyContent: "center",
+            flexWrap: "wrap",
+          }}
+        >
+          <video
+            src="https://client-static.saleassist.ai/efd46e24-6e01-4f07-8c95-28e5c730ae8e/6c9d827b-31bb-4d0c-a319-0f57a5cb148c.mp4#t=0.1"
+            controls
+            style={{ width: "200px", borderRadius: "10px" }}
+          />
+          <video
+            src="https://client-static.saleassist.ai/efd46e24-6e01-4f07-8c95-28e5c730ae8e/9d2d3d41-a3bb-4a44-849c-ec27b86626a6.mp4#t=0.1"
+            controls
+            style={{ width: "200px", borderRadius: "10px" }}
+          />
+          <video
+            src="https://client-static.saleassist.ai/efd46e24-6e01-4f07-8c95-28e5c730ae8e/2bedc208-7dd2-42e6-99aa-653dbf520021.mp4#t=0.1"
+            controls
+            style={{ width: "200px", borderRadius: "10px" }}
+          />
+          <video
+            src="https://client-static.saleassist.ai/efd46e24-6e01-4f07-8c95-28e5c730ae8e/9cb62b17-460f-4690-bcad-2b4e4bce2436.mp4#t=0.1"
+            controls
+            style={{ width: "200px", borderRadius: "10px" }}
+          />
+          <video
+            src="https://client-static.saleassist.ai/efd46e24-6e01-4f07-8c95-28e5c730ae8e/d398f2e4-62be-47b5-a077-7978a09b81fc.mp4#t=0.1"
+            controls
+            style={{ width: "200px", borderRadius: "10px" }}
+          />
+        </div>
+      </article>
     </main>
   );
 };
