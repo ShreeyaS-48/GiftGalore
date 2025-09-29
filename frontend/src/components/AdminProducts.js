@@ -5,6 +5,15 @@ import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import useAuth from "../hooks/useAuth";
 import Pagination from "./Pagination";
 import { Link } from "react-router-dom";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
 const AdminProducts = () => {
   const [totalProductsPages, setTotalProductsPages] = useState(0);
   const [products, setProducts] = useState([]);
@@ -13,6 +22,8 @@ const AdminProducts = () => {
   const [fetchError, setFetchError] = useState(null);
   const [productsPage, setProductsPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
+  const [topProducts, setTopProducts] = useState([]);
+
   const fetchProducts = async () => {
     if (!auth?.accessToken) return;
     setIsLoading(true);
@@ -20,7 +31,6 @@ const AdminProducts = () => {
       const response = await axiosPrivate.get(
         `/products/admin-products?page=${productsPage}&limit=5`
       );
-      console.log(response);
       setProducts(response.data.products);
       setTotalProductsPages(response.data.totalPages);
       setFetchError(null);
@@ -30,9 +40,21 @@ const AdminProducts = () => {
       setIsLoading(false);
     }
   };
+  const fetchTopProducts = async () => {
+    try {
+      const response = await axiosPrivate.get("/products/top-products");
+      console.log(response.data);
+      setTopProducts(response.data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
   useEffect(() => {
     fetchProducts();
   }, [productsPage]);
+  useEffect(() => {
+    fetchTopProducts();
+  }, []);
   return (
     <main
       className="admin"
@@ -77,7 +99,37 @@ const AdminProducts = () => {
         totalPages={totalProductsPages}
         onPageChange={(page) => setProductsPage(page)}
       />
-      <div style={{ display: "flex", justifyContent: "center" }}>
+
+      <section style={{ width: "100%" }}>
+        <h3 style={{ textAlign: "center" }}>Top Selling Products</h3>
+        <div className="analytics-cards">
+          {topProducts.map((topProduct) => (
+            <div className="card">
+              <h4>{topProduct.month}</h4>
+              <ol style={{ listStyleType: "none" }}>
+                {topProduct.topProducts.length === 0 ? (
+                  <li>No Sales</li>
+                ) : (
+                  <>
+                    {topProduct.topProducts.map((product) => (
+                      <li key={product.productId} style={{ padding: "4px 0" }}>
+                        {product.name} - {product.sales}
+                      </li>
+                    ))}
+                  </>
+                )}
+              </ol>
+            </div>
+          ))}
+        </div>
+      </section>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
         <AddProductForm />
       </div>
     </main>

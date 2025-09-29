@@ -1,5 +1,6 @@
 import Product from "../models/product.model.js";
 import User from "../models/user.model.js";
+import Order from "../models/order.model.js";
 import streamifier from "streamifier";
 import Recommendation from "../models/recommendation.model.js";
 import cloudinary from "../util/cloudinary.js";
@@ -203,6 +204,78 @@ export const getAllProductsSkipLimit = async (req, res) => {
     products,
   });
 };
+
+export const getTopProducts = async (req, res) => {
+  // 1️⃣ Generate current month and past 5 months
+  const months = [];
+  const now = new Date();
+  for (let i = 2; i >= 0; i--) {
+    const d = new Date(now.getFullYear(), now.getMonth() - i, 1);
+    const year = d.getFullYear();
+    const month = String(d.getMonth() + 1).padStart(2, "0");
+    months.push(`${year}-${month}`);
+  }
+
+  // 2️⃣ Aggregate actual sales
+  const topProductsByMonth = await Order.aggregate([
+    { $unwind: "$items" },
+
+    {
+      $group: {
+        _id: {
+          month: { $dateToString: { format: "%Y-%m", date: "$createdAt" } },
+          productId: "$items.product._id",
+        },
+        totalSold: { $sum: "$items.quantity" },
+      },
+    },
+
+    {
+      $lookup: {
+        from: "products",
+        localField: "_id.productId",
+        foreignField: "_id",
+        as: "productDetails",
+      },
+    },
+    { $unwind: "$productDetails" },
+
+    {
+      $project: {
+        month: "$_id.month",
+        productId: "$_id.productId",
+        name: "$productDetails.title",
+        sales: "$totalSold",
+      },
+    },
+
+    { $sort: { month: 1, sales: -1 } },
+
+    {
+      $group: {
+        _id: "$month",
+        topProducts: {
+          $push: { productId: "$productId", name: "$name", sales: "$sales" },
+        },
+      },
+    },
+    {
+      $project: {
+        month: "$_id",
+        topProducts: { $slice: ["$topProducts", 3] },
+        _id: 0,
+      },
+    },
+  ]);
+
+  const fullData = months.map((month) => {
+    const found = topProductsByMonth.find((d) => d.month === month);
+    return found || { month, topProducts: [] };
+  });
+
+  res.json(fullData);
+};
+
 export {
   getRecommendations,
   handleNewProduct,
