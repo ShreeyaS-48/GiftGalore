@@ -76,7 +76,6 @@ const Login = () => {
       if (!auth?.accessToken) return;
       setIsLoading(true);
       const response = await axiosPrivate.get("/orders/order-history");
-      console.log(response.data);
       setOrderHistory(response.data);
       setFetchError(null);
     } catch (err) {

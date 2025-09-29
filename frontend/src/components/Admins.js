@@ -10,7 +10,7 @@ const Admins = () => {
   const goBack = () => navigate("/admin");
   return (
     <main className="admin">
-      <h2>Admins</h2>
+      <h2 style={{ textAlign: "center" }}>Admins</h2>
       {admins.length > 0 ? (
         <table className="users">
           <thead className>

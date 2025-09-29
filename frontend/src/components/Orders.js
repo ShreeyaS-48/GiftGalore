@@ -42,7 +42,7 @@ const Orders = () => {
       setIsLoading(false);
     }
   };
-  const { orders, handleDelivery } = useContext(AdminContext);
+  const { orders, handleUpdateOrderStatus } = useContext(AdminContext);
   const statusMap = [
     { label: "Placed", color: "Gray" },
     { label: "Processing", color: "Blue" },
@@ -75,7 +75,7 @@ const Orders = () => {
             <th>Address</th>
             <th>Items</th>
             <th>Amount</th>
-            <th>Delivered</th>
+            <th>Status</th>
           </tr>
         </thead>
         <tbody>
@@ -115,6 +115,24 @@ const Orders = () => {
                   <span style={{ color: "Gray", fontWeight: "bold" }}>
                     Placed
                   </span>
+                )}
+                {order.status === 3 ? null : (
+                  <select
+                    value={order.status}
+                    onChange={async (e) => {
+                      await handleUpdateOrderStatus(
+                        order._id,
+                        parseInt(e.target.value)
+                      );
+                      fetchOrderAnalytics();
+                    }}
+                    style={{ marginLeft: "10px" }}
+                  >
+                    <option value={0}>Placed</option>
+                    <option value={1}>Processing</option>
+                    <option value={2}>Dispatched</option>
+                    <option value={3}>Delivered</option>
+                  </select>
                 )}
               </td>
             </tr>

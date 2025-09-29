@@ -4,7 +4,7 @@ import {
   getOrderAnalytics,
   getOrdersForUser,
   getSalesAnalytics,
-  orderDelivered,
+  updateOrderStatus,
 } from "../../controllers/ordersController.js";
 import ROLES_LIST from "../../util/roles_list.js";
 import verifyRoles from "../../Middleware/verifyRoles.js";
@@ -12,11 +12,12 @@ import { getAllAssociations } from "../../controllers/ordersController.js";
 
 const router = express.Router();
 
-router
-  .route("/")
-  .get(verifyRoles(ROLES_LIST.Admin), getAllOrders)
-  .patch(verifyRoles(ROLES_LIST.Admin), orderDelivered);
+router.route("/").get(verifyRoles(ROLES_LIST.Admin), getAllOrders);
+
+router.route("/:id").patch(verifyRoles(ROLES_LIST.Admin), updateOrderStatus);
+
 router.route("/order-history").get(getOrdersForUser);
+
 router
   .route("/associations")
   .get(verifyRoles(ROLES_LIST.Admin), getAllAssociations);

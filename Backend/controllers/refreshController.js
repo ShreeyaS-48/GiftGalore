@@ -3,7 +3,6 @@ import User from "../models/user.model.js";
 
 const handleRefreshToken = async (req, res) => {
   const cookies = req.cookies;
-  console.log("Cookies:", cookies);
   if (!cookies?.jwt) return res.sendStatus(401); // unauthorised
   const refreshToken = cookies.jwt;
   const foundUser = await User.findOne({ refreshToken }).exec();

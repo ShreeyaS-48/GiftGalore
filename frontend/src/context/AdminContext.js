@@ -81,21 +81,17 @@ export const AdminProvider = ({ children }) => {
       setFetchError(err.message);
     }
   };
-  const handleDelivery = async (id) => {
+  const handleUpdateOrderStatus = async (orderId, newStatus) => {
     if (!auth?.accessToken) return;
     try {
-      await axiosPrivate.patch(`/orders`, {
-        orderId: id,
-      });
-
-      console.log("Order marked as delivered");
+      await axiosPrivate.patch(`/orders/${orderId}`, { status: newStatus });
       setOrders((prev) =>
         prev.map((order) =>
-          order._id === id ? { ...order, status: 1 } : order
+          order._id === orderId ? { ...order, status: newStatus } : order
         )
       );
     } catch (err) {
-      console.error("Failed to mark as delivered:", err);
+      console.error("Failed to update status:", err);
     }
   };
   return (
@@ -106,7 +102,7 @@ export const AdminProvider = ({ children }) => {
         handleDeleteUser,
         orders,
         fetchOrders,
-        handleDelivery,
+        handleUpdateOrderStatus,
         ordersPage,
         setOrdersPage,
         totalOrdersPages,

@@ -5,15 +5,7 @@ import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import useAuth from "../hooks/useAuth";
 import Pagination from "./Pagination";
 import { Link } from "react-router-dom";
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-} from "recharts";
+
 const AdminProducts = () => {
   const [totalProductsPages, setTotalProductsPages] = useState(0);
   const [products, setProducts] = useState([]);
@@ -43,7 +35,6 @@ const AdminProducts = () => {
   const fetchTopProducts = async () => {
     try {
       const response = await axiosPrivate.get("/products/top-products");
-      console.log(response.data);
       setTopProducts(response.data);
     } catch (err) {
       console.error(err);
