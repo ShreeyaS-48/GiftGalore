@@ -111,7 +111,7 @@ const Product = ({ product }) => {
             width: "100%",
           }}
         >
-          <AddToCartButton item={product} />
+          <AddToCartButton key={product._id} item={product} />
           <button
             style={{
               height: "50px",

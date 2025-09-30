@@ -4,7 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import CartContext from "../context/CartContext";
 import useAuth from "../hooks/useAuth";
 
-const AddToCartButton = ({ item }) => {
+const AddToCartButton = ({ key, item }) => {
   const { auth } = useAuth();
   const {
     cartItems,
@@ -20,7 +20,7 @@ const AddToCartButton = ({ item }) => {
         ? cartItems.find((cartItem) => cartItem.product._id === item._id)
         : false
     );
-  }, [cartItems]);
+  }, [cartItems, key]);
   const quantity = itemInCart ? itemInCart.quantity : 0;
   return (
     <div style={{ display: "flex", alignItems: "center" }}>

@@ -154,7 +154,7 @@ const ItemDetails = () => {
                   margin: "5px auto",
                 }}
               >
-                <AddToCartButton item={item} />
+                <AddToCartButton key={item._id} item={item} />
                 <button
                   style={{
                     height: "50px",
