@@ -8,68 +8,55 @@ dotenv.config();
 
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
-// ---------- Load and parse products ----------
-const RAW_DATA = fs.readFileSync(path.resolve("data/app-docs.txt"), "utf-8");
-let PRODUCTS = [];
+// Load app documentation
 
-try {
-  PRODUCTS = JSON.parse(RAW_DATA);
-} catch (err) {
-  console.error("Failed to parse app-docs.txt as JSON:", err);
-  PRODUCTS = [];
+const APP_DOCS = fs.readFileSync(path.resolve("data/app-docs.txt"), "utf-8");
+
+// Split text into chunks
+function splitTextIntoChunks(text, chunkSize = 500) {
+  const sentences = text.split(/(?<=[.?!])\s+/);
+  const chunks = [];
+  let currentChunk = "";
+
+  for (let sentence of sentences) {
+    if ((currentChunk + sentence).length > chunkSize) {
+      chunks.push(currentChunk.trim());
+      currentChunk = sentence + " ";
+    } else {
+      currentChunk += sentence + " ";
+    }
+  }
+  if (currentChunk) chunks.push(currentChunk.trim());
+  return chunks;
 }
 
-// ---------- Format products into text with links ----------
-function formatProduct(p) {
-  const oid = p._id?.$oid || "unknown";
-  return `**Product:** ${p.title}
-**Details:** ${p.details}
-**Type:** ${p.type}
-**Price:** ₹${p.price}
-**Ratings:** ${p.ratings}
-[Link](https://giftgalore.netlify.app/${oid})`;
-}
+const DOC_CHUNKS = splitTextIntoChunks(APP_DOCS);
 
-const PRODUCT_TEXTS = PRODUCTS.map(formatProduct);
-
-// ---------- Load FAQs ----------
-const RAW_FAQS = fs.readFileSync(path.resolve("data/faqs.txt"), "utf-8");
-// Each FAQ separated by double newlines or you can adjust the split
-const FAQ_TEXTS = RAW_FAQS.split(/\n\s*\n/).map(
-  (faq) => `**FAQ:** ${faq.trim()}`
-);
-
-// ---------- Combine docs ----------
-const ALL_TEXTS = [...PRODUCT_TEXTS, ...FAQ_TEXTS];
-
-// ---------- Initialize embeddings ----------
+// Initialize embeddings pipeline
 let embedder;
-let DOC_EMBEDDINGS = [];
 
 async function initEmbedder() {
   embedder = await pipeline("feature-extraction", "Xenova/all-MiniLM-L6-v2");
-
-  for (const text of ALL_TEXTS) {
-    const vector = await getEmbedding(text);
-    DOC_EMBEDDINGS.push({ text, vector });
-  }
 }
 
+// Generate embedding for text
 async function getEmbedding(text) {
   const embeddingTensor = await embedder(text);
 
+  // Convert tensor to plain array
   const array =
     embeddingTensor.data instanceof Float32Array
       ? Array.from(embeddingTensor.data)
       : embeddingTensor.data.flat?.() || [];
 
-  if (array.length === 0)
+  if (array.length === 0) {
     throw new Error("Failed to extract embedding array from tensor");
+  }
 
   return array;
 }
 
-// ---------- Cosine similarity ----------
+// Cosine similarity
 function cosineSimilarity(a, b) {
   const dot = a.reduce((sum, val, i) => sum + val * b[i], 0);
   const magA = Math.sqrt(a.reduce((sum, val) => sum + val * val, 0));
@@ -77,6 +64,17 @@ function cosineSimilarity(a, b) {
   return dot / (magA * magB);
 }
 
+// Store embedded docs
+let DOC_EMBEDDINGS = [];
+
+async function embedDocumentation() {
+  for (const chunk of DOC_CHUNKS) {
+    const vector = await getEmbedding(chunk);
+    DOC_EMBEDDINGS.push({ text: chunk, vector });
+  }
+}
+
+// Retrieve top relevant chunks
 function retrieveTopChunks(queryVector, topK = 3) {
   return DOC_EMBEDDINGS.map((chunk) => ({
     ...chunk,
@@ -86,7 +84,7 @@ function retrieveTopChunks(queryVector, topK = 3) {
     .slice(0, topK);
 }
 
-// ---------- Main chat function ----------
+// Main chat function
 export async function getChatResponse(conversation = []) {
   try {
     const userMessage = conversation[conversation.length - 1]?.content || "";
@@ -103,14 +101,12 @@ You are a helpful, concise chatbot for the GiftGalore platform.
   - Bold for emphasis
   - Italics for secondary emphasis
   - Tables if necessary
-  - Clickable links in blue 
-- When suggesting products, always include the title, real link from the docs, and price.
-- Never invent products not in the docs.
-- Answer FAQs if relevant.
+When suggesting products give a link in the format: replace oid from the documentation.
+https://giftgalore.netlify.app/$oid
 - Do not repeat full sentences from the documentation word-for-word; summarize instead.
-- Only answer questions about GiftGalore’s features, usage, products, and FAQs.
+- Only answer questions about GiftGalore’s features, usage, and troubleshooting.
 - If unrelated, reply: "Sorry, I can only help with GiftGalore-related questions."
-Here are the most relevant documents:
+Here is GiftGalore documentation:
 ${topChunks.map((c) => c.text).join("\n\n")}
 `;
 
@@ -127,9 +123,13 @@ ${topChunks.map((c) => c.text).join("\n\n")}
     return response.choices[0].message.content;
   } catch (err) {
     console.error("Groq API error:", err);
+    if (err?.error?.code === "rate_limit_exceeded") {
+      return "Sorry, your message is too long. Please shorten it.";
+    }
     return "Sorry, I couldn't generate a response at this time.";
   }
 }
 
-// ---------- Startup ----------
+// Initialize at startup
 await initEmbedder();
+await embedDocumentation();
