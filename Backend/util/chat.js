@@ -97,7 +97,7 @@ export async function getChatResponse(conversation = []) {
     const SYSTEM_PROMPT = `
     You MUST only suggest products present in the provided documents. 
     Do NOT invent any products. 
-    Always give the product name , details, price.
+    Always give the product name , details, price, link.
 You are a helpful, concise chatbot for the GiftGalore platform.
 - Always give short, crisp answers(3-5 lines max).
 - Format responses in Markdown.
