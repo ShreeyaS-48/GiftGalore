@@ -27,8 +27,10 @@ function formatProduct(p) {
 **Type:** ${p.type}
 **Price:** ₹${p.price}
 **Ratings:** ${p.ratings}
-<a href="https://giftgalore.netlify.app/${oid}" target="_blank" rel="noopener noreferrer">Shop Now</a>`;
+[Shop now](/${oid})
+`;
 }
+//[Product Image](${p.imgURL})
 
 const PRODUCT_TEXTS = PRODUCTS.map(formatProduct);
 
@@ -92,20 +94,18 @@ export async function getChatResponse(conversation = []) {
     const userMessage = conversation[conversation.length - 1]?.content || "";
     const queryVector = await getEmbedding(userMessage);
     const topChunks = retrieveTopChunks(queryVector);
-
     const SYSTEM_PROMPT = `
+    You MUST only suggest products present in the provided documents. 
+    Do NOT invent any products. 
+    Always give the product name , details, price.
 You are a helpful, concise chatbot for the GiftGalore platform.
-- Always give short, crisp answers.
+- Always give short, crisp answers(3-5 lines max).
 - Format responses in Markdown.
 - Use:
-  - Numbered lists for steps
-  - Bulleted lists for options
+  - Numbered lists 
+  - Bulleted lists 
   - Bold for emphasis
   - Italics for secondary emphasis
-  - Tables if necessary
-  - Clickable links in blue 
-- When suggesting products, always include the title, real link from the docs, and price.
-- Never invent products not in the docs.
 - Answer FAQs if relevant.
 - Do not repeat full sentences from the documentation word-for-word; summarize instead.
 - Only answer questions about GiftGalore’s features, usage, products, and FAQs.

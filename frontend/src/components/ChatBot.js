@@ -1,11 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import ReactMarkdown from "react-markdown";
+import { Link } from "react-router-dom";
+import DataContext from "../context/DataContext";
+import BestSellerItem from "./BestSellerItem";
 function formatBotResponse(text) {
+  console.log(text.replace(/(\d+\.)/g, "\n$1"));
   return text.replace(/(\d+\.)/g, "\n$1"); // ensures lists start on new lines
 }
 
 const ChatBot = () => {
+  const { products } = useContext(DataContext);
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   useEffect(() => {
@@ -31,6 +36,7 @@ const ChatBot = () => {
           content: String(msg.text ?? ""),
         })),
       });
+      console.log(res.data);
       const botMessage = {
         sender: "assistant",
         text: formatBotResponse(res.data.reply),
@@ -74,9 +80,43 @@ const ChatBot = () => {
               <ReactMarkdown
                 children={m.text}
                 components={{
-                  a: ({ node, ...props }) => (
-                    <a {...props} target="_blank" rel="noopener noreferrer" />
-                  ),
+                  a: ({ href, children, ...props }) => {
+                    const item = products.find((p) => p._id == href.slice(1));
+                    if (item) {
+                      return (
+                        <div className="trend-item">
+                          <Link
+                            to={`/${item._id}`}
+                            style={{ color: "black", textDecoration: "none" }}
+                          >
+                            <figure>
+                              <img
+                                src={item.imgURL}
+                                alt={item.title}
+                                title={item.title}
+                              />
+                            </figure>
+                            <p
+                              className="title"
+                              style={{ fontWeight: "bold", fontSize: "19px" }}
+                            >
+                              {item.title}
+                            </p>
+                          </Link>
+                        </div>
+                      );
+                    }
+                    return (
+                      <a
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        {...props}
+                      >
+                        {children}
+                      </a>
+                    );
+                  },
                 }}
               />
             </div>
