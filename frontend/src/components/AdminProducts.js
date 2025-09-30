@@ -7,6 +7,9 @@ import Pagination from "./Pagination";
 import { Link } from "react-router-dom";
 
 const AdminProducts = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const [totalProductsPages, setTotalProductsPages] = useState(0);
   const [products, setProducts] = useState([]);
   const { auth } = useAuth();

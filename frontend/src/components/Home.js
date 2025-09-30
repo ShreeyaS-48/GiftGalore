@@ -1,5 +1,5 @@
 import React from "react";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import DataContext from "../context/DataContext.js";
 import { Link } from "react-router-dom";
 import Product from "./Product.js";
@@ -8,6 +8,9 @@ import GiftsInTrend from "./GiftsInTrend.js";
 import RecommendedItems from "./RecommendedItems.js";
 const Home = () => {
   const { search, products, searchResults } = useContext(DataContext);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <main className="home">
       <ul className="home-items-display">

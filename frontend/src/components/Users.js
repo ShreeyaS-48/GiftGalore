@@ -21,6 +21,9 @@ import {
 } from "recharts";
 
 const Users = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const axiosPrivate = useAxiosPrivate();
   const { auth } = useAuth();
   const {

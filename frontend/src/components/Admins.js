@@ -1,10 +1,13 @@
 import React from "react";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import AdminContext from "../context/AdminContext";
 import { FaTrashAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 const Admins = () => {
   const { admins, handleDeleteUser } = useContext(AdminContext);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const navigate = useNavigate();
 
   const goBack = () => navigate("/admin");

@@ -61,12 +61,13 @@ const ItemDetails = () => {
     }
   };
   useEffect(() => {
+    window.scrollTo(0, 0);
     fetchProductReviews();
     fetchProductRecommendations();
     saveViewedProduct(id);
   }, [id]);
   return (
-    <main className="item-details" autofocus>
+    <main className="item-details">
       <div
         className="details-containder"
         style={{

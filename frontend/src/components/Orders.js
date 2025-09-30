@@ -63,6 +63,9 @@ const Orders = () => {
   useEffect(() => {
     fetchOrderAnalytics();
   }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <main className="admin">
       <h2 style={{ textAlign: "center" }}>Orders</h2>
