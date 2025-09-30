@@ -1,4 +1,1217 @@
 GiftGalore is your one-stop shop for thoughtful gifts, delivered with care.
+Product Catalog
+[{
+  "_id": {
+    "$oid": "6849b432cf73e16f14e52977"
+  },
+  "type": "cake",
+  "title": "Fudge Brownie Cake",
+  "price": 675,
+  "details": "Half Kg, Eggless",
+  "ratings": 4.5,
+  "reviewSentiment": "Customer feedback indicates 100% are thrilled."
+},
+{
+  "_id": {
+    "$oid": "6849b80eb40a669ddb2c89ea"
+  },
+  "type": "cake",
+  "title": "Creamy Mango Delight Cake",
+  "price": 749,
+  "details": "Half Kg, Eggless",
+  "ratings": 4,
+  "reviewSentiment": "Based on reviews, 100% seem happy."
+},
+{
+  "_id": {
+    "$oid": "6849b83fb40a669ddb2c89ed"
+  },
+  "type": "cake",
+  "title": "Heavenly Butterscotch Cake",
+  "price": 575,
+  "details": "Half Kg, Eggless",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "6849b866b40a669ddb2c89f0"
+  },
+  "type": "cake",
+  "title": "Blueberry Designer Cake",
+  "price": 825,
+  "details": "Half Kg, Eggless",
+  "ratings": 4.8,
+  "reviewSentiment": "Most customers are happy with this product."
+},
+{
+  "_id": {
+    "$oid": "6849b87eb40a669ddb2c89f3"
+  },
+  "type": "cake",
+  "title": "Rich Coffee Cream Cake",
+  "price": 575,
+  "details": "Half Kg, Eggless",
+  "ratings": 4.4,
+  "reviewSentiment": "100% of customers are thrilled."
+},
+{
+  "_id": {
+    "$oid": "6849cde6c3c85c7860dbe125"
+  },
+  "type": "cake",
+  "title": "Fruit Overload Cake",
+  "price": 1049,
+  "details": "One Kg, Eggless",
+  "ratings": 4,
+  "reviewSentiment": "Most customers are happy with this product."
+},
+{
+  "_id": {
+    "$oid": "6849ce28c3c85c7860dbe128"
+  },
+  "type": "cake",
+  "title": "Truffle Cherry Cake",
+  "price": 825,
+  "details": "Half Kg, Eggless",
+  "ratings": 4
+},
+{
+  "_id": {
+    "$oid": "6849ce50c3c85c7860dbe12b"
+  },
+  "type": "cake",
+  "title": "Pineapple Cake",
+  "price": 1199,
+  "details": "One Kg, Eggless",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "6849ce68c3c85c7860dbe12e"
+  },
+  "type": "cake",
+  "title": "Red Velvet Gems Cake",
+  "price": 950,
+  "details": "Half Kg, Eggless",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "6849ce81c3c85c7860dbe131"
+  },
+  "type": "cake",
+  "title": "Rose Paradise Chocolate Cake",
+  "price": 650,
+  "details": "Half Kg, Eggless",
+  "ratings": 5
+},
+{
+  "_id": {
+    "$oid": "6849ce8cc3c85c7860dbe134"
+  },
+  "type": "cake",
+  "title": "Chocolate Trio Cake",
+  "price": 1250,
+  "details": "One Kg, Eggless",
+  "ratings": 4.5
+},
+{
+  "_id": {
+    "$oid": "6849cea6c3c85c7860dbe138"
+  },
+  "type": "cake",
+  "title": "Golden Butterscotch Cake",
+  "price": 550,
+  "details": "Half Kg, Eggless",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a63880dc7a923530cb5ec"
+  },
+  "type": "cake",
+  "title": "Black Forest Bento Cake",
+  "price": 990,
+  "details": "Half Kg, Eggless",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a639e0dc7a923530cb5ef"
+  },
+  "type": "cake",
+  "title": "Rainbow Vanilla Cream Cake",
+  "price": 575,
+  "details": "Half Kg, Eggless",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a63ac0dc7a923530cb5f2"
+  },
+  "type": "cake",
+  "title": "Butterscotch with Rasamalai",
+  "price": 1275,
+  "details": "One Kg, Eggless",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a63d90dc7a923530cb5f7"
+  },
+  "type": "cake",
+  "title": "Rosy White Forest Cake",
+  "price": 675,
+  "details": "Half Kg, Eggless",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a63ee0dc7a923530cb5fa"
+  },
+  "type": "cake",
+  "title": "Black Forest Gems Cake",
+  "price": 1375,
+  "details": "One Kg, Eggless",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a64010dc7a923530cb5fd"
+  },
+  "type": "cake",
+  "title": "Blueberry Glaze Cake",
+  "price": 780,
+  "details": "Half Kg, Eggless",
+  "ratings": 4.8
+},
+{
+  "_id": {
+    "$oid": "684a64150dc7a923530cb600"
+  },
+  "type": "cake",
+  "title": "Creamy Vanilla Fruit Cake",
+  "price": 675,
+  "details": "Half Kg, Eggless",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a64360dc7a923530cb605"
+  },
+  "type": "cake",
+  "title": "Dark Chocolate Truffle Cake",
+  "price": 825,
+  "details": "Half Kg, Eggless",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a64620dc7a923530cb60a"
+  },
+  "type": "cake",
+  "title": "Cream Drop Chocolate Cake",
+  "price": 825,
+  "details": "Half Kg, Eggless",
+  "ratings": 4.9,
+  "reviewSentiment": "Customer feedback indicates 100% are thrilled."
+},
+{
+  "_id": {
+    "$oid": "684a64760dc7a923530cb60d"
+  },
+  "type": "cake",
+  "title": "Vanilla With Gulabjamun Cake",
+  "price": 775,
+  "details": "Half Kg, Eggless",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a64850dc7a923530cb610"
+  },
+  "type": "cake",
+  "title": "Pineapple Gems Cake",
+  "price": 550,
+  "details": "Half Kg, Eggless",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a64910dc7a923530cb613"
+  },
+  "type": "cake",
+  "title": "Divine Mango Cream Cake",
+  "price": 750,
+  "details": "Half Kg, Eggless",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a649d0dc7a923530cb616"
+  },
+  "type": "cake",
+  "title": "Black Forest Oreo Cake",
+  "price": 850,
+  "details": "Half Kg, Eggless",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a64aa0dc7a923530cb619"
+  },
+  "type": "cake",
+  "title": "Scrumptious Red Velvet Cake",
+  "price": 755,
+  "details": "Half Kg, Eggless",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a64b60dc7a923530cb61c"
+  },
+  "type": "cake",
+  "title": "Chocolate Rose Design Cake",
+  "price": 675,
+  "details": "Half Kg, Eggless",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a64c30dc7a923530cb61f"
+  },
+  "type": "cake",
+  "title": "Velvety Pineapple Cake",
+  "price": 845,
+  "details": "Half Kg, Eggless",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a65090dc7a923530cb622"
+  },
+  "type": "cake",
+  "title": "Chocolate Fudge Cake",
+  "price": 580,
+  "details": "Half Kg, Eggless",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a766a185f198d397eb11a"
+  },
+  "type": "bouquet",
+  "title": "Pastel Carnation Bouquet",
+  "price": 1050,
+  "details": "White Gypsophila Gypsy Fillers",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a76ad185f198d397eb11f"
+  },
+  "type": "bouquet",
+  "title": "Mixed Gerbera Bouquet",
+  "price": 600,
+  "details": "White Gypsophila Gypsy Fillers",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a76c2185f198d397eb122"
+  },
+  "type": "bouquet",
+  "title": "Pink Roses Bouquet",
+  "price": 1100,
+  "details": "Green Asparagus & Song of India Leaf Fillers ",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a76e7185f198d397eb127"
+  },
+  "type": "bouquet",
+  "title": "Carnations Bouquet",
+  "price": 800,
+  "details": "White Gypsophila Gypsy & Green Morpankhi Leaf Fillers",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a7707185f198d397eb12a"
+  },
+  "type": "bouquet",
+  "title": "White Carnations Bouquet",
+  "price": 600,
+  "details": "Green Morpankhi Fillers",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a772d185f198d397eb12f"
+  },
+  "type": "bouquet",
+  "title": "Red Roses Bouquet",
+  "price": 1550,
+  "details": "Green Murraya Leaf Fillers",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a7742185f198d397eb134"
+  },
+  "type": "bouquet",
+  "title": "Blue Orchids Bouquet",
+  "price": 800,
+  "details": "Green Delhi Asparagus Fillers",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a77d1185f198d397eb13c"
+  },
+  "type": "bouquet",
+  "title": "Dashing Daisy Bouquet",
+  "price": 850,
+  "details": "Green Murraya Leaf Fillers",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a77e3185f198d397eb141"
+  },
+  "type": "bouquet",
+  "title": "Mixed Roses Bouquet",
+  "price": 625,
+  "details": "White Gypsophila Gypsy Fillers",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a77f2185f198d397eb144"
+  },
+  "type": "bouquet",
+  "title": "Blooming Joy Roses Bouquet",
+  "price": 975,
+  "details": "Green murraya leaf Fillers",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a7805185f198d397eb149"
+  },
+  "type": "bouquet",
+  "title": "Yellow Gerbera Bouquet",
+  "price": 550,
+  "details": "White Gypsy Flower & Asparagus Fillers",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a7816185f198d397eb14e"
+  },
+  "type": "bouquet",
+  "title": "Pink Roses & Daises Bouquet",
+  "price": 1275,
+  "details": "Green Fillers",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a7dda185f198d397eb155"
+  },
+  "type": "bouquet",
+  "title": "Elegant White Roses Bouquet",
+  "price": 900,
+  "details": "White Gypsophila Gypsy Fillers",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a7def185f198d397eb15a"
+  },
+  "type": "bouquet",
+  "title": "Mixed Asiatic Lilies Bouquet",
+  "price": 755,
+  "details": "Green Color Goldenrod Fillers",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a7dfd185f198d397eb15d"
+  },
+  "type": "bouquet",
+  "title": "Mixed Roses & Carnations",
+  "price": 1200,
+  "details": "Green Fillers",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a7e1e185f198d397eb162"
+  },
+  "type": "bouquet",
+  "title": "Pink Asiatic Lilies Bouquet",
+  "price": 1350,
+  "details": "Green Color Morpankhi Fillers",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a7e36185f198d397eb167"
+  },
+  "type": "bouquet",
+  "title": "Yellow Roses Bouquet",
+  "price": 975,
+  "details": "Green Murraya Leaf Fillers",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a7f9f6ab7fd76f5906ede"
+  },
+  "type": "bouquet",
+  "title": "Pretty Red Roses",
+  "price": 750,
+  "details": "Green Murraya Leaf Fillers",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a7fc66ab7fd76f5906ee3"
+  },
+  "type": "bouquet",
+  "title": "Purpule Orchids Bouquet",
+  "price": 975,
+  "details": "Green Murraya Leaf Fillers",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a7fd56ab7fd76f5906ee6"
+  },
+  "type": "bouquet",
+  "title": "Shimmering Blue Roses",
+  "price": 1450,
+  "details": "Green Murraya Leaf Fillers",
+  "ratings": 4.7,
+  "reviewSentiment": "Most customers are happy with this product."
+},
+{
+  "_id": {
+    "$oid": "684a7fe26ab7fd76f5906ee9"
+  },
+  "type": "bouquet",
+  "title": "Asiatic Lilies & Carnations",
+  "price": 1275,
+  "details": "Green color Morpankhi Leaf Filler",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a80476ab7fd76f5906ef2"
+  },
+  "type": "bouquet",
+  "title": "Orange Asiatic Lilies Bouquet",
+  "price": 950,
+  "details": "Green Color Morpankhi Fillers",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a80696ab7fd76f5906ef8"
+  },
+  "type": "bouquet",
+  "title": "White Roses Bouquet",
+  "price": 750,
+  "details": "Green Murraya Leaf Fillers",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a80766ab7fd76f5906efb"
+  },
+  "type": "bouquet",
+  "title": "Pink Carnantions Bouquet",
+  "price": 850,
+  "details": "White Gypsophila Gypsy & Green Morpankhi Leaf Fillers",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a808c6ab7fd76f5906f00"
+  },
+  "type": "bouquet",
+  "title": "Blooming Carnantions Bouquet",
+  "price": 1175,
+  "details": "White Gypsophila Gypsy & Green Morpankhi Leaf Fillers",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a80966ab7fd76f5906f03"
+  },
+  "type": "bouquet",
+  "title": "Divine Blue Orchids Bouquet",
+  "price": 875,
+  "details": "Green Murraya Leaf Fillers",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a80a26ab7fd76f5906f06"
+  },
+  "type": "bouquet",
+  "title": "Exotic Gerbera Bouquet",
+  "price": 575,
+  "details": "Green Murraya Leaf Fillers",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a80ae6ab7fd76f5906f09"
+  },
+  "type": "bouquet",
+  "title": "Colorful Mixed Roses Bouquet",
+  "price": 825,
+  "details": "Green Murraya Leaf Fillers",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a80b96ab7fd76f5906f0c"
+  },
+  "type": "bouquet",
+  "title": "White & Pink Roses Bouquet",
+  "price": 950,
+  "details": "Green Murraya Leaf Fillers",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a80c66ab7fd76f5906f0f"
+  },
+  "type": "bouquet",
+  "title": "Red Carnations Bouquet",
+  "price": 750,
+  "details": "White Gypsophila Gypsy & Green Morpankhi Leaf Fillers",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a812a6ab7fd76f5906f14"
+  },
+  "type": "plant",
+  "title": "Money Plant",
+  "price": 550,
+  "details": "Colorful Rajwada Printed Pot",
+  "ratings": 4.9,
+  "reviewSentiment": "100% of customers are thrilled."
+},
+{
+  "_id": {
+    "$oid": "684a81be8f8656f31657a8fa"
+  },
+  "type": "plant",
+  "title": "Ficus Ginseng Bonsai Plant",
+  "price": 1350,
+  "details": "White N Blue Sea Home With Fish Resin Pot ",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a81d38f8656f31657a8fd"
+  },
+  "type": "plant",
+  "title": "Goodluck Bamboo Plant",
+  "price": 675,
+  "details": "Transparent Square Glass Vase",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a83748f8656f31657a902"
+  },
+  "type": "plant",
+  "title": "Jade Plant",
+  "price": 350,
+  "details": "Round Glass Vase",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a83838f8656f31657a905"
+  },
+  "type": "plant",
+  "title": "Green Aglaonema Plant",
+  "price": 1150,
+  "details": "Blue Hexagonal Pot",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a83978f8656f31657a908"
+  },
+  "type": "plant",
+  "title": "Peace Lily Plant",
+  "price": 975,
+  "details": "White Asthetic Pot",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a83bf8f8656f31657a90e"
+  },
+  "type": "plant",
+  "title": "Aglaonema Plant",
+  "price": 1350,
+  "details": "Black Buddha Pot",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a83e98f8656f31657a913"
+  },
+  "type": "plant",
+  "title": "Spider Plant",
+  "price": 725,
+  "details": "Red Glass Vase",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a84708f8656f31657a91b"
+  },
+  "type": "plant",
+  "title": "Small Money Plant",
+  "price": 475,
+  "details": "Mason Jar With Pebbles",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a848c8f8656f31657a920"
+  },
+  "type": "plant",
+  "title": "Silver Aglaonema Plant",
+  "price": 725,
+  "details": "Pipe Shaped Cork Pot",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a84af8f8656f31657a926"
+  },
+  "type": "plant",
+  "title": "Small Jade Plant",
+  "price": 335,
+  "details": "Gold Tone Metal Pot",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a84ca8f8656f31657a92b"
+  },
+  "type": "plant",
+  "title": "Red Aglaonema Plant",
+  "price": 1325,
+  "details": "Golden Plate Cat Print Pot",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a84e48f8656f31657a930"
+  },
+  "type": "plant",
+  "title": "Colorful Money Plant",
+  "price": 1250,
+  "details": "Pink Kettle & Pink Pebbles",
+  "ratings": 4.7
+},
+{
+  "_id": {
+    "$oid": "684a84f38f8656f31657a933"
+  },
+  "type": "plant",
+  "title": "Golden Syngonium Plant",
+  "price": 425,
+  "details": "Round Glass Vase",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a85028f8656f31657a936"
+  },
+  "type": "plant",
+  "title": "Tranquil Calathea Plant",
+  "price": 1750,
+  "details": "Buddha Pot",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a85118f8656f31657a939"
+  },
+  "type": "plant",
+  "title": "Syngonium Plant",
+  "price": 300,
+  "details": "White Asthetic Pot",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a85208f8656f31657a93c"
+  },
+  "type": "plant",
+  "title": "Haworthia Plant",
+  "price": 1250,
+  "details": "Golden Ceramic Pot",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a852d8f8656f31657a93f"
+  },
+  "type": "plant",
+  "title": "Sanseveiria Plant",
+  "price": 900,
+  "details": "Designer Pink Pot",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a85698f8656f31657a944"
+  },
+  "type": "chocolate",
+  "title": "Handmade Chocolates",
+  "price": 950,
+  "details": "20 pieces",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a857f8f8656f31657a947"
+  },
+  "type": "chocolate",
+  "title": "Mix Flavour Chocolates",
+  "price": 500,
+  "details": "12 pieces",
+  "ratings": 4.25,
+  "reviewSentiment": "Customer feedback indicates 100% are happy."
+},
+{
+  "_id": {
+    "$oid": "684a85988f8656f31657a94c"
+  },
+  "type": "chocolate",
+  "title": "Dairy Milk Chocolate Bouquet",
+  "price": 625,
+  "details": "10 pieces",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a85c18f8656f31657a951"
+  },
+  "type": "chocolate",
+  "title": "Marble Chocolate",
+  "price": 1750,
+  "details": "25 pieces",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a85e48f8656f31657a956"
+  },
+  "type": "chocolate",
+  "title": "Cadbury Chocolates Bouquet",
+  "price": 950,
+  "details": "24 pieces",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a85f18f8656f31657a959"
+  },
+  "type": "chocolate",
+  "title": "KitKat Chocolate Bouquet",
+  "price": 725,
+  "details": "17 pieces",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a86198f8656f31657a95e"
+  },
+  "type": "chocolate",
+  "title": "Box Of Assorted Chocolates",
+  "price": 725,
+  "details": "18 pieces",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a862d8f8656f31657a963"
+  },
+  "type": "chocolate",
+  "title": "Chocolate Indulgence Gift Box",
+  "price": 1225,
+  "details": "23 pieces",
+  "ratings": 4.7,
+  "reviewSentiment": "100% of customers are thrilled."
+},
+{
+  "_id": {
+    "$oid": "684a86438f8656f31657a966"
+  },
+  "type": "chocolate",
+  "title": "Shakkar Chocolate Fusion",
+  "price": 1550,
+  "details": "21 pieces",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a86518f8656f31657a969"
+  },
+  "type": "chocolate",
+  "title": "Two Storied Chocolate Treat",
+  "price": 1575,
+  "details": "35 pieces",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a86678f8656f31657a96e"
+  },
+  "type": "chocolate",
+  "title": "Classic Truffles Chocolate",
+  "price": 650,
+  "details": "9 pieces",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a86738f8656f31657a971"
+  },
+  "type": "chocolate",
+  "title": "Ferrerro Rocher Bouquet",
+  "price": 1325,
+  "details": "16 pieces",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a868a8f8656f31657a975"
+  },
+  "type": "chocolate",
+  "title": "Dairy Milk Bouquet",
+  "price": 850,
+  "details": "15 pieces",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a869f8f8656f31657a97a"
+  },
+  "type": "chocolate",
+  "title": "Nuty Bliss Chocolate Delight",
+  "price": 925,
+  "details": "9 pieces",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a86b78f8656f31657a97d"
+  },
+  "type": "chocolate",
+  "title": "Premium Chocolate Treasure",
+  "price": 1150,
+  "details": "16 pieces",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a86c58f8656f31657a980"
+  },
+  "type": "chocolate",
+  "title": "Ferroro Rocher Delight",
+  "price": 750,
+  "details": "10 pieces",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a86ea8f8656f31657a985"
+  },
+  "type": "chocolate",
+  "title": "Rich Assorted Chocolate Box",
+  "price": 875,
+  "details": "14 pieces",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a86fa8f8656f31657a988"
+  },
+  "type": "chocolate",
+  "title": "Dairy Milk Hamper",
+  "price": 650,
+  "details": "10 pieces",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a87418f8656f31657a98d"
+  },
+  "type": "combo",
+  "title": "Pink Roses & Chocolate Cake",
+  "price": 1350,
+  "details": "12 Pink Roses & Half kg Cake",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a874e8f8656f31657a990"
+  },
+  "type": "combo",
+  "title": "Personalised Mug & Chocolate",
+  "price": 1275,
+  "details": "3 Dairy Milk Chocolates & A Mug",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a877e8f8656f31657a995"
+  },
+  "type": "combo",
+  "title": "Carnations & Truffle Cake",
+  "price": 1475,
+  "details": "12 Pink Carnations & Half kg Cake",
+  "ratings": 5,
+  "reviewSentiment": "Customer feedback indicates 100% are thrilled."
+},
+{
+  "_id": {
+    "$oid": "684a87928f8656f31657a99a"
+  },
+  "type": "combo",
+  "title": "Money Plant & Chocolates",
+  "price": 1250,
+  "details": "Money Plant, 3 Chocolates And Jasmine Scented Candle",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a87ac8f8656f31657a99f"
+  },
+  "type": "combo",
+  "title": "Red Roses & Chocolate Cake",
+  "price": 1450,
+  "details": "12 Red Roses & Half kg Cake",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a87bf8f8656f31657a9a4"
+  },
+  "type": "combo",
+  "title": "Celebration Duo",
+  "price": 1875,
+  "details": "12 Yellow Roses & Half kg Cake",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a87df8f8656f31657a9a9"
+  },
+  "type": "combo",
+  "title": "Spectacular Combo",
+  "price": 1550,
+  "details": "12 Roses & Half kg Cake",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a87ef8f8656f31657a9ac"
+  },
+  "type": "combo",
+  "title": "Orchids & Truffle Cake",
+  "price": 1450,
+  "details": "10 Purple Orchids & Half kg Cake",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a87fd8f8656f31657a9af"
+  },
+  "type": "combo",
+  "title": "Dry Fruits Hamper",
+  "price": 1450,
+  "details": "Almonds, Walnuts, Cashewnuts, Pistas, Figs, etc",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a880f8f8656f31657a9b2"
+  },
+  "type": "combo",
+  "title": "Roses & Butterscotch Cake",
+  "price": 1450,
+  "details": "15 Roses & Half kg Cake",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a88498f8656f31657a9b7"
+  },
+  "type": "combo",
+  "title": "Chocolate Special Hamper",
+  "price": 1850,
+  "details": "Chocolate-shaped diary, Chocolate popcorn, Nutella spread",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a88578f8656f31657a9ba"
+  },
+  "type": "combo",
+  "title": "Roses & BlackForest Cake",
+  "price": 1750,
+  "details": "12 Mixed Color Roses & Half Kg Cake",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a88738f8656f31657a9bf"
+  },
+  "type": "combo",
+  "title": "Arrorted Royal Baklavas",
+  "price": 1900,
+  "details": " Pistachio Cashew, Finger, Chocolate and Pyramid Baklavas",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a888f8f8656f31657a9c4"
+  },
+  "type": "combo",
+  "title": "Lilies & Butterscotch Cake",
+  "price": 1975,
+  "details": "10 Mixed Liles & Half Kg Cake",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a88c88f8656f31657a9c9"
+  },
+  "type": "combo",
+  "title": "Delicious Health Hamper",
+  "price": 1075,
+  "details": "Green Tea, Keeros Roasted Multigrain Jar & Cookie Bites",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a88e08f8656f31657a9ce"
+  },
+  "type": "combo",
+  "title": "Nut Mix Gift Hamper",
+  "price": 1475,
+  "details": "Almonds, Walnuts, Cashewnuts, Pistas, Figs, etc",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a88f08f8656f31657a9d1"
+  },
+  "type": "combo",
+  "title": "Gerberas & Cake",
+  "price": 950,
+  "details": "Mixed Gerberas & Half Kg Cake",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a88fe8f8656f31657a9d4"
+  },
+  "type": "combo",
+  "title": "Fruit Delight Hamper",
+  "price": 975,
+  "details": "Mix of fresh fruits complemented by a golden Syngonium plant.",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a891b8f8656f31657a9d9"
+  },
+  "type": "combo",
+  "title": "Savouries Delight Gift Set",
+  "price": 1250,
+  "details": "Cookies, Papdi & Matthi",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a89288f8656f31657a9dc"
+  },
+  "type": "combo",
+  "title": "Greenary & Fresh Fruits",
+  "price": 1175,
+  "details": "Fresh Fruits & Milt Sanseveiria Plant",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a89368f8656f31657a9df"
+  },
+  "type": "combo",
+  "title": "Blossom & Velvet Delight",
+  "price": 1450,
+  "details": "12 Red & Pink Roses & Half Kg Red Velvet Cake",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a894d8f8656f31657a9e4"
+  },
+  "type": "combo",
+  "title": "Orchids & Chocolates Delight",
+  "price": 1150,
+  "details": "7 Blue Orchids & Assorted Cadbury Chocolates",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a895c8f8656f31657a9e7"
+  },
+  "type": "combo",
+  "title": "Screne Delight",
+  "price": 1150,
+  "details": "Pink Carnations & Premium Spider Plant",
+  "ratings": 0
+},
+{
+  "_id": {
+    "$oid": "684a896d8f8656f31657a9ea"
+  },
+  "type": "combo",
+  "title": "Green & Purple Blooms",
+  "price": 1150,
+  "details": "Premium Plants & 7 Dairy Milk Chocolates",
+  "ratings": 4.8
+},
+{
+  "_id": {
+    "$oid": "6849b3cfcf73e16f14e52974"
+  },
+  "type": "cake",
+  "details": "Half Kg, Eggless",
+  "title": "Chocolate Truffle Cake",
+  "price": 575,
+  "ratings": 0
+}]
+FAQs
 1. Browsing Products
 You can shop by category (cakes, bouquets, plants, chocolates, combos).
 Click any product to see more details, reviews, and price.
@@ -61,855 +1274,3 @@ Wishlist, AI gift suggestions, real payment gateway.
 Coming Soon
 Wishlist feature to save your favorite items.
 AI gift suggestions based on your preferences.
-Product Catalog
-[{
-  "type": "cake",
-  "title": "Fudge Brownie Cake",
-  "price": 675,
-  "details": "Half Kg, Eggless",
-  "ratings": 4.5,
-  "reviewSentiment": "Customer feedback indicates 100% are thrilled."
-},
-{
-  "type": "cake",
-  "title": "Creamy Mango Delight Cake",
-  "price": 749,
-  "details": "Half Kg, Eggless",
-  "ratings": 4,
-  "reviewSentiment": "Based on reviews, 100% seem happy."
-},
-{
-  "type": "cake",
-  "title": "Heavenly Butterscotch Cake",
-  "price": 575,
-  "details": "Half Kg, Eggless",
-  "ratings": 0
-},
-{
-  "type": "cake",
-  "title": "Blueberry Designer Cake",
-  "price": 825,
-  "details": "Half Kg, Eggless",
-  "ratings": 4.8,
-  "reviewSentiment": "Most customers are happy with this product."
-},
-{
-  "type": "cake",
-  "title": "Rich Coffee Cream Cake",
-  "price": 575,
-  "details": "Half Kg, Eggless",
-  "ratings": 4.4,
-  "reviewSentiment": "100% of customers are thrilled."
-},
-{
-  "type": "cake",
-  "title": "Fruit Overload Cake",
-  "price": 1049,
-  "details": "One Kg, Eggless",
-  "ratings": 4,
-  "reviewSentiment": "Most customers are happy with this product."
-},
-{
-  "type": "cake",
-  "title": "Truffle Cherry Cake",
-  "price": 825,
-  "details": "Half Kg, Eggless",
-  "ratings": 4
-},
-{
-  "type": "cake",
-  "title": "Pineapple Cake",
-  "price": 1199,
-  "details": "One Kg, Eggless",
-  "ratings": 0
-},
-{
-  "type": "cake",
-  "title": "Red Velvet Gems Cake",
-  "price": 950,
-  "details": "Half Kg, Eggless",
-  "ratings": 0
-},
-{
-  "type": "cake",
-  "title": "Rose Paradise Chocolate Cake",
-  "price": 650,
-  "details": "Half Kg, Eggless",
-  "ratings": 5
-},
-{
-  "type": "cake",
-  "title": "Chocolate Trio Cake",
-  "price": 1250,
-  "details": "One Kg, Eggless",
-  "ratings": 4.5
-},
-{
-  "type": "cake",
-  "title": "Golden Butterscotch Cake",
-  "price": 550,
-  "details": "Half Kg, Eggless",
-  "ratings": 0
-},
-{
-  "type": "cake",
-  "title": "Black Forest Bento Cake",
-  "price": 990,
-  "details": "Half Kg, Eggless",
-  "ratings": 0
-},
-{
-  "type": "cake",
-  "title": "Rainbow Vanilla Cream Cake",
-  "price": 575,
-  "details": "Half Kg, Eggless",
-  "ratings": 0
-},
-{
-  "type": "cake",
-  "title": "Butterscotch with Rasamalai",
-  "price": 1275,
-  "details": "One Kg, Eggless",
-  "ratings": 0
-},
-{
-  "type": "cake",
-  "title": "Rosy White Forest Cake",
-  "price": 675,
-  "details": "Half Kg, Eggless",
-  "ratings": 0
-},
-{
-  "type": "cake",
-  "title": "Black Forest Gems Cake",
-  "price": 1375,
-  "details": "One Kg, Eggless",
-  "ratings": 0
-},
-{
-  "type": "cake",
-  "title": "Blueberry Glaze Cake",
-  "price": 780,
-  "details": "Half Kg, Eggless",
-  "ratings": 4.8
-},
-{
-  "type": "cake",
-  "title": "Creamy Vanilla Fruit Cake",
-  "price": 675,
-  "details": "Half Kg, Eggless",
-  "ratings": 0
-},
-{
-  "type": "cake",
-  "title": "Dark Chocolate Truffle Cake",
-  "price": 825,
-  "details": "Half Kg, Eggless",
-  "ratings": 0
-},
-{
-  "type": "cake",
-  "title": "Cream Drop Chocolate Cake",
-  "price": 825,
-  "details": "Half Kg, Eggless",
-  "ratings": 4.9,
-  "reviewSentiment": "Customer feedback indicates 100% are thrilled."
-},
-{
-  "type": "cake",
-  "title": "Vanilla With Gulabjamun Cake",
-  "price": 775,
-  "details": "Half Kg, Eggless",
-  "ratings": 0
-},
-{
-  "type": "cake",
-  "title": "Pineapple Gems Cake",
-  "price": 550,
-  "details": "Half Kg, Eggless",
-  "ratings": 0
-},
-{
-  "type": "cake",
-  "title": "Divine Mango Cream Cake",
-  "price": 750,
-  "details": "Half Kg, Eggless",
-  "ratings": 0
-},
-{
-  "type": "cake",
-  "title": "Black Forest Oreo Cake",
-  "price": 850,
-  "details": "Half Kg, Eggless",
-  "ratings": 0
-},
-{
-  "type": "cake",
-  "title": "Scrumptious Red Velvet Cake",
-  "price": 755,
-  "details": "Half Kg, Eggless",
-  "ratings": 0
-},
-{
-  "type": "cake",
-  "title": "Chocolate Rose Design Cake",
-  "price": 675,
-  "details": "Half Kg, Eggless",
-  "ratings": 0
-},
-{
-  "type": "cake",
-  "title": "Velvety Pineapple Cake",
-  "price": 845,
-  "details": "Half Kg, Eggless",
-  "ratings": 0
-},
-{
-  "type": "cake",
-  "title": "Chocolate Fudge Cake",
-  "price": 580,
-  "details": "Half Kg, Eggless",
-  "ratings": 0
-},
-{
-  "type": "bouquet",
-  "title": "Pastel Carnation Bouquet",
-  "price": 1050,
-  "details": "White Gypsophila Gypsy Fillers",
-  "ratings": 0
-},
-{
-  "type": "bouquet",
-  "title": "Mixed Gerbera Bouquet",
-  "price": 600,
-  "details": "White Gypsophila Gypsy Fillers",
-  "ratings": 0
-},
-{
-  "type": "bouquet",
-  "title": "Pink Roses Bouquet",
-  "price": 1100,
-  "details": "Green Asparagus & Song of India Leaf Fillers ",
-  "ratings": 0
-},
-{
-  "type": "bouquet",
-  "title": "Carnations Bouquet",
-  "price": 800,
-  "details": "White Gypsophila Gypsy & Green Morpankhi Leaf Fillers",
-  "ratings": 0
-},
-{
-  "type": "bouquet",
-  "title": "White Carnations Bouquet",
-  "price": 600,
-  "details": "Green Morpankhi Fillers",
-  "ratings": 0
-},
-{
-  "type": "bouquet",
-  "title": "Red Roses Bouquet",
-  "price": 1550,
-  "details": "Green Murraya Leaf Fillers",
-  "ratings": 0
-},
-{
-  "type": "bouquet",
-  "title": "Blue Orchids Bouquet",
-  "price": 800,
-  "details": "Green Delhi Asparagus Fillers",
-  "ratings": 0
-},
-{
-  "type": "bouquet",
-  "title": "Dashing Daisy Bouquet",
-  "price": 850,
-  "details": "Green Murraya Leaf Fillers",
-  "ratings": 0
-},
-{
-  "type": "bouquet",
-  "title": "Mixed Roses Bouquet",
-  "price": 625,
-  "details": "White Gypsophila Gypsy Fillers",
-  "ratings": 0
-},
-{
-  "type": "bouquet",
-  "title": "Blooming Joy Roses Bouquet",
-  "price": 975,
-  "details": "Green murraya leaf Fillers",
-  "ratings": 0
-},
-{
-  "type": "bouquet",
-  "title": "Yellow Gerbera Bouquet",
-  "price": 550,
-  "details": "White Gypsy Flower & Asparagus Fillers",
-  "ratings": 0
-},
-{
-  "type": "bouquet",
-  "title": "Pink Roses & Daises Bouquet",
-  "price": 1275,
-  "details": "Green Fillers",
-  "ratings": 0
-},
-{
-  "type": "bouquet",
-  "title": "Elegant White Roses Bouquet",
-  "price": 900,
-  "details": "White Gypsophila Gypsy Fillers",
-  "ratings": 0
-},
-{
-  "type": "bouquet",
-  "title": "Mixed Asiatic Lilies Bouquet",
-  "price": 755,
-  "details": "Green Color Goldenrod Fillers",
-  "ratings": 0
-},
-{
-  "type": "bouquet",
-  "title": "Mixed Roses & Carnations",
-  "price": 1200,
-  "details": "Green Fillers",
-  "ratings": 0
-},
-{
-  "type": "bouquet",
-  "title": "Pink Asiatic Lilies Bouquet",
-  "price": 1350,
-  "details": "Green Color Morpankhi Fillers",
-  "ratings": 0
-},
-{
-  "type": "bouquet",
-  "title": "Yellow Roses Bouquet",
-  "price": 975,
-  "details": "Green Murraya Leaf Fillers",
-  "ratings": 0
-},
-{
-  "type": "bouquet",
-  "title": "Pretty Red Roses",
-  "price": 750,
-  "details": "Green Murraya Leaf Fillers",
-  "ratings": 0
-},
-{
-  "type": "bouquet",
-  "title": "Purpule Orchids Bouquet",
-  "price": 975,
-  "details": "Green Murraya Leaf Fillers",
-  "ratings": 0
-},
-{
-  "type": "bouquet",
-  "title": "Shimmering Blue Roses",
-  "price": 1450,
-  "details": "Green Murraya Leaf Fillers",
-  "ratings": 4.7,
-  "reviewSentiment": "Most customers are happy with this product."
-},
-{
-  "type": "bouquet",
-  "title": "Asiatic Lilies & Carnations",
-  "price": 1275,
-  "details": "Green color Morpankhi Leaf Filler",
-  "ratings": 0
-},
-{
-  "type": "bouquet",
-  "title": "Orange Asiatic Lilies Bouquet",
-  "price": 950,
-  "details": "Green Color Morpankhi Fillers",
-  "ratings": 0
-},
-{
-  "type": "bouquet",
-  "title": "White Roses Bouquet",
-  "price": 750,
-  "details": "Green Murraya Leaf Fillers",
-  "ratings": 0
-},
-{
-  "type": "bouquet",
-  "title": "Pink Carnantions Bouquet",
-  "price": 850,
-  "details": "White Gypsophila Gypsy & Green Morpankhi Leaf Fillers",
-  "ratings": 0
-},
-{
-  "type": "bouquet",
-  "title": "Blooming Carnantions Bouquet",
-  "price": 1175,
-  "details": "White Gypsophila Gypsy & Green Morpankhi Leaf Fillers",
-  "ratings": 0
-},
-{
-  "type": "bouquet",
-  "title": "Divine Blue Orchids Bouquet",
-  "price": 875,
-  "details": "Green Murraya Leaf Fillers",
-  "ratings": 0
-},
-{
-  "type": "bouquet",
-  "title": "Exotic Gerbera Bouquet",
-  "price": 575,
-  "details": "Green Murraya Leaf Fillers",
-  "ratings": 0
-},
-{
-  "type": "bouquet",
-  "title": "Colorful Mixed Roses Bouquet",
-  "price": 825,
-  "details": "Green Murraya Leaf Fillers",
-  "ratings": 0
-},
-{
-  "type": "bouquet",
-  "title": "White & Pink Roses Bouquet",
-  "price": 950,
-  "details": "Green Murraya Leaf Fillers",
-  "ratings": 0
-},
-{
-  "type": "bouquet",
-  "title": "Red Carnations Bouquet",
-  "price": 750,
-  "details": "White Gypsophila Gypsy & Green Morpankhi Leaf Fillers",
-  "ratings": 0
-},
-{
-  "type": "plant",
-  "title": "Money Plant",
-  "price": 550,
-  "details": "Colorful Rajwada Printed Pot",
-  "ratings": 4.9,
-  "reviewSentiment": "Most users (100%) are satisfied with their purchase."
-},
-{
-  "type": "plant",
-  "title": "Ficus Ginseng Bonsai Plant",
-  "price": 1350,
-  "details": "White N Blue Sea Home With Fish Resin Pot ",
-  "ratings": 0
-},
-{
-  "type": "plant",
-  "title": "Goodluck Bamboo Plant",
-  "price": 675,
-  "details": "Transparent Square Glass Vase",
-  "ratings": 0
-},
-{
-  "type": "plant",
-  "title": "Jade Plant",
-  "price": 350,
-  "details": "Round Glass Vase",
-  "ratings": 0
-},
-{
-  "type": "plant",
-  "title": "Green Aglaonema Plant",
-  "price": 1150,
-  "details": "Blue Hexagonal Pot",
-  "ratings": 0
-},
-{
-  "type": "plant",
-  "title": "Peace Lily Plant",
-  "price": 975,
-  "details": "White Asthetic Pot",
-  "ratings": 0
-},
-{
-  "type": "plant",
-  "title": "Aglaonema Plant",
-  "price": 1350,
-  "details": "Black Buddha Pot",
-  "ratings": 0
-},
-{
-  "type": "plant",
-  "title": "Spider Plant",
-  "price": 725,
-  "details": "Red Glass Vase",
-  "ratings": 0
-},
-{
-  "type": "plant",
-  "title": "Small Money Plant",
-  "price": 475,
-  "details": "Mason Jar With Pebbles",
-  "ratings": 0
-},
-{
-  "type": "plant",
-  "title": "Silver Aglaonema Plant",
-  "price": 725,
-  "details": "Pipe Shaped Cork Pot",
-  "ratings": 0
-},
-{
-  "type": "plant",
-  "title": "Small Jade Plant",
-  "price": 335,
-  "details": "Gold Tone Metal Pot",
-  "ratings": 0
-},
-{
-  "type": "plant",
-  "title": "Red Aglaonema Plant",
-  "price": 1325,
-  "details": "Golden Plate Cat Print Pot",
-  "ratings": 0
-},
-{
-  "type": "plant",
-  "title": "Colorful Money Plant",
-  "price": 1250,
-  "details": "Pink Kettle & Pink Pebbles",
-  "ratings": 4.7
-},
-{
-  "type": "plant",
-  "title": "Golden Syngonium Plant",
-  "price": 425,
-  "details": "Round Glass Vase",
-  "ratings": 0
-},
-{
-  "type": "plant",
-  "title": "Tranquil Calathea Plant",
-  "price": 1750,
-  "details": "Buddha Pot",
-  "ratings": 0
-},
-{
-  "type": "plant",
-  "title": "Syngonium Plant",
-  "price": 300,
-  "details": "White Asthetic Pot",
-  "ratings": 0
-},
-{
-  "type": "plant",
-  "title": "Haworthia Plant",
-  "price": 1250,
-  "details": "Golden Ceramic Pot",
-  "ratings": 0
-},
-{
-  "type": "plant",
-  "title": "Sanseveiria Plant",
-  "price": 900,
-  "details": "Designer Pink Pot",
-  "ratings": 0
-},
-{
-  "type": "chocolate",
-  "title": "Handmade Chocolates",
-  "price": 950,
-  "details": "20 pieces",
-  "ratings": 0
-},
-{
-  "type": "chocolate",
-  "title": "Mix Flavour Chocolates",
-  "price": 500,
-  "details": "12 pieces",
-  "ratings": 4.25,
-  "reviewSentiment": "Based on reviews, 100% seem happy."
-},
-{
-  "type": "chocolate",
-  "title": "Dairy Milk Chocolate Bouquet",
-  "price": 625,
-  "details": "10 pieces",
-  "ratings": 0
-},
-{
-  "type": "chocolate",
-  "title": "Marble Chocolate",
-  "price": 1750,
-  "details": "25 pieces",
-  "ratings": 0
-},
-{
-  "type": "chocolate",
-  "title": "Cadbury Chocolates Bouquet",
-  "price": 950,
-  "details": "24 pieces",
-  "ratings": 0
-},
-{
-  "type": "chocolate",
-  "title": "KitKat Chocolate Bouquet",
-  "price": 725,
-  "details": "17 pieces",
-  "ratings": 0
-},
-{
-  "type": "chocolate",
-  "title": "Box Of Assorted Chocolates",
-  "price": 725,
-  "details": "18 pieces",
-  "ratings": 0
-},
-{
-  "type": "chocolate",
-  "title": "Chocolate Indulgence Gift Box",
-  "price": 1225,
-  "details": "23 pieces",
-  "ratings": 4.7,
-  "reviewSentiment": "Customer feedback indicates 100% are thrilled."
-},
-{
-  "type": "chocolate",
-  "title": "Shakkar Chocolate Fusion",
-  "price": 1550,
-  "details": "21 pieces",
-  "ratings": 0
-},
-{
-  "type": "chocolate",
-  "title": "Two Storied Chocolate Treat",
-  "price": 1575,
-  "details": "35 pieces",
-  "ratings": 0
-},
-{
-  "type": "chocolate",
-  "title": "Classic Truffles Chocolate",
-  "price": 650,
-  "details": "9 pieces",
-  "ratings": 0
-},
-{
-  "type": "chocolate",
-  "title": "Ferrerro Rocher Bouquet",
-  "price": 1325,
-  "details": "16 pieces",
-  "ratings": 0
-},
-{
-  "type": "chocolate",
-  "title": "Dairy Milk Bouquet",
-  "price": 850,
-  "details": "15 pieces",
-  "ratings": 0
-},
-{
-  "type": "chocolate",
-  "title": "Nuty Bliss Chocolate Delight",
-  "price": 925,
-  "details": "9 pieces",
-  "ratings": 0
-},
-{
-  "type": "chocolate",
-  "title": "Premium Chocolate Treasure",
-  "price": 1150,
-  "details": "16 pieces",
-  "ratings": 0
-},
-{
-  "type": "chocolate",
-  "title": "Ferroro Rocher Delight",
-  "price": 750,
-  "details": "10 pieces",
-  "ratings": 0
-},
-{
-  "type": "chocolate",
-  "title": "Rich Assorted Chocolate Box",
-  "price": 875,
-  "details": "14 pieces",
-  "ratings": 0
-},
-{
-  "type": "chocolate",
-  "title": "Dairy Milk Hamper",
-  "price": 650,
-  "details": "10 pieces",
-  "ratings": 0
-},
-{
-  "type": "combo",
-  "title": "Pink Roses & Chocolate Cake",
-  "price": 1350,
-  "details": "12 Pink Roses & Half kg Cake",
-  "ratings": 0
-},
-{
-  "type": "combo",
-  "title": "Personalised Mug & Chocolate",
-  "price": 1275,
-  "details": "3 Dairy Milk Chocolates & A Mug",
-  "ratings": 0
-},
-{
-  "type": "combo",
-  "title": "Carnations & Truffle Cake",
-  "price": 1475,
-  "details": "12 Pink Carnations & Half kg Cake",
-  "ratings": 5,
-  "reviewSentiment": "Customer feedback indicates 100% are thrilled."
-},
-{
-  "type": "combo",
-  "title": "Money Plant & Chocolates",
-  "price": 1250,
-  "details": "Money Plant, 3 Chocolates And Jasmine Scented Candle",
-  "ratings": 0
-},
-{
-  "type": "combo",
-  "title": "Red Roses & Chocolate Cake",
-  "price": 1450,
-  "details": "12 Red Roses & Half kg Cake",
-  "ratings": 0
-},
-{
-  "type": "combo",
-  "title": "Celebration Duo",
-  "price": 1875,
-  "details": "12 Yellow Roses & Half kg Cake",
-  "ratings": 0
-},
-{
-  "type": "combo",
-  "title": "Spectacular Combo",
-  "price": 1550,
-  "details": "12 Roses & Half kg Cake",
-  "ratings": 0
-},
-{
-  "type": "combo",
-  "title": "Orchids & Truffle Cake",
-  "price": 1450,
-  "details": "10 Purple Orchids & Half kg Cake",
-  "ratings": 0
-},
-{
-  "type": "combo",
-  "title": "Dry Fruits Hamper",
-  "price": 1450,
-  "details": "Almonds, Walnuts, Cashewnuts, Pistas, Figs, etc",
-  "ratings": 0
-},
-{
-  "type": "combo",
-  "title": "Roses & Butterscotch Cake",
-  "price": 1450,
-  "details": "15 Roses & Half kg Cake",
-  "ratings": 0
-},
-{
-  "type": "combo",
-  "title": "Chocolate Special Hamper",
-  "price": 1850,
-  "details": "Chocolate-shaped diary, Chocolate popcorn, Nutella spread",
-  "ratings": 0
-},
-{
-  "type": "combo",
-  "title": "Roses & BlackForest Cake",
-  "price": 1750,
-  "details": "12 Mixed Color Roses & Half Kg Cake",
-  "ratings": 0
-},
-{
-  "type": "combo",
-  "title": "Arrorted Royal Baklavas",
-  "price": 1900,
-  "details": " Pistachio Cashew, Finger, Chocolate and Pyramid Baklavas",
-  "ratings": 0
-},
-{
-  "type": "combo",
-  "title": "Lilies & Butterscotch Cake",
-  "price": 1975,
-  "details": "10 Mixed Liles & Half Kg Cake",
-  "ratings": 0
-},
-{
-  "type": "combo",
-  "title": "Delicious Health Hamper",
-  "price": 1075,
-  "details": "Green Tea, Keeros Roasted Multigrain Jar & Cookie Bites",
-  "ratings": 0
-},
-{
-  "type": "combo",
-  "title": "Nut Mix Gift Hamper",
-  "price": 1475,
-  "details": "Almonds, Walnuts, Cashewnuts, Pistas, Figs, etc",
-  "ratings": 0
-},
-{
-  "type": "combo",
-  "title": "Gerberas & Cake",
-  "price": 950,
-  "details": "Mixed Gerberas & Half Kg Cake",
-  "ratings": 0
-},
-{
-  "type": "combo",
-  "title": "Fruit Delight Hamper",
-  "price": 975,
-  "details": "Mix of fresh fruits complemented by a golden Syngonium plant.",
-  "ratings": 0
-},
-{
-  "type": "combo",
-  "title": "Savouries Delight Gift Set",
-  "price": 1250,
-  "details": "Cookies, Papdi & Matthi",
-  "ratings": 0
-},
-{
-  "type": "combo",
-  "title": "Greenary & Fresh Fruits",
-  "price": 1175,
-  "details": "Fresh Fruits & Milt Sanseveiria Plant",
-  "ratings": 0
-},
-{
-  "type": "combo",
-  "title": "Blossom & Velvet Delight",
-  "price": 1450,
-  "details": "12 Red & Pink Roses & Half Kg Red Velvet Cake",
-  "ratings": 0
-},
-{
-  "type": "combo",
-  "title": "Orchids & Chocolates Delight",
-  "price": 1150,
-  "details": "7 Blue Orchids & Assorted Cadbury Chocolates",
-  "ratings": 0
-},
-{
-  "type": "combo",
-  "title": "Screne Delight",
-  "price": 1150,
-  "details": "Pink Carnations & Premium Spider Plant",
-  "ratings": 0
-},
-{
-  "type": "combo",
-  "title": "Green & Purple Blooms",
-  "price": 1150,
-  "details": "Premium Plants & 7 Dairy Milk Chocolates",
-  "ratings": 4.8
-},
-{
-  "type": "cake",
-  "details": "Half Kg, Eggless",
-  "title": "Chocolate Truffle Cake",
-  "price": 575,
-  "ratings": 0
-}]

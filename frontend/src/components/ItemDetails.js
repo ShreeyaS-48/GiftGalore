@@ -66,7 +66,7 @@ const ItemDetails = () => {
     saveViewedProduct(id);
   }, [id]);
   return (
-    <main className="item-details">
+    <main className="item-details" autofocus>
       <div
         className="details-containder"
         style={{
