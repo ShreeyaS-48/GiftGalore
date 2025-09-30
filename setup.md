@@ -73,11 +73,11 @@ python app.py
   - Username: ABCD
   - Password: abc123ABC
 - Test user:
-  - Username: ABCDE
+  - Username: Test
   - Password: abc123ABC
 
 ### Stripe Test Payments
 
-- Card Number: 5555 5555 5555 5555
+- Card Number: 5555 5555 5555 4444
 - Expiry: Any date in future
 - CVC: Any 3 digit number
