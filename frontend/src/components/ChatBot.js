@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import DataContext from "../context/DataContext";
 import BestSellerItem from "./BestSellerItem";
 function formatBotResponse(text) {
-  console.log(text.replace(/(\d+\.)/g, "\n$1"));
   return text.replace(/(\d+\.)/g, "\n$1"); // ensures lists start on new lines
 }
 
@@ -36,7 +35,6 @@ const ChatBot = () => {
           content: String(msg.text ?? ""),
         })),
       });
-      console.log(res.data);
       const botMessage = {
         sender: "assistant",
         text: formatBotResponse(res.data.reply),
