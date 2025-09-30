@@ -71,7 +71,14 @@ const ChatBot = () => {
         <div className="chat-messages" style={{ width: "100%" }}>
           {messages.map((m, i) => (
             <div key={i} className={`chat-msg ${m.sender}`}>
-              <ReactMarkdown>{m.text}</ReactMarkdown>
+              <ReactMarkdown
+                children={m.text}
+                components={{
+                  a: ({ node, ...props }) => (
+                    <a {...props} target="_blank" rel="noopener noreferrer" />
+                  ),
+                }}
+              />
             </div>
           ))}
         </div>

@@ -27,7 +27,7 @@ function formatProduct(p) {
 **Type:** ${p.type}
 **Price:** ₹${p.price}
 **Ratings:** ${p.ratings}
-[Link](https://giftgalore.netlify.app/${oid})`;
+<a href="https://giftgalore.netlify.app/${oid}" target="_blank" rel="noopener noreferrer">Shop Now</a>`;
 }
 
 const PRODUCT_TEXTS = PRODUCTS.map(formatProduct);
