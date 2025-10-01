@@ -117,7 +117,7 @@ This project is developed to showcase how **cutting-edge technology** can transf
 
 ### Demo Video
 
-- **Watch Demo:** https://www.youtube.com/watch?v=-T6Xlzbx5x8
+- **Watch Demo:** https://www.youtube.com/watch?v=CoCag3RKzQg
 
 ### Live Deployment
 
